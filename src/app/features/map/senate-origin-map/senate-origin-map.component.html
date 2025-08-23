@@ -19,4 +19,41 @@
     <p>Initializing map...</p>
   </div>
 </div>
+
+<!-- Modal for showing senators per region -->
+<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h3>{{ selectedRegion?.name }} - Senate Information</h3>
+      <button class="close-button" (click)="closeModal()">&times;</button>
+    </div>
+    
+    <div class="modal-body">
+      <div class="region-info">
+        <p><strong>Province:</strong> {{ selectedRegion?.province }}</p>
+        <p><strong>Total Senators:</strong> {{ selectedRegion?.senators }}</p>
+      </div>
+      
+      <div class="senators-list" *ngIf="regionSenators.length > 0">
+        <h4>Senators from this region:</h4>
+        <ul>
+          <li *ngFor="let senator of regionSenators" class="senator-item">
+            <div class="senator-info">
+              <strong>{{ senator.fullName }}</strong>
+              <span class="senator-details">{{ senator.party || 'Independent' }}</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="no-senators" *ngIf="regionSenators.length === 0">
+        <p>No detailed senator information available for this region.</p>
+      </div>
+    </div>
+    
+    <div class="modal-footer">
+      <button class="btn btn-primary" (click)="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
 </div>
