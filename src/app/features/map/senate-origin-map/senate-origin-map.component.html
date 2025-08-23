@@ -24,15 +24,15 @@
 
         <!-- Beautiful Profile Card (like in the image) -->
         <div class="profile-card" *ngIf="selectedSenator">
-          <img 
+          <img
             [src]="selectedSenator.photo || 'assets/images/default-senator.svg'"
             [alt]="selectedSenator.fullName"
             (error)="onImageError($event)"
             class="profile-avatar">
-          
+
           <div class="profile-name">{{ selectedSenator.fullName }}</div>
           <div class="profile-title">{{ selectedSenator.party || translate('modal.independent') }}</div>
-          
+
           <div class="profile-stats">
             <div class="stat">
               <span class="stat-value">{{ getRandomStat('distance') }}K</span>
@@ -43,7 +43,7 @@
               <span class="stat-label">{{ translate('profile.rating') || 'Rating' }}</span>
             </div>
           </div>
-          
+
           <div class="profile-timeline">
             <div class="timeline-header">{{ translate('profile.today') || 'TODAY' }}</div>
             <div class="timeline-bars">
