@@ -1,7 +1,21 @@
 <div id="origin-map-host">
+  <!-- Language Switcher -->
+  <div class="language-switcher">
+    <label for="language-select">{{ translate('language.select') || 'Language' }}:</label>
+    <select 
+      id="language-select" 
+      [value]="currentLanguage" 
+      (change)="changeLanguage($any($event.target).value)"
+      class="language-select">
+      <option *ngFor="let lang of availableLanguages" [value]="lang.code">
+        {{ lang.name }}
+      </option>
+    </select>
+  </div>
+
   <div class="map-container">
   <div *ngIf="!mapLayerData" class="loading-state">
-    <p>Loading map data...</p>
+    <p>{{ translate('loading.mapData') }}</p>
   </div>
 
   <div *ngIf="mapLayerData" class="map-content">
@@ -16,7 +30,7 @@
   </div>
 
   <div *ngIf="mapLayerData && !isMapReady" class="loading-overlay">
-    <p>Initializing map...</p>
+    <p>{{ translate('loading.initializing') }}</p>
   </div>
 </div>
 
@@ -24,35 +38,42 @@
 <div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
     <div class="modal-header">
-      <h3>{{ selectedRegion?.name }} - Senate Information</h3>
+      <h3>{{ selectedRegion?.name }} - {{ translate('modal.senateInfo') }}</h3>
       <button class="close-button" (click)="closeModal()">&times;</button>
     </div>
     
     <div class="modal-body">
       <div class="region-info">
-        <p><strong>Province:</strong> {{ selectedRegion?.province }}</p>
-        <p><strong>Total Senators:</strong> {{ selectedRegion?.senators }}</p>
+        <p><strong>{{ translate('modal.province') }}:</strong> {{ selectedRegion?.province }}</p>
+        <p><strong>{{ translate('modal.totalSenators') }}:</strong> {{ selectedRegion?.senators }}</p>
       </div>
       
       <div class="senators-list" *ngIf="regionSenators.length > 0">
-        <h4>Senators from this region:</h4>
-        <ul>
-          <li *ngFor="let senator of regionSenators" class="senator-item">
-            <div class="senator-info">
-              <strong>{{ senator.fullName }}</strong>
-              <span class="senator-details">{{ senator.party || 'Independent' }}</span>
+        <h4>{{ translate('modal.senatorsFromRegion') }}:</h4>
+        <div class="senators-grid">
+          <div *ngFor="let senator of regionSenators" class="senator-card">
+            <div class="senator-photo">
+              <img 
+                [src]="senator.photo || 'assets/images/default-senator.svg'" 
+                [alt]="senator.fullName"
+                (error)="onImageError($event)"
+                class="photo-img">
             </div>
-          </li>
-        </ul>
+            <div class="senator-info">
+              <strong class="senator-name">{{ senator.fullName }}</strong>
+              <span class="senator-party">{{ senator.party || translate('modal.independent') }}</span>
+            </div>
+          </div>
+        </div>
       </div>
       
       <div class="no-senators" *ngIf="regionSenators.length === 0">
-        <p>No detailed senator information available for this region.</p>
+        <p>{{ translate('modal.noSenators') }}</p>
       </div>
     </div>
     
     <div class="modal-footer">
-      <button class="btn btn-primary" (click)="closeModal()">Close</button>
+      <button class="btn btn-primary" (click)="closeModal()">{{ translate('modal.close') }}</button>
     </div>
   </div>
 </div>

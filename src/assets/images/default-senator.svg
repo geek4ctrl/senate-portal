@@ -1,0 +1,6 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="40" cy="40" r="40" fill="#f8f9fa"/>
+  <circle cx="40" cy="28" r="12" fill="#dee2e6"/>
+  <path d="M20 70c0-11.046 8.954-20 20-20s20 8.954 20 20" fill="#dee2e6"/>
+  <text x="40" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#6c757d">Senator</text>
+</svg>
