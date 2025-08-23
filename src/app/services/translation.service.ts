@@ -48,7 +48,12 @@ export class TranslationService {
       'map.senateLocations': 'Senate Locations',
 
       // Tooltip
-      'tooltip.senators': 'Senators'
+      'tooltip.senators': 'Senators',
+
+      // Profile card
+      'profile.distance': 'Distance',
+      'profile.rating': 'Rating',
+      'profile.today': 'TODAY'
     },
     fr: {
       // Language switcher
@@ -82,7 +87,12 @@ export class TranslationService {
       'map.senateLocations': 'Emplacements du Sénat',
 
       // Tooltip
-      'tooltip.senators': 'Sénateurs'
+      'tooltip.senators': 'Sénateurs',
+
+      // Profile card
+      'profile.distance': 'Distance',
+      'profile.rating': 'Évaluation',
+      'profile.today': "AUJOURD'HUI"
     }
   };
 

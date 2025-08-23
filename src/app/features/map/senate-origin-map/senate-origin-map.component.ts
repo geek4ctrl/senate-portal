@@ -44,6 +44,7 @@ export class SenateOriginMapComponent implements OnInit {
   // Senators list properties
   filterText = '';
   selectedSenatorId: string | null = null;
+  selectedSenator: any = null; // For the profile card
   filteredSenators: any[] = [];
 
   // Sample senators data (this could come from the senators.json file)
@@ -248,8 +249,18 @@ export class SenateOriginMapComponent implements OnInit {
 
   selectSenator(senator: any): void {
     this.selectedSenatorId = senator.fullName;
+    this.selectedSenator = senator; // Set the selected senator for the profile card
     // You could highlight the senator's province on the map here
     this.highlightSenatorProvince(senator.originProvince);
+  }
+
+  // Helper methods for the profile card
+  getRandomStat(type: 'distance' | 'rating'): string {
+    if (type === 'distance') {
+      return (Math.floor(Math.random() * 100) + 50).toString();
+    } else {
+      return (Math.random() * 2 + 3).toFixed(1);
+    }
   }
 
   private highlightSenatorProvince(province: string): void {
