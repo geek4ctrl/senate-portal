@@ -1,0 +1,5 @@
+[
+  { "id": "1", "fullName": "Senator A", "originProvince": "Kinshasa" },
+  { "id": "2", "fullName": "Senator B", "originProvince": "Équateur" },
+  { "id": "3", "fullName": "Senator C", "originProvince": "Équateur" }
+]

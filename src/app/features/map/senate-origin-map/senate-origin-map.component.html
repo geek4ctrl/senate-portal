@@ -1,0 +1,22 @@
+<div id="origin-map-host">
+  <div class="map-container">
+  <div *ngIf="!mapLayerData" class="loading-state">
+    <p>Loading map data...</p>
+  </div>
+
+  <div *ngIf="mapLayerData" class="map-content">
+    <highcharts-chart
+      [Highcharts]="Highcharts"
+      [constructorType]="chartConstructor"
+      [options]="chartOptions"
+      [update]="updateFlag"
+      [callbackFunction]="chartCallback"
+      style="width: 100%; height: 500px; display: block;"
+    ></highcharts-chart>
+  </div>
+
+  <div *ngIf="mapLayerData && !isMapReady" class="loading-overlay">
+    <p>Initializing map...</p>
+  </div>
+</div>
+</div>
