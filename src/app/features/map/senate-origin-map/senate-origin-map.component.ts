@@ -39,10 +39,10 @@ export class SenateOriginMapComponent implements OnInit {
       map: undefined // Will be set when map data is loaded
     },
     title: {
-      text: 'Senate Map'
+      text: 'Democratic Republic of Congo - Senate Map'
     },
     subtitle: {
-      text: 'Locations of Senate members from the Democratic Republic of Congo'
+      text: 'Provincial distribution of Senate members and locations'
     },
     mapNavigation: {
       enabled: true,
@@ -65,15 +65,26 @@ export class SenateOriginMapComponent implements OnInit {
   }
 
   private loadMapData(): void {
-    // Use dynamic import to load the world map data
-    import('@highcharts/map-collection/custom/world.geo.json')
-      .then((worldMapData: any) => {
-        console.log('World map data loaded:', worldMapData);
-        this.mapLayerData = worldMapData.default;
+    // Load DRC-specific map for detailed view
+    import('@highcharts/map-collection/countries/cd/cd-all.topo.json')
+      .then((drcMapData: any) => {
+        console.log('DRC map data loaded:', drcMapData);
+        // Convert TopoJSON to GeoJSON
+        this.mapLayerData = Highcharts.geojson(drcMapData.default);
         this.updateChartWithMapData();
       })
       .catch((error) => {
-        console.error('Error loading world map data:', error);
+        console.error('Error loading DRC map data, falling back to world map:', error);
+        // Fallback to world map if DRC map is not available
+        import('@highcharts/map-collection/custom/world.topo.json')
+          .then((worldMapData: any) => {
+            console.log('World map data loaded as fallback:', worldMapData);
+            this.mapLayerData = Highcharts.geojson(worldMapData.default);
+            this.updateChartWithMapData();
+          })
+          .catch((worldError) => {
+            console.error('Error loading world map data:', worldError);
+          });
       });
   }
 
@@ -99,13 +110,14 @@ export class SenateOriginMapComponent implements OnInit {
       series: [
         {
           type: 'map',
-          name: 'Countries',
+          name: 'DRC Provinces',
           mapData: this.mapLayerData,
-          data: this.mapLayerData.features?.map((feature: any, index: number) => ({
-            'hc-key': feature.properties['hc-key'],
-            value: Math.floor(Math.random() * 100),
-            color: '#E8E8E8'
-          })) || [],
+          data: this.mapLayerData.map((feature: any, index: number) => ({
+            'hc-key': feature.properties['hc-key'] || feature.properties.name,
+            value: Math.floor(Math.random() * 50) + 1,
+            color: '#E8F4FD',
+            name: feature.properties.name
+          })),
           joinBy: 'hc-key',
           states: {
             hover: {
@@ -113,8 +125,15 @@ export class SenateOriginMapComponent implements OnInit {
             }
           },
           dataLabels: {
-            enabled: false
-          }
+            enabled: true,
+            format: '{point.name}',
+            style: {
+              fontSize: '10px',
+              fontWeight: 'normal'
+            }
+          },
+          borderColor: '#606060',
+          borderWidth: 1
         },
         {
           type: 'mappoint',
@@ -122,10 +141,10 @@ export class SenateOriginMapComponent implements OnInit {
           showInLegend: true,
           marker: {
             symbol: 'circle',
-            radius: 8,
-            fillColor: '#FF6B6B',
-            lineColor: '#FFF',
-            lineWidth: 2
+            radius: 12,
+            fillColor: '#FF0000',
+            lineColor: '#FFFFFF',
+            lineWidth: 3
           },
           zIndex: 100,
           data: [
@@ -136,11 +155,19 @@ export class SenateOriginMapComponent implements OnInit {
             { lat: -2.5089, lon: 28.8473, name: 'Bukavu', custom: { province: 'Sud-Kivu', senators: 4 } },
             { lat: 1.2103, lon: 29.2348, name: 'Goma', custom: { province: 'Nord-Kivu', senators: 4 } },
             { lat: -6.1583, lon: 23.6014, name: 'Mbuji-Mayi', custom: { province: 'Kasaï Oriental', senators: 4 } },
-            { lat: -3.3098, lon: 17.3157, name: 'Bandundu', custom: { province: 'Kwilu', senators: 4 } }
+            { lat: -3.3098, lon: 17.3157, name: 'Bandundu', custom: { province: 'Kwilu', senators: 4 } },
+            { lat: -0.7264, lon: 29.2411, name: 'Butembo', custom: { province: 'Nord-Kivu', senators: 2 } },
+            { lat: -5.0342, lon: 29.2859, name: 'Uvira', custom: { province: 'Sud-Kivu', senators: 2 } }
           ] as any,
           dataLabels: {
             enabled: true,
-            format: '{point.name}'
+            format: '{point.name}',
+            style: {
+              color: '#000000',
+              fontWeight: 'bold',
+              fontSize: '11px',
+              textOutline: '2px white'
+            }
           },
           tooltip: {
             pointFormat: '<b>{point.name}</b><br/>Province: {point.custom.province}<br/>Senators: {point.custom.senators}'
