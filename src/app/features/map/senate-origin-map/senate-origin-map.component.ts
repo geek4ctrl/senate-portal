@@ -41,6 +41,11 @@ export class SenateOriginMapComponent implements OnInit {
   selectedRegion: any = null;
   regionSenators: any[] = [];
 
+  // Senators list properties
+  filterText = '';
+  selectedSenatorId: string | null = null;
+  filteredSenators: any[] = [];
+
   // Sample senators data (this could come from the senators.json file)
   senatorsData = [
     { fullName: 'Senator Agito Amela Carole', originProvince: 'Bas-Uele', party: '', photo: 'https://backup-gce-talatala.s3.amazonaws.com/media/deputy/Agito_Amela_Carole.png' },
@@ -216,6 +221,45 @@ export class SenateOriginMapComponent implements OnInit {
   ngOnInit(): void {
     console.log('SenateOriginMapComponent initialized');
     this.updateChartTexts();
+    this.initializeFilteredSenators();
+  }
+
+  // Senators list methods
+  initializeFilteredSenators(): void {
+    this.filteredSenators = [...this.senatorsData];
+  }
+
+  onFilterChange(event: any): void {
+    this.filterText = event.target.value.toLowerCase();
+    this.filterSenators();
+  }
+
+  filterSenators(): void {
+    if (!this.filterText.trim()) {
+      this.filteredSenators = [...this.senatorsData];
+    } else {
+      this.filteredSenators = this.senatorsData.filter(senator =>
+        senator.fullName.toLowerCase().includes(this.filterText) ||
+        senator.originProvince.toLowerCase().includes(this.filterText) ||
+        senator.party?.toLowerCase().includes(this.filterText)
+      );
+    }
+  }
+
+  selectSenator(senator: any): void {
+    this.selectedSenatorId = senator.fullName;
+    // You could highlight the senator's province on the map here
+    this.highlightSenatorProvince(senator.originProvince);
+  }
+
+  private highlightSenatorProvince(province: string): void {
+    // Find the corresponding map marker and highlight it
+    console.log('Highlighting province:', province);
+    // This could trigger a visual highlight on the map
+  }
+
+  getSenatorId(senator: any): string {
+    return senator.fullName;
   }
 
   // Translation methods

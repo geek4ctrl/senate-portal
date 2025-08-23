@@ -14,20 +14,26 @@ export interface Translations {
 })
 export class TranslationService {
   private currentLanguage = 'en';
-  
+
   private translations: Translations = {
     en: {
       // Language switcher
       'language.select': 'Language',
-      
+
+      // Sidebar
+      'sidebar.senators': 'Senators',
+      'sidebar.filterPlaceholder': 'Filter Senators',
+      'sidebar.senatorsFound': 'senators found',
+      'sidebar.noResults': 'No senators found matching your search.',
+
       // Chart titles
       'chart.title': 'Democratic Republic of Congo - Senate Map',
       'chart.subtitle': 'Provincial distribution of Senate members and locations',
-      
+
       // Loading states
       'loading.mapData': 'Loading map data...',
       'loading.initializing': 'Initializing map...',
-      
+
       // Modal content
       'modal.senateInfo': 'Senate Information',
       'modal.province': 'Province',
@@ -36,26 +42,32 @@ export class TranslationService {
       'modal.noSenators': 'No detailed senator information available for this region.',
       'modal.close': 'Close',
       'modal.independent': 'Independent',
-      
+
       // Map legend
       'map.drcProvinces': 'DRC Provinces',
       'map.senateLocations': 'Senate Locations',
-      
+
       // Tooltip
       'tooltip.senators': 'Senators'
     },
     fr: {
       // Language switcher
       'language.select': 'Langue',
-      
+
+      // Sidebar
+      'sidebar.senators': 'Sénateurs',
+      'sidebar.filterPlaceholder': 'Filtrer les Sénateurs',
+      'sidebar.senatorsFound': 'sénateurs trouvés',
+      'sidebar.noResults': 'Aucun sénateur trouvé correspondant à votre recherche.',
+
       // Chart titles
       'chart.title': 'République Démocratique du Congo - Carte du Sénat',
       'chart.subtitle': 'Répartition provinciale des membres du Sénat et des emplacements',
-      
+
       // Loading states
       'loading.mapData': 'Chargement des données cartographiques...',
       'loading.initializing': 'Initialisation de la carte...',
-      
+
       // Modal content
       'modal.senateInfo': 'Informations du Sénat',
       'modal.province': 'Province',
@@ -64,11 +76,11 @@ export class TranslationService {
       'modal.noSenators': 'Aucune information détaillée sur les sénateurs disponible pour cette région.',
       'modal.close': 'Fermer',
       'modal.independent': 'Indépendant',
-      
+
       // Map legend
       'map.drcProvinces': 'Provinces de la RDC',
       'map.senateLocations': 'Emplacements du Sénat',
-      
+
       // Tooltip
       'tooltip.senators': 'Sénateurs'
     }

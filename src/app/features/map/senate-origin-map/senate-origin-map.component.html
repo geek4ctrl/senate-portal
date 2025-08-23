@@ -1,60 +1,122 @@
-<div id="origin-map-host">
-  <!-- Language Switcher -->
-  <div class="language-switcher">
-    <label for="language-select">{{ translate('language.select') || 'Language' }}:</label>
-    <select 
-      id="language-select" 
-      [value]="currentLanguage" 
-      (change)="changeLanguage($any($event.target).value)"
-      class="language-select">
-      <option *ngFor="let lang of availableLanguages" [value]="lang.code">
-        {{ lang.name }}
-      </option>
-    </select>
+<div class="main-layout">
+  <!-- Map Section -->
+  <div class="map-section">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+      <label for="language-select">{{ translate('language.select') || 'Language' }}:</label>
+      <select
+        id="language-select"
+        [value]="currentLanguage"
+        (change)="changeLanguage($any($event.target).value)"
+        class="language-select">
+        <option *ngFor="let lang of availableLanguages" [value]="lang.code">
+          {{ lang.name }}
+        </option>
+      </select>
+    </div>
+
+    <div id="origin-map-host">
+      <div class="map-container">
+        <div *ngIf="!mapLayerData" class="loading-state">
+          <p>{{ translate('loading.mapData') }}</p>
+        </div>
+
+        <div *ngIf="mapLayerData" class="map-content">
+          <highcharts-chart
+            [Highcharts]="Highcharts"
+            [constructorType]="chartConstructor"
+            [options]="chartOptions"
+            [update]="updateFlag"
+            [callbackFunction]="chartCallback"
+            style="width: 100%; height: 100%; display: block;"
+          ></highcharts-chart>
+        </div>
+
+        <div *ngIf="mapLayerData && !isMapReady" class="loading-overlay">
+          <p>{{ translate('loading.initializing') }}</p>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="map-container">
-  <div *ngIf="!mapLayerData" class="loading-state">
-    <p>{{ translate('loading.mapData') }}</p>
-  </div>
+  <!-- Senators Sidebar -->
+  <div class="senators-sidebar">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+      <h3 class="sidebar-title">{{ translate('sidebar.senators') || 'Senators' }}</h3>
+      <div class="filter-container">
+        <input
+          type="text"
+          class="filter-input"
+          [placeholder]="translate('sidebar.filterPlaceholder') || 'Filter Senators'"
+          [value]="filterText"
+          (input)="onFilterChange($event)">
+        <span class="filter-icon">🔍</span>
+      </div>
+    </div>
 
-  <div *ngIf="mapLayerData" class="map-content">
-    <highcharts-chart
-      [Highcharts]="Highcharts"
-      [constructorType]="chartConstructor"
-      [options]="chartOptions"
-      [update]="updateFlag"
-      [callbackFunction]="chartCallback"
-      style="width: 100%; height: 500px; display: block;"
-    ></highcharts-chart>
-  </div>
+    <!-- Senators Count -->
+    <div class="senators-count">
+      {{ filteredSenators.length }} {{ translate('sidebar.senatorsFound') || 'senators found' }}
+    </div>
 
-  <div *ngIf="mapLayerData && !isMapReady" class="loading-overlay">
-    <p>{{ translate('loading.initializing') }}</p>
+    <!-- Senators List -->
+    <div class="senators-list-container">
+      <button *ngFor="let senator of filteredSenators; trackBy: getSenatorId"
+              class="senator-list-item"
+              [class.selected]="selectedSenatorId === senator.fullName"
+              (click)="selectSenator(senator)"
+              [attr.aria-label]="'Select senator ' + senator.fullName">
+
+        <img
+          [src]="senator.photo || 'assets/images/default-senator.svg'"
+          [alt]="senator.fullName"
+          (error)="onImageError($event)"
+          class="senator-avatar">
+
+        <div class="senator-details">
+          <h4 class="senator-full-name">{{ senator.fullName }}</h4>
+          <p class="senator-province">{{ senator.originProvince }}</p>
+        </div>
+
+        <div class="senator-status"></div>
+      </button>
+
+      <div *ngIf="filteredSenators.length === 0" class="no-results">
+        {{ translate('sidebar.noResults') || 'No senators found matching your search.' }}
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- Modal for showing senators per region -->
-<div class="modal-overlay" *ngIf="showModal" (click)="closeModal()">
-  <div class="modal-content" (click)="$event.stopPropagation()">
+<div class="modal-overlay"
+     *ngIf="showModal"
+     (click)="closeModal()">
+  <div class="modal-content"
+       (click)="$event.stopPropagation()"
+       role="dialog"
+       aria-modal="true">
     <div class="modal-header">
       <h3>{{ selectedRegion?.name }} - {{ translate('modal.senateInfo') }}</h3>
-      <button class="close-button" (click)="closeModal()">&times;</button>
+      <button class="close-button"
+              (click)="closeModal()"
+              aria-label="Close modal">&times;</button>
     </div>
-    
+
     <div class="modal-body">
       <div class="region-info">
         <p><strong>{{ translate('modal.province') }}:</strong> {{ selectedRegion?.province }}</p>
         <p><strong>{{ translate('modal.totalSenators') }}:</strong> {{ selectedRegion?.senators }}</p>
       </div>
-      
+
       <div class="senators-list" *ngIf="regionSenators.length > 0">
         <h4>{{ translate('modal.senatorsFromRegion') }}:</h4>
         <div class="senators-grid">
           <div *ngFor="let senator of regionSenators" class="senator-card">
             <div class="senator-photo">
-              <img 
-                [src]="senator.photo || 'assets/images/default-senator.svg'" 
+              <img
+                [src]="senator.photo || 'assets/images/default-senator.svg'"
                 [alt]="senator.fullName"
                 (error)="onImageError($event)"
                 class="photo-img">
@@ -66,15 +128,14 @@
           </div>
         </div>
       </div>
-      
+
       <div class="no-senators" *ngIf="regionSenators.length === 0">
         <p>{{ translate('modal.noSenators') }}</p>
       </div>
     </div>
-    
+
     <div class="modal-footer">
       <button class="btn btn-primary" (click)="closeModal()">{{ translate('modal.close') }}</button>
     </div>
   </div>
-</div>
 </div>
