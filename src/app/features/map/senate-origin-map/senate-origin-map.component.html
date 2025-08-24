@@ -1,129 +1,156 @@
-<div class="main-layout">
-  <!-- Map Section -->
-  <div class="map-section">
-    <div id="origin-map-host">
-      <div class="map-container">
-        <div *ngIf="!mapLayerData" class="loading-state">
-          <p>{{ translate('loading.mapData') }}</p>
-        </div>
-
-        <div *ngIf="mapLayerData" class="map-content">
-          <highcharts-chart
-            [Highcharts]="Highcharts"
-            [constructorType]="chartConstructor"
-            [options]="chartOptions"
-            [update]="updateFlag"
-            [callbackFunction]="chartCallback"
-            style="width: 100%; height: 100%; display: block;"
-          ></highcharts-chart>
-        </div>
-
-        <div *ngIf="mapLayerData && !isMapReady" class="loading-overlay">
-          <p>{{ translate('loading.initializing') }}</p>
-        </div>
-
-        <!-- Beautiful Profile Card (like in the image) -->
-        <div class="profile-card" *ngIf="selectedSenator">
-          <img
-            [src]="selectedSenator.photo || 'assets/images/default-senator.svg'"
-            [alt]="selectedSenator.fullName"
-            (error)="onImageError($event)"
-            class="profile-avatar">
-
-          <div class="profile-name">{{ selectedSenator.fullName }}</div>
-          <div class="profile-title">{{ selectedSenator.party || translate('modal.independent') }}</div>
-
-          <div class="profile-stats">
-            <div class="stat">
-              <span class="stat-value">{{ getRandomStat('distance') }}K</span>
-              <span class="stat-label">{{ translate('profile.distance') || 'Distance' }}</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">{{ getRandomStat('rating') }}</span>
-              <span class="stat-label">{{ translate('profile.rating') || 'Rating' }}</span>
-            </div>
-          </div>
-
-          <div class="profile-timeline">
-            <div class="timeline-header">{{ translate('profile.today') || 'TODAY' }}</div>
-            <div class="timeline-bars">
-              <div class="timeline-bar blue"></div>
-              <div class="timeline-bar green"></div>
-              <div class="timeline-bar yellow"></div>
-              <div class="timeline-bar blue"></div>
-              <div class="timeline-bar green"></div>
-            </div>
-            <div class="timeline-labels">
-              <span>9am</span>
-              <span>12pm</span>
-              <span>3pm</span>
-              <span>6pm</span>
-            </div>
-          </div>
-        </div>
+<div class="app-container">
+  <!-- Top Navigation Bar -->
+  <div class="top-nav">
+    <div class="nav-left">
+      <h1 class="app-title">{{ 'Senat RDC' }}</h1>
+      <div class="nav-tabs">
+        <button class="nav-tab active">
+          <span class="tab-icon">🗺️</span>
+          {{ translate('nav.map') || 'Map' }}
+        </button>
+        <button class="nav-tab">
+        </button>
       </div>
+    </div>
+    <div class="nav-right">
+      <!-- <div class="date-selector">
+        <span class="nav-date">{{ translate('nav.today') || 'Today' }}</span>
+        <span class="current-date">Monday 6, Dec 2019</span>
+      </div>
+      <div class="nav-controls">
+        <button class="nav-btn">❮</button>
+        <button class="nav-btn">❯</button>
+      </div> -->
     </div>
   </div>
 
-  <!-- Enhanced Senators Sidebar -->
-  <div class="senators-sidebar">
-    <!-- Language Switcher with beautiful gradient -->
-    <div class="language-switcher">
-      <label for="language-select">{{ translate('language.select') || 'Language' }}:</label>
-      <select
-        id="language-select"
-        [value]="currentLanguage"
-        (change)="changeLanguage($any($event.target).value)"
-        class="language-select">
-        <option *ngFor="let lang of availableLanguages" [value]="lang.code">
-          {{ lang.name }}
-        </option>
-      </select>
-    </div>
+  <div class="main-layout">
+    <!-- Map Section -->
+    <div class="map-section">
+      <div id="origin-map-host">
+        <div class="map-container">
+          <div *ngIf="!mapLayerData" class="loading-state">
+            <p>{{ translate('loading.mapData') }}</p>
+          </div>
 
-    <!-- Sidebar Header -->
-    <div class="sidebar-header">
-      <h3 class="sidebar-title">{{ translate('sidebar.senators') || 'Senators' }}</h3>
-      <div class="filter-container">
-        <span class="filter-icon">🔍</span>
-        <input
-          type="text"
-          class="filter-input"
-          [placeholder]="translate('sidebar.filterPlaceholder') || 'Search senators...'"
-          [value]="filterText"
-          (input)="onFilterChange($event)">
+          <div *ngIf="mapLayerData" class="map-content">
+            <highcharts-chart
+              [Highcharts]="Highcharts"
+              [constructorType]="chartConstructor"
+              [options]="chartOptions"
+              [update]="updateFlag"
+              [callbackFunction]="chartCallback"
+              style="width: 100%; height: 100%; display: block;"
+            ></highcharts-chart>
+          </div>
+
+          <div *ngIf="mapLayerData && !isMapReady" class="loading-overlay">
+            <p>{{ translate('loading.initializing') }}</p>
+          </div>
+
+          <!-- Beautiful Profile Card (like Beth Murphy in the image) -->
+          <div class="profile-card" *ngIf="selectedSenator">
+            <img
+              [src]="selectedSenator.photo || 'assets/images/default-senator.svg'"
+              [alt]="selectedSenator.fullName"
+              (error)="onImageError($event)"
+              class="profile-avatar">
+
+            <div class="profile-name">{{ selectedSenator.fullName }}</div>
+            <div class="profile-title">{{ selectedSenator.party || translate('modal.independent') }}</div>
+
+            <div class="profile-stats">
+              <div class="stat">
+                <span class="stat-value">{{ getRandomStat('distance') }}K</span>
+                <span class="stat-label">{{ translate('profile.distance') || 'Distance' }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-value">{{ getRandomStat('rating') }}</span>
+                <span class="stat-label">{{ translate('profile.rating') || 'Rating' }}</span>
+              </div>
+            </div>
+
+            <div class="profile-timeline">
+              <div class="timeline-header">{{ translate('profile.today') || 'TODAY' }}</div>
+              <div class="timeline-bars">
+                <div class="timeline-bar blue"></div>
+                <div class="timeline-bar green"></div>
+                <div class="timeline-bar yellow"></div>
+                <div class="timeline-bar blue"></div>
+                <div class="timeline-bar green"></div>
+              </div>
+              <div class="timeline-labels">
+                <span>9am</span>
+                <span>12pm</span>
+                <span>3pm</span>
+                <span>6pm</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Senators Count -->
-    <div class="senators-count">
-      {{ filteredSenators.length }} {{ translate('sidebar.senatorsFound') || 'senators found' }}
-    </div>
+    <!-- Enhanced Senators Sidebar -->
+    <div class="senators-sidebar">
+      <!-- Language Switcher -->
+      <div class="language-switcher">
+        <label for="language-select">{{ translate('language.select') || 'Language' }}:</label>
+        <select
+          id="language-select"
+          [value]="currentLanguage"
+          (change)="changeLanguage($any($event.target).value)"
+          class="language-select">
+          <option *ngFor="let lang of availableLanguages" [value]="lang.code">
+            {{ lang.name }}
+          </option>
+        </select>
+      </div>
 
-    <!-- Enhanced Senators List -->
-    <div class="senators-list-container">
-      <button *ngFor="let senator of filteredSenators; trackBy: getSenatorId"
-              class="senator-list-item"
-              [class.active]="selectedSenatorId === senator.fullName"
-              (click)="selectSenator(senator)"
-              [attr.aria-label]="'Select senator ' + senator.fullName">
-
-        <img
-          [src]="senator.photo || 'assets/images/default-senator.svg'"
-          [alt]="senator.fullName"
-          (error)="onImageError($event)"
-          class="senator-avatar">
-
-        <div class="senator-details">
-          <h4 class="senator-full-name">{{ senator.fullName }}</h4>
-          <p class="senator-province">{{ senator.originProvince }}</p>
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <h3 class="sidebar-title">{{ translate('sidebar.senators') || 'Senators' }}</h3>
+        <div class="filter-container">
+          <span class="filter-icon">🔍</span>
+          <input
+            type="text"
+            class="filter-input"
+            [placeholder]="translate('sidebar.filterPlaceholder') || 'Filter Employees...'"
+            [value]="filterText"
+            (input)="onFilterChange($event)">
         </div>
+      </div>
 
-        <div class="senator-status"></div>
-      </button>
+      <!-- Senators Count -->
+      <div class="senators-count">
+        {{ filteredSenators.length }} {{ translate('sidebar.senatorsFound') || 'senators found' }}
+      </div>
 
-      <div *ngIf="filteredSenators.length === 0" class="no-results">
-        {{ translate('sidebar.noResults') || 'No senators found matching your search.' }}
+      <!-- Enhanced Senators List -->
+      <div class="senators-list-container">
+        <button *ngFor="let senator of filteredSenators; trackBy: getSenatorId"
+                class="senator-list-item"
+                [class.active]="selectedSenatorId === senator.fullName"
+                (click)="selectSenator(senator)"
+                [attr.aria-label]="'Select senator ' + senator.fullName">
+
+          <img
+            [src]="senator.photo || 'assets/images/default-senator.svg'"
+            [alt]="senator.fullName"
+            (error)="onImageError($event)"
+            class="senator-avatar">
+
+          <div class="senator-details">
+            <h4 class="senator-full-name">{{ senator.fullName }}</h4>
+            <p class="senator-province">{{ senator.originProvince }}</p>
+          </div>
+
+          <div class="senator-status"></div>
+        </button>
+
+        <div *ngIf="filteredSenators.length === 0" class="no-results">
+          {{ translate('sidebar.noResults') || 'No senators found matching your search.' }}
+        </div>
       </div>
     </div>
   </div>
