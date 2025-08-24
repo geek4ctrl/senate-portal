@@ -36,7 +36,7 @@
     <!-- Map Section -->
     <div class="map-section">
       <div id="origin-map-host">
-        <div class="map-container">
+        <div class="map-container" (click)="onMapContainerClick($event)">
           <div *ngIf="!mapLayerData" class="loading-state">
             <p>{{ translate('loading.mapData') }}</p>
           </div>
@@ -57,7 +57,11 @@
           </div>
 
           <!-- Beautiful Profile Card (like Beth Murphy in the image) -->
-          <div class="profile-card" *ngIf="selectedSenator">
+          <div class="profile-card" *ngIf="selectedSenator" (click)="$event.stopPropagation()">
+            <button class="profile-close-btn" (click)="deselectSenator()" title="Close">
+              <i class="fas fa-times"></i>
+            </button>
+            
             <img
               [src]="selectedSenator.photo || 'assets/images/default-senator.svg'"
               [alt]="selectedSenator.fullName"

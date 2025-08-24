@@ -254,6 +254,28 @@ export class SenateOriginMapComponent implements OnInit {
     this.highlightSenatorProvince(senator.originProvince);
   }
 
+  deselectSenator(): void {
+    this.selectedSenatorId = null;
+    this.selectedSenator = null;
+    // Remove any province highlighting
+    console.log('Senator deselected');
+  }
+
+  onMapContainerClick(event: Event): void {
+    // Check if the click was on the map container itself (not on the profile card or other elements)
+    const target = event.target as HTMLElement;
+    const isProfileCard = target.closest('.profile-card');
+    const isHighchartsElement = target.closest('.highcharts-container') || 
+                               target.closest('svg') || 
+                               target.tagName === 'path' ||
+                               target.tagName === 'g';
+    
+    // Only deselect if clicking on the map background or empty space
+    if (!isProfileCard && !isHighchartsElement) {
+      this.deselectSenator();
+    }
+  }
+
   // Helper methods for the profile card
   getRandomStat(type: 'distance' | 'rating'): string {
     if (type === 'distance') {
