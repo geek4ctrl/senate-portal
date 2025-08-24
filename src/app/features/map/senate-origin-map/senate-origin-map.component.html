@@ -2,25 +2,33 @@
   <!-- Top Navigation Bar -->
   <div class="top-nav">
     <div class="nav-left">
-      <h1 class="app-title">{{ 'Senat RDC' }}</h1>
+      <h1 class="app-title">
+        <i class="fas fa-university animate-pulse"></i>
+        {{ 'Senat RDC' }}
+      </h1>
       <div class="nav-tabs">
         <button class="nav-tab active">
-          <span class="tab-icon">🗺️</span>
+          <i class="fas fa-map-marked-alt tab-icon animate-bounce-gentle"></i>
           {{ translate('nav.map') || 'Map' }}
         </button>
         <button class="nav-tab">
+          <i class="fas fa-chart-bar tab-icon"></i>
+          {{ translate('nav.analytics') || 'Analytics' }}
         </button>
       </div>
     </div>
     <div class="nav-right">
-      <!-- <div class="date-selector">
-        <span class="nav-date">{{ translate('nav.today') || 'Today' }}</span>
-        <span class="current-date">Monday 6, Dec 2019</span>
-      </div>
       <div class="nav-controls">
-        <button class="nav-btn">❮</button>
-        <button class="nav-btn">❯</button>
-      </div> -->
+        <button class="nav-btn" title="Notifications">
+          <i class="fas fa-bell animate-swing"></i>
+        </button>
+        <button class="nav-btn" title="Settings">
+          <i class="fas fa-cog animate-spin-slow"></i>
+        </button>
+        <button class="nav-btn" title="User Profile">
+          <i class="fas fa-user-circle animate-glow"></i>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -95,6 +103,7 @@
     <div class="senators-sidebar">
       <!-- Language Switcher -->
       <div class="language-switcher">
+        <i class="fas fa-globe-americas animate-rotate"></i>
         <label for="language-select">{{ translate('language.select') || 'Language' }}:</label>
         <select
           id="language-select"
@@ -109,13 +118,16 @@
 
       <!-- Sidebar Header -->
       <div class="sidebar-header">
-        <h3 class="sidebar-title">{{ translate('sidebar.senators') || 'Senators' }}</h3>
+        <h3 class="sidebar-title">
+          <i class="fas fa-users animate-fade-in"></i>
+          {{ translate('sidebar.senators') || 'Senators' }}
+        </h3>
         <div class="filter-container">
-          <span class="filter-icon">🔍</span>
+          <i class="fas fa-search filter-icon animate-pulse-subtle"></i>
           <input
             type="text"
             class="filter-input"
-            [placeholder]="translate('sidebar.filterPlaceholder') || 'Filter Employees...'"
+            [placeholder]="translate('sidebar.filterPlaceholder') || 'Filter Senators...'"
             [value]="filterText"
             (input)="onFilterChange($event)">
         </div>
