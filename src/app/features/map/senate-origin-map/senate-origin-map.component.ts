@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HighchartsChartModule } from 'highcharts-angular';
 
@@ -25,7 +25,7 @@ if (typeof Highcharts === 'object') {
   templateUrl: './senate-origin-map.component.html',
   styleUrls: ['./senate-origin-map.component.scss'],
 })
-export class SenateOriginMapComponent implements OnInit {
+export class SenateOriginMapComponent implements OnInit, OnDestroy {
   Highcharts: typeof Highcharts = Highcharts;
   chartConstructor = 'mapChart';
   updateFlag = false;
@@ -46,6 +46,13 @@ export class SenateOriginMapComponent implements OnInit {
   selectedSenatorId: string | null = null;
   selectedSenator: any = null; // For the profile card
   filteredSenators: any[] = [];
+
+  // Touch gesture detection for mobile
+  private touchStartTime = 0;
+  private touchStartX = 0;
+  private touchStartY = 0;
+  private readonly TAP_DURATION_THRESHOLD = 500; // ms
+  private readonly TAP_DISTANCE_THRESHOLD = 20; // px
 
   // Sample senators data (this could come from the senators.json file)
   senatorsData = [
@@ -225,6 +232,11 @@ export class SenateOriginMapComponent implements OnInit {
     this.initializeFilteredSenators();
   }
 
+  ngOnDestroy(): void {
+    // Ensure body scroll is restored when component is destroyed
+    this.preventBodyScroll(false);
+  }
+
   // Senators list methods
   initializeFilteredSenators(): void {
     this.filteredSenators = [...this.senatorsData];
@@ -250,6 +262,7 @@ export class SenateOriginMapComponent implements OnInit {
   selectSenator(senator: any): void {
     this.selectedSenatorId = senator.fullName;
     this.selectedSenator = senator; // Set the selected senator for the profile card
+    this.preventBodyScroll(true); // Prevent body scrolling on mobile
     // You could highlight the senator's province on the map here
     this.highlightSenatorProvince(senator.originProvince);
   }
@@ -257,6 +270,7 @@ export class SenateOriginMapComponent implements OnInit {
   deselectSenator(): void {
     this.selectedSenatorId = null;
     this.selectedSenator = null;
+    this.preventBodyScroll(false); // Restore body scrolling
     // Remove any province highlighting
     console.log('Senator deselected');
   }
@@ -265,14 +279,39 @@ export class SenateOriginMapComponent implements OnInit {
     // Check if the click was on the map container itself (not on the profile card or other elements)
     const target = event.target as HTMLElement;
     const isProfileCard = target.closest('.profile-card');
-    const isHighchartsElement = target.closest('.highcharts-container') || 
-                               target.closest('svg') || 
+    const isHighchartsElement = target.closest('.highcharts-container') ||
+                               target.closest('svg') ||
                                target.tagName === 'path' ||
                                target.tagName === 'g';
-    
+
     // Only deselect if clicking on the map background or empty space
     if (!isProfileCard && !isHighchartsElement) {
       this.deselectSenator();
+    }
+  }
+
+  // Touch event handlers for mobile
+  onTouchStart(event: TouchEvent): void {
+    this.touchStartTime = Date.now();
+    this.touchStartX = event.touches[0].clientX;
+    this.touchStartY = event.touches[0].clientY;
+  }
+
+  onTouchEnd(event: TouchEvent): void {
+    const touchEndTime = Date.now();
+    const touchEndX = event.changedTouches[0].clientX;
+    const touchEndY = event.changedTouches[0].clientY;
+    
+    const duration = touchEndTime - this.touchStartTime;
+    const distance = Math.sqrt(
+      Math.pow(touchEndX - this.touchStartX, 2) + 
+      Math.pow(touchEndY - this.touchStartY, 2)
+    );
+
+    // Detect tap (short duration and small movement)
+    if (duration < this.TAP_DURATION_THRESHOLD && distance < this.TAP_DISTANCE_THRESHOLD) {
+      // Treat as click
+      this.onMapContainerClick(event);
     }
   }
 
@@ -493,6 +532,7 @@ export class SenateOriginMapComponent implements OnInit {
     );
 
     this.showModal = true;
+    this.preventBodyScroll(true); // Prevent body scrolling on mobile
     console.log('Opening modal for:', regionName, province);
   }
 
@@ -500,6 +540,18 @@ export class SenateOriginMapComponent implements OnInit {
     this.showModal = false;
     this.selectedRegion = null;
     this.regionSenators = [];
+    this.preventBodyScroll(false); // Restore body scrolling
+  }
+
+  // Mobile optimization: Prevent body scroll when modal is open
+  private preventBodyScroll(prevent: boolean): void {
+    if (prevent) {
+      document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
+    }
   }
 
   onImageError(event: any): void {

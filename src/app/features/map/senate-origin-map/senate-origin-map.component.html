@@ -36,7 +36,10 @@
     <!-- Map Section -->
     <div class="map-section">
       <div id="origin-map-host">
-        <div class="map-container" (click)="onMapContainerClick($event)">
+        <div class="map-container" 
+             (click)="onMapContainerClick($event)"
+             (touchstart)="onTouchStart($event)"
+             (touchend)="onTouchEnd($event)">
           <div *ngIf="!mapLayerData" class="loading-state">
             <p>{{ translate('loading.mapData') }}</p>
           </div>
@@ -54,50 +57,6 @@
 
           <div *ngIf="mapLayerData && !isMapReady" class="loading-overlay">
             <p>{{ translate('loading.initializing') }}</p>
-          </div>
-
-          <!-- Beautiful Profile Card (like Beth Murphy in the image) -->
-          <div class="profile-card" *ngIf="selectedSenator" (click)="$event.stopPropagation()">
-            <button class="profile-close-btn" (click)="deselectSenator()" title="Close">
-              <i class="fas fa-times"></i>
-            </button>
-            
-            <img
-              [src]="selectedSenator.photo || 'assets/images/default-senator.svg'"
-              [alt]="selectedSenator.fullName"
-              (error)="onImageError($event)"
-              class="profile-avatar">
-
-            <div class="profile-name">{{ selectedSenator.fullName }}</div>
-            <div class="profile-title">{{ selectedSenator.party || translate('modal.independent') }}</div>
-
-            <div class="profile-stats">
-              <div class="stat">
-                <span class="stat-value">{{ getRandomStat('distance') }}K</span>
-                <span class="stat-label">{{ translate('profile.distance') || 'Distance' }}</span>
-              </div>
-              <div class="stat">
-                <span class="stat-value">{{ getRandomStat('rating') }}</span>
-                <span class="stat-label">{{ translate('profile.rating') || 'Rating' }}</span>
-              </div>
-            </div>
-
-            <div class="profile-timeline">
-              <div class="timeline-header">{{ translate('profile.today') || 'TODAY' }}</div>
-              <div class="timeline-bars">
-                <div class="timeline-bar blue"></div>
-                <div class="timeline-bar green"></div>
-                <div class="timeline-bar yellow"></div>
-                <div class="timeline-bar blue"></div>
-                <div class="timeline-bar green"></div>
-              </div>
-              <div class="timeline-labels">
-                <span>9am</span>
-                <span>12pm</span>
-                <span>3pm</span>
-                <span>6pm</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -219,6 +178,64 @@
 
     <div class="modal-footer">
       <button class="btn btn-primary" (click)="closeModal()">{{ translate('modal.close') }}</button>
+    </div>
+  </div>
+</div>
+
+<!-- Senator Profile Modal -->
+<div class="profile-modal-overlay" 
+     *ngIf="selectedSenator" 
+     (click)="deselectSenator()">
+  <div class="profile-modal-content" 
+       (click)="$event.stopPropagation()" 
+       role="dialog" 
+       aria-modal="true"
+       [attr.aria-label]="'Senator profile for ' + selectedSenator?.fullName">
+    
+    <button class="profile-modal-close" 
+            (click)="deselectSenator()" 
+            aria-label="Close senator profile">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <div class="profile-modal-body">
+      <img
+        [src]="selectedSenator.photo || 'assets/images/default-senator.svg'"
+        [alt]="selectedSenator.fullName"
+        (error)="onImageError($event)"
+        class="profile-avatar">
+
+      <div class="profile-name">{{ selectedSenator.fullName }}</div>
+      <div class="profile-title">{{ selectedSenator.party || translate('modal.independent') }}</div>
+      <div class="profile-province">{{ translate('modal.province') }}: {{ selectedSenator.originProvince }}</div>
+
+      <div class="profile-stats">
+        <div class="stat">
+          <span class="stat-value">{{ getRandomStat('distance') }}K</span>
+          <span class="stat-label">{{ translate('profile.distance') || 'Distance' }}</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">{{ getRandomStat('rating') }}</span>
+          <span class="stat-label">{{ translate('profile.rating') || 'Rating' }}</span>
+        </div>
+      </div>
+
+      <div class="profile-timeline">
+        <div class="timeline-header">{{ translate('profile.today') || 'TODAY' }}</div>
+        <div class="timeline-bars">
+          <div class="timeline-bar blue"></div>
+          <div class="timeline-bar green"></div>
+          <div class="timeline-bar yellow"></div>
+          <div class="timeline-bar blue"></div>
+          <div class="timeline-bar green"></div>
+        </div>
+        <div class="timeline-labels">
+          <span>9am</span>
+          <span>12pm</span>
+          <span>3pm</span>
+          <span>6pm</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>

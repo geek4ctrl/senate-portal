@@ -120,25 +120,30 @@
 .modal-footer{padding:12px 16px;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);border-top:1px solid rgba(0,0,0,0.08);text-align:center;border-radius:0 0 12px 12px}
 .btn-primary{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;padding:10px 20px;border:none;font-size:13px;font-weight:600;border-radius:6px;cursor:pointer;transition:all 0.2s ease;box-shadow:0 3px 8px rgba(102,126,234,0.3)}
 .btn-primary:hover{background:linear-gradient(135deg,#5a67d8 0%,#6b46c1 100%);transform:translateY(-1px);box-shadow:0 4px 12px rgba(102,126,234,0.4)}
-.profile-card{position:absolute;top:24px;right:24px;background:#fff;padding:24px;min-width:280px;border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,0.15);z-index:100;border:1px solid rgba(255,255,255,0.2);backdrop-filter:blur(20px);position:relative}
-.profile-close-btn{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.1);border:none;border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s ease;color:#666;font-size:12px}
-.profile-close-btn:hover{background:rgba(255,0,0,0.1);color:#e74c3c;transform:scale(1.1)}
-.profile-avatar{width:80px;height:80px;border-radius:50%;margin:0 auto 16px;display:block;border:4px solid #fff;box-shadow:0 8px 25px rgba(0,0,0,0.15);object-fit:cover}
-.profile-name{font-size:20px;font-weight:700;text-align:center;margin-bottom:6px;color:#2c3e50}
-.profile-title{color:#6c757d;text-align:center;margin-bottom:20px;font-size:14px;font-weight:500}
-.profile-stats{display:flex;justify-content:space-between;margin-bottom:20px;gap:16px}
-.stat{text-align:center;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);padding:12px 8px;border-radius:12px;flex:1;position:relative}
-.stat-value{font-size:18px;font-weight:700;display:block;color:#2c3e50;margin-bottom:4px}
-.stat-label{font-size:11px;color:#6c757d;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
-.profile-timeline{margin-top:16px}
-.timeline-header{font-size:12px;font-weight:700;margin-bottom:12px;color:#495057;text-transform:uppercase;letter-spacing:0.5px}
-.timeline-bars{display:flex;height:8px;border-radius:4px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,0.1);margin-bottom:8px}
-.timeline-bar{flex:1}
-.timeline-bar.blue{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
-.timeline-bar.green{background:linear-gradient(135deg,#11998e 0%,#38ef7d 100%)}
-.timeline-bar.yellow{background:linear-gradient(135deg,#fcb045 0%,#fd1d1d 100%)}
-.timeline-labels{display:flex;justify-content:space-between;font-size:10px;color:#6c757d;font-weight:500}
-.timeline-labels{display:flex;justify-content:space-between;font-size:10px;color:#6c757d;font-weight:500}
+
+/* Profile Modal Styles */
+.profile-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;z-index:2000;backdrop-filter:blur(6px);animation:fadeIn 0.3s ease}
+.profile-modal-content{background:linear-gradient(145deg,#fff 0%,#f8f9fa 100%);max-width:400px;width:90%;max-height:85vh;overflow:hidden;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:slideIn 0.3s ease;border:1px solid rgba(255,255,255,0.3);position:relative}
+.profile-modal-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.1);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s ease;color:#666;font-size:16px;z-index:10}
+.profile-modal-close:hover{background:rgba(255,0,0,0.1);color:#e74c3c;transform:scale(1.1)}
+.profile-modal-body{padding:24px;text-align:center;overflow-y:auto;max-height:calc(85vh - 20px)}
+.profile-modal-body .profile-avatar{width:100px;height:100px;border-radius:50%;margin:0 auto 20px;display:block;border:4px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,0.2);object-fit:cover}
+.profile-modal-body .profile-name{font-size:24px;font-weight:700;margin-bottom:8px;color:#2c3e50;font-family:'Poppins',sans-serif}
+.profile-modal-body .profile-title{color:#6c757d;margin-bottom:6px;font-size:16px;font-weight:500}
+.profile-modal-body .profile-province{color:#495057;margin-bottom:24px;font-size:14px;font-weight:600;padding:8px 16px;background:linear-gradient(135deg,#e3f2fd 0%,#bbdefb 100%);border-radius:20px;display:inline-block}
+.profile-modal-body .profile-stats{display:flex;justify-content:space-between;margin-bottom:24px;gap:16px}
+.profile-modal-body .stat{text-align:center;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);padding:16px 12px;border-radius:12px;flex:1;position:relative}
+.profile-modal-body .stat-value{font-size:20px;font-weight:700;display:block;color:#2c3e50;margin-bottom:6px}
+.profile-modal-body .stat-label{font-size:12px;color:#6c757d;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
+.profile-modal-body .profile-timeline{margin-top:20px}
+.profile-modal-body .timeline-header{font-size:13px;font-weight:700;margin-bottom:16px;color:#495057;text-transform:uppercase;letter-spacing:0.5px}
+.profile-modal-body .timeline-bars{display:flex;height:10px;border-radius:5px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,0.1);margin-bottom:10px}
+.profile-modal-body .timeline-bar{flex:1}
+.profile-modal-body .timeline-bar.blue{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
+.profile-modal-body .timeline-bar.green{background:linear-gradient(135deg,#11998e 0%,#38ef7d 100%)}
+.profile-modal-body .timeline-bar.yellow{background:linear-gradient(135deg,#fcb045 0%,#fd1d1d 100%)}
+.profile-modal-body .timeline-labels{display:flex;justify-content:space-between;font-size:11px;color:#6c757d;font-weight:500}
+
 :host ::ng-deep highcharts-chart{display:block !important;width:100% !important;height:100% !important;flex:1;border-radius:12px;overflow:hidden}
 :host ::ng-deep highcharts-chart div{height:100% !important;border-radius:12px}
 :host ::ng-deep .highcharts-container{border-radius:12px !important}
@@ -163,8 +168,39 @@
 .senator-full-name{font-size:13px}
 .senator-province{font-size:11px}
 .senators-count{padding:10px 16px;font-size:11px}
-.profile-card{top:16px;right:16px;min-width:240px;padding:16px}
-.profile-avatar{width:60px;height:60px}
-.profile-name{font-size:16px}
-.stat-value{font-size:16px}
+
+/* Mobile Profile Card Optimization */
+.profile-modal-content{width:95%;max-width:95%;max-height:90vh;border-radius:12px;margin:20px}
+.profile-modal-body{padding:20px}
+.profile-modal-body .profile-avatar{width:80px;height:80px}
+.profile-modal-body .profile-name{font-size:20px}
+.profile-modal-body .stat-value{font-size:18px}
+.profile-modal-close{width:36px;height:36px;font-size:18px}
+
+/* Mobile Modal Responsive Sizing */
+.modal-content{width:100%;max-width:100%;height:100%;max-height:100%;border-radius:0;margin:0;overflow:hidden}
+.modal-body{max-height:calc(100vh - 120px);padding:12px}
+.close-button{width:32px;height:32px;font-size:20px}
+.senator-card{min-width:150px}
+.senators-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+
+/* Prevent body scrolling when modal is open */
+body.modal-open{overflow:hidden !important}
+}
+
+/* Additional mobile breakpoint for very small screens */
+@media(max-width:480px){
+.profile-modal-content{width:100%;height:100%;max-height:100%;border-radius:0;margin:0}
+.profile-modal-body{padding:16px}
+.profile-modal-body .profile-stats{flex-direction:column;gap:12px}
+.profile-modal-body .stat{margin-bottom:0}
+.profile-modal-body .timeline-bars{height:8px}
+.profile-modal-close{top:16px;right:16px;width:40px;height:40px;font-size:20px}
+
+/* Full screen modal on very small screens */
+.modal-content{width:100%;height:100%;max-height:none;border-radius:0;margin:0}
+.modal-header{padding:12px 16px}
+.modal-body{max-height:calc(100vh - 100px);padding:8px}
+.senators-grid{grid-template-columns:1fr;gap:6px}
+.senator-card{min-width:auto}
 }
