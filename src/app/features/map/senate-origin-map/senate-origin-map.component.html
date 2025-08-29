@@ -68,6 +68,20 @@
         </select>
       </div>
       
+      <!-- Mobile Language Switcher (visible on mobile) -->
+      <div class="mobile-language-switcher-nav" *ngIf="isMobileView">
+        <i class="fas fa-globe-americas"></i>
+        <select
+          [value]="currentLanguage"
+          (change)="changeLanguage($any($event.target).value)"
+          class="mobile-nav-language-select"
+          [attr.aria-label]="translate('language.select') || 'Language'">
+          <option *ngFor="let lang of availableLanguages" [value]="lang.code">
+            {{ lang.name }}
+          </option>
+        </select>
+      </div>
+      
       <!-- Mobile Menu Toggle -->
       <button class="mobile-menu-toggle" 
               *ngIf="isMobileView" 
