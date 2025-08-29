@@ -42,6 +42,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   // Mobile menu state
   isMobileView = false;
   showMobileMenu = false;
+  showMobileLegend = false;
 
   // Modal properties
   showModal = false;
@@ -220,9 +221,59 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
         verticalAlign: 'bottom'
       }
     },
-    colorAxis: { min: 0 },
-    legend: { enabled: true },
-    tooltip: { enabled: true },
+    colorAxis: {
+      min: 0,
+      max: 8, // Maximum senators (Kinshasa has 8)
+      stops: [
+        [0, '#E8F4FD'],     // Light blue for 0 senators
+        [0.2, '#BBDEFB'],   // Lighter blue for 1-2 senators
+        [0.4, '#90CAF9'],   // Medium light blue for 2-3 senators
+        [0.6, '#64B5F6'],   // Medium blue for 3-4 senators
+        [0.8, '#42A5F5'],   // Medium dark blue for 4-6 senators
+        [1, '#1E88E5']      // Dark blue for 6-8 senators
+      ],
+      labels: {
+        format: '{value}'
+      }
+    },
+    legend: {
+      enabled: true,
+      title: {
+        text: this.translate('map.senatorsPerProvince') || 'Senators per Province',
+        style: {
+          color: '#495057',
+          fontWeight: '600',
+          fontSize: '12px'
+        }
+      },
+      align: 'left',
+      verticalAlign: 'bottom',
+      floating: true,
+      layout: 'horizontal', // Changed to horizontal for better mobile fit
+      valueDecimals: 0,
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderColor: '#e9ecef',
+      borderWidth: 1,
+      borderRadius: 8,
+      shadow: true,
+      itemStyle: {
+        fontSize: '10px',
+        fontWeight: '500'
+      },
+      symbolHeight: 12,
+      symbolWidth: 60, // Make the color bar wider but shorter
+      symbolPadding: 2,
+      padding: 8,
+      margin: 10
+    },
+    tooltip: {
+      enabled: true,
+      headerFormat: '',
+      pointFormat: '<b>{point.name}</b><br/>Senators: <b>{point.value}</b>',
+      style: {
+        fontSize: '13px'
+      }
+    },
     series: []
   };
 
@@ -365,6 +416,17 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
       },
       subtitle: {
         text: this.translate('chart.subtitle')
+      },
+      legend: {
+        ...this.chartOptions.legend,
+        title: {
+          text: this.translate('map.senatorsPerProvince') || 'Senators per Province',
+          style: {
+            color: '#495057',
+            fontWeight: '600',
+            fontSize: '12px'
+          }
+        }
       }
     };
   }
@@ -426,16 +488,34 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
           type: 'map',
           name: this.translate('map.drcProvinces'),
           mapData: this.mapLayerData,
-          data: this.mapLayerData.map((feature: any, index: number) => ({
-            'hc-key': feature.properties['hc-key'] || feature.properties.name,
-            value: Math.floor(Math.random() * 50) + 1,
-            color: '#E8F4FD',
-            name: feature.properties.name
-          })),
+          data: this.mapLayerData.map((feature: any) => {
+            const provinceName = feature.properties.name || feature.properties['NAME'] || feature.properties['NAME_1'];
+            const senatorCount = this.getProvinceColorValue(provinceName);
+            
+            return {
+              'hc-key': feature.properties['hc-key'] || feature.properties.name,
+              value: senatorCount,
+              name: provinceName,
+              custom: {
+                province: provinceName,
+                senators: senatorCount
+              }
+            };
+          }),
           joinBy: 'hc-key',
+          allowPointSelect: true,
+          enableMouseTracking: true,
+          findNearestPointBy: 'xy',
           states: {
             hover: {
-              color: '#a4edba'
+              color: undefined, // Use default hover behavior with color axis
+              borderColor: '#667eea',
+              borderWidth: 2
+            },
+            select: {
+              color: undefined, // Use default select behavior with color axis
+              borderColor: '#667eea',
+              borderWidth: 3
             }
           },
           dataLabels: {
@@ -443,11 +523,30 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
             format: '{point.name}',
             style: {
               fontSize: '10px',
-              fontWeight: 'normal'
+              fontWeight: 'normal',
+              color: '#2c3e50',
+              textOutline: '1px white'
             }
           },
           borderColor: '#606060',
-          borderWidth: 1
+          borderWidth: 1,
+          tooltip: {
+            pointFormat: '<b>{point.name}</b><br/>Senators: <b>{point.value}</b>'
+          },
+          point: {
+            events: {
+              click: (event: any) => {
+                const point = event.point;
+                this.openModal(point.name, point.custom.province, point.custom.senators);
+              },
+              mouseOver: function() {
+                // Highlight effect on hover
+              },
+              mouseOut: function() {
+                // Remove highlight effect
+              }
+            }
+          }
         },
         {
           type: 'mappoint',
@@ -585,6 +684,35 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
       this.showMobileMenu = false;
       this.preventBodyScroll(false);
     }
+    // Update legend configuration when screen size changes
+    this.updateLegendForScreenSize();
+  }
+
+  private updateLegendForScreenSize(): void {
+    if (this.chartOptions.legend) {
+      const isMobile = window.innerWidth <= 768;
+      
+      this.chartOptions = {
+        ...this.chartOptions,
+        legend: {
+          ...this.chartOptions.legend,
+          enabled: !isMobile, // Hide legend completely on mobile to save space
+          symbolWidth: isMobile ? 40 : 60,
+          symbolHeight: isMobile ? 8 : 12,
+          padding: isMobile ? 4 : 8,
+          margin: isMobile ? 5 : 10,
+          itemStyle: {
+            fontSize: isMobile ? '8px' : '10px',
+            fontWeight: '500'
+          }
+        }
+      };
+      
+      // Trigger chart update if chart is already initialized
+      if (this.isMapReady) {
+        this.updateChart();
+      }
+    }
   }
 
   toggleMobileMenu(): void {
@@ -608,6 +736,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     // Close any open modals when switching tabs
     this.closeModal();
     this.deselectSenator();
+    this.showMobileLegend = false; // Close mobile legend
   }
 
   // Constitution statistics methods
@@ -618,6 +747,80 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   getProvincesCount(): number {
     const uniqueProvinces = new Set(this.senatorsData.map(senator => senator.originProvince));
     return uniqueProvinces.size;
+  }
+
+  // Province senator counting for color gradient
+  private getSenatorsPerProvince(): { [province: string]: number } {
+    const provinceCounts: { [province: string]: number } = {};
+    
+    this.senatorsData.forEach(senator => {
+      const province = senator.originProvince;
+      provinceCounts[province] = (provinceCounts[province] || 0) + 1;
+    });
+    
+    return provinceCounts;
+  }
+
+  private getProvinceColorValue(provinceName: string): number {
+    const provinceCounts = this.getSenatorsPerProvince();
+    
+    // Map common variations of province names to standardized names
+    const provinceMapping: { [key: string]: string } = {
+      'Kinshasa': 'Kinshasa',
+      'Haut-Katanga': 'Haut-Katanga',
+      'Tshopo': 'Tshopo',
+      'Kasai Central': 'Kasaï Central',
+      'Kasaï Central': 'Kasaï Central',
+      'Sud-Kivu': 'Sud-Kivu',
+      'Nord-Kivu': 'Nord-Kivu',
+      'Kasai Oriental': 'Kasaï Oriental',
+      'Kasaï Oriental': 'Kasaï Oriental',
+      'Kwilu': 'Kwilu',
+      'Bas-Uele': 'Bas-Uele',
+      'Equateur': 'Equateur',
+      'Haut-Lomami': 'Haut-Lomami',
+      'Haut-Uele': 'Haut-Uele',
+      'Ituri': 'Ituri',
+      'Kasai': 'Kasai',
+      'Kongo Central': 'Kongo Central',
+      'Kwango': 'Kwango',
+      'Nord-Ubangi': 'Nord-Ubangi',
+      'Lomami': 'Lomami',
+      'Lualaba': 'Lualaba',
+      'Mai-Ndombe': 'Mai-Ndombe',
+      'Maniema': 'Maniema',
+      'Mongala': 'Mongala',
+      'Sankuru': 'Sankuru',
+      'Sud-Ubangi': 'Sud-Ubangi',
+      'Tanganyika': 'Tanganyika',
+      'Tshuapa': 'Tshuapa'
+    };
+    
+    // Try to find the province by exact match or mapped name
+    const mappedProvince = provinceMapping[provinceName] || provinceName;
+    const count = provinceCounts[mappedProvince] || 
+                  provinceCounts[provinceName] || 
+                  Object.keys(provinceCounts).find(key => 
+                    key.toLowerCase().includes(provinceName.toLowerCase()) ||
+                    provinceName.toLowerCase().includes(key.toLowerCase())
+                  ) ? provinceCounts[Object.keys(provinceCounts).find(key => 
+                    key.toLowerCase().includes(provinceName.toLowerCase()) ||
+                    provinceName.toLowerCase().includes(key.toLowerCase())
+                  )!] : 0;
+    
+    return count;
+  }
+
+  // Mobile legend methods
+  getLegendItems(): Array<{color: string, label: string}> {
+    return [
+      { color: '#E8F4FD', label: '0 senators' },
+      { color: '#BBDEFB', label: '1-2 senators' },
+      { color: '#90CAF9', label: '2-3 senators' },
+      { color: '#64B5F6', label: '3-4 senators' },
+      { color: '#42A5F5', label: '4-6 senators' },
+      { color: '#1E88E5', label: '6-8 senators' }
+    ];
   }
 
   getFemaleSenatorsCount(): string {

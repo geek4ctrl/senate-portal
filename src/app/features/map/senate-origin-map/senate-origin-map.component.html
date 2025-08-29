@@ -130,6 +130,35 @@
           </div>
 
           <div *ngIf="mapLayerData" class="map-content">
+            <!-- Mobile Legend Info Button -->
+            <button class="mobile-legend-button" 
+                    *ngIf="isMobileView && activeTab === 'map'"
+                    (click)="showMobileLegend = !showMobileLegend"
+                    [class.active]="showMobileLegend"
+                    title="Show color scale">
+              <i class="fas fa-palette"></i>
+            </button>
+            
+            <!-- Mobile Legend Popup -->
+            <div class="mobile-legend-popup" 
+                 *ngIf="isMobileView && showMobileLegend && activeTab === 'map'"
+                 (click)="showMobileLegend = false">
+              <div class="mobile-legend-content" (click)="$event.stopPropagation()">
+                <div class="mobile-legend-header">
+                  <h4>{{ translate('map.senatorsPerProvince') || 'Senators per Province' }}</h4>
+                  <button class="mobile-legend-close" (click)="showMobileLegend = false">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+                <div class="mobile-legend-scale">
+                  <div class="scale-item" *ngFor="let item of getLegendItems()">
+                    <div class="scale-color" [style.background-color]="item.color"></div>
+                    <span class="scale-label">{{ item.label }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
             <highcharts-chart
               [Highcharts]="Highcharts"
               [constructorType]="chartConstructor"

@@ -52,6 +52,7 @@ export class TranslationService {
       // Map legend
       'map.drcProvinces': 'DRC Provinces',
       'map.senateLocations': 'Senate Locations',
+      'map.senatorsPerProvince': 'Senators per Province',
 
       // Tooltip
       'tooltip.senators': 'Senators',
@@ -131,6 +132,7 @@ export class TranslationService {
       // Map legend
       'map.drcProvinces': 'Provinces de la RDC',
       'map.senateLocations': 'Emplacements du Sénat',
+      'map.senatorsPerProvince': 'Sénateurs par Province',
 
       // Tooltip
       'tooltip.senators': 'Sénateurs',
