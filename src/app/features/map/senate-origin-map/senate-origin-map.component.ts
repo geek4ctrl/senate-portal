@@ -62,7 +62,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   randomNavSenators: any[] = [];
   
   // Sorting properties
-  sortBy: 'name' | 'province' | 'party' = 'name';
+  sortBy: 'name' | 'province' | 'party' = 'province';
   sortDirection: 'asc' | 'desc' = 'asc';
 
   // Touch gesture detection for mobile
