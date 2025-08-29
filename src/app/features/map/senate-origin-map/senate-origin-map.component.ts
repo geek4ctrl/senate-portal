@@ -36,6 +36,9 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   currentLanguage = 'en';
   availableLanguages = this.translationService.getAvailableLanguages();
 
+  // Navigation tab state
+  activeTab: 'map' | 'analytics' | 'constitution' = 'map';
+
   // Modal properties
   showModal = false;
   selectedRegion: any = null;
@@ -557,5 +560,48 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   onImageError(event: any): void {
     // Set a default placeholder image when senator photo fails to load
     event.target.src = 'assets/images/default-senator.svg';
+  }
+
+  // Navigation tab methods
+  setActiveTab(tab: 'map' | 'analytics' | 'constitution'): void {
+    this.activeTab = tab;
+    // Close any open modals when switching tabs
+    this.closeModal();
+    this.deselectSenator();
+  }
+
+  // Constitution statistics methods
+  getTotalSenators(): number {
+    return this.senatorsData.length;
+  }
+
+  getProvincesCount(): number {
+    const uniqueProvinces = new Set(this.senatorsData.map(senator => senator.originProvince));
+    return uniqueProvinces.size;
+  }
+
+  getFemaleSenatorsCount(): string {
+    // Note: This is a simplified calculation. In a real implementation, 
+    // you would have gender data in the senator objects
+    const femaleNames = this.senatorsData.filter(senator => 
+      senator.fullName.toLowerCase().includes('anne') ||
+      senator.fullName.toLowerCase().includes('anna') ||
+      senator.fullName.toLowerCase().includes('carole') ||
+      senator.fullName.toLowerCase().includes('aminata') ||
+      senator.fullName.toLowerCase().includes('isabelle') ||
+      senator.fullName.toLowerCase().includes('gracia') ||
+      senator.fullName.toLowerCase().includes('noelle') ||
+      senator.fullName.toLowerCase().includes('florence') ||
+      senator.fullName.toLowerCase().includes('elise') ||
+      senator.fullName.toLowerCase().includes('nadine') ||
+      senator.fullName.toLowerCase().includes('christine') ||
+      senator.fullName.toLowerCase().includes('madeleine') ||
+      senator.fullName.toLowerCase().includes('renabelle') ||
+      senator.fullName.toLowerCase().includes('francoise') ||
+      senator.fullName.toLowerCase().includes('arlette')
+    ).length;
+    
+    const percentage = ((femaleNames / this.senatorsData.length) * 100).toFixed(1);
+    return `${percentage}%`;
   }
 }

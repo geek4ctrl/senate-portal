@@ -7,13 +7,17 @@
         {{ 'Senat RDC' }}
       </h1>
       <div class="nav-tabs">
-        <button class="nav-tab active">
+        <button class="nav-tab" [class.active]="activeTab === 'map'" (click)="setActiveTab('map')">
           <i class="fas fa-map-marked-alt tab-icon animate-bounce-gentle"></i>
           {{ translate('nav.map') || 'Map' }}
         </button>
-        <button class="nav-tab">
+        <button class="nav-tab" [class.active]="activeTab === 'analytics'" (click)="setActiveTab('analytics')">
           <i class="fas fa-chart-bar tab-icon"></i>
           {{ translate('nav.analytics') || 'Analytics' }}
+        </button>
+        <button class="nav-tab" [class.active]="activeTab === 'constitution'" (click)="setActiveTab('constitution')">
+          <i class="fas fa-scroll tab-icon animate-fade-in"></i>
+          {{ translate('nav.constitution') || 'Constitution' }}
         </button>
       </div>
     </div>
@@ -34,7 +38,7 @@
 
   <div class="main-layout">
     <!-- Map Section -->
-    <div class="map-section">
+    <div class="map-section" *ngIf="activeTab === 'map'">
       <div id="origin-map-host">
         <div class="map-container" 
              (click)="onMapContainerClick($event)"
@@ -62,8 +66,101 @@
       </div>
     </div>
 
+    <!-- Constitution Section -->
+    <div class="constitution-section" *ngIf="activeTab === 'constitution'">
+      <div class="constitution-container">
+        <div class="constitution-header">
+          <h2 class="constitution-title">
+            <i class="fas fa-scroll animate-pulse"></i>
+            {{ translate('constitution.title') || 'Constitution of the Democratic Republic of Congo' }}
+          </h2>
+          <p class="constitution-subtitle">
+            {{ translate('constitution.subtitle') || 'Senate: Composition and Powers' }}
+          </p>
+        </div>
+
+        <div class="constitution-content">
+          <!-- Senate Composition Section -->
+          <div class="constitution-article">
+            <h3 class="article-title">
+              <i class="fas fa-users"></i>
+              {{ translate('constitution.composition.title') || 'Senate Composition' }}
+            </h3>
+            <div class="article-content">
+              <h4>{{ translate('constitution.composition.article98') || 'Article 98' }}</h4>
+              <p>{{ translate('constitution.composition.content98') || 'The Senate is composed of senators elected for a term of five years renewable.' }}</p>
+              
+              <h4>{{ translate('constitution.composition.article99') || 'Article 99' }}</h4>
+              <p>{{ translate('constitution.composition.content99') || 'Each province elects four senators. The city of Kinshasa elects eight senators.' }}</p>
+              
+              <h4>{{ translate('constitution.composition.article100') || 'Article 100' }}</h4>
+              <p>{{ translate('constitution.composition.content100') || 'The senators are elected by the provincial assemblies and the council of the city of Kinshasa by indirect universal suffrage.' }}</p>
+            </div>
+          </div>
+
+          <!-- Senate Powers Section -->
+          <div class="constitution-article">
+            <h3 class="article-title">
+              <i class="fas fa-gavel"></i>
+              {{ translate('constitution.powers.title') || 'Senate Powers' }}
+            </h3>
+            <div class="article-content">
+              <h4>{{ translate('constitution.powers.article101') || 'Article 101' }}</h4>
+              <p>{{ translate('constitution.powers.content101') || 'The Senate exercises legislative power concurrently with the National Assembly.' }}</p>
+              
+              <h4>{{ translate('constitution.powers.article102') || 'Article 102' }}</h4>
+              <p>{{ translate('constitution.powers.content102') || 'The Senate has specific powers including the trial of the President of the Republic in case of high treason.' }}</p>
+            </div>
+          </div>
+
+          <!-- Senate Organization Section -->
+          <div class="constitution-article">
+            <h3 class="article-title">
+              <i class="fas fa-sitemap"></i>
+              {{ translate('constitution.organization.title') || 'Senate Organization' }}
+            </h3>
+            <div class="article-content">
+              <h4>{{ translate('constitution.organization.article103') || 'Article 103' }}</h4>
+              <p>{{ translate('constitution.organization.content103') || 'The Senate elects its President and other members of its Bureau at the beginning of the legislature.' }}</p>
+              
+              <h4>{{ translate('constitution.organization.article104') || 'Article 104' }}</h4>
+              <p>{{ translate('constitution.organization.content104') || 'The Senate establishes its internal regulations which determine its organization and functioning.' }}</p>
+            </div>
+          </div>
+
+          <!-- Current Senate Statistics -->
+          <div class="constitution-article">
+            <h3 class="article-title">
+              <i class="fas fa-chart-pie"></i>
+              {{ translate('constitution.statistics.title') || 'Current Senate Statistics' }}
+            </h3>
+            <div class="article-content">
+              <div class="statistics-grid">
+                <div class="stat-card">
+                  <div class="stat-number">{{ getTotalSenators() }}</div>
+                  <div class="stat-label">{{ translate('constitution.statistics.totalSenators') || 'Total Senators' }}</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-number">{{ getProvincesCount() }}</div>
+                  <div class="stat-label">{{ translate('constitution.statistics.provinces') || 'Provinces' }}</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-number">5</div>
+                  <div class="stat-label">{{ translate('constitution.statistics.termYears') || 'Term Years' }}</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-number">{{ getFemaleSenatorsCount() }}</div>
+                  <div class="stat-label">{{ translate('constitution.statistics.femalePercentage') || 'Female %' }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Enhanced Senators Sidebar -->
-    <div class="senators-sidebar">
+    <div class="senators-sidebar" *ngIf="activeTab === 'map'">
       <!-- Language Switcher -->
       <div class="language-switcher">
         <i class="fas fa-globe-americas animate-rotate"></i>
