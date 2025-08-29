@@ -50,6 +50,41 @@
 .nav-btn i{font-size:16px;transition:all 0.3s ease;z-index:1;position:relative}
 .nav-btn:hover i{transform:scale(1.1)}
 
+/* Navigation Language Switcher */
+.nav-language-switcher{
+  display:flex;align-items:center;gap:8px;padding:8px 12px;
+  background:rgba(102,126,234,0.1);border-radius:10px;
+  transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+  border:1px solid rgba(102,126,234,0.2);
+}
+
+.nav-language-switcher:hover{
+  background:rgba(102,126,234,0.15);border-color:rgba(102,126,234,0.3);
+  transform:translateY(-1px);box-shadow:0 4px 12px rgba(102,126,234,0.2);
+}
+
+.nav-language-switcher i{
+  color:#667eea;font-size:16px;transition:all 0.3s ease;
+}
+
+.nav-language-switcher:hover i{
+  transform:scale(1.1);
+}
+
+.nav-language-select{
+  background:transparent;border:none;color:#495057;font-size:13px;
+  font-weight:600;cursor:pointer;outline:none;font-family:'Inter',sans-serif;
+  transition:all 0.3s ease;
+}
+
+.nav-language-select:hover{
+  color:#667eea;
+}
+
+.nav-language-select option{
+  background:#fff;color:#495057;padding:8px;
+}
+
 /* Mobile Menu Styles */
 .mobile-menu-toggle{
   display:none;background:#f8f9fa;border:1px solid #e9ecef;width:44px;height:44px;
@@ -287,13 +322,6 @@
   letter-spacing:0.5px;font-family:'Inter',sans-serif;
 }
 .senators-sidebar{width:320px;background:#fff;border-left:1px solid #e9ecef;display:flex;flex-direction:column;overflow:hidden;box-shadow:-2px 0 10px rgba(0,0,0,0.08);box-sizing:border-box;max-width:100%;animation:slide-in-right 0.8s ease-out}
-.language-switcher{padding:16px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden}
-.language-switcher::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,0.1) 50%,transparent 70%);animation:shimmer 3s infinite}
-.language-switcher i{font-size:18px;margin-right:4px}
-.language-switcher label{font-weight:600;margin:0;font-size:14px;color:#fff;font-family:'Inter',sans-serif}
-.language-switcher .language-select{padding:8px 14px;border:none;background:rgba(255,255,255,0.2);color:#fff;font-size:13px;border-radius:8px;backdrop-filter:blur(10px);transition:all 0.3s ease;font-family:'Inter',sans-serif;font-weight:500}
-.language-switcher .language-select:hover{background:rgba(255,255,255,0.3);transform:translateY(-1px)}
-.language-switcher .language-select option{background:#667eea;color:#fff}
 #origin-map-host{flex:1;height:100%;display:flex;flex-direction:column}
 .map-container{position:relative;flex:1;height:100%;background:#f8f9fa;border-radius:12px;margin:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1)}
 .loading-state,.loading-overlay{display:flex;align-items:center;justify-content:center;position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(248,249,250,0.95);backdrop-filter:blur(8px);border-radius:12px}
@@ -388,7 +416,10 @@
 .nav-left{gap:16px}
 .app-title{font-size:18px}
 .nav-tabs{display:none}
-.nav-right{gap:12px}
+.nav-right{gap:12px;align-items:center}
+
+/* Hide desktop language switcher on mobile */
+.nav-language-switcher{display:none !important}
 
 /* Show mobile menu toggle */
 .mobile-menu-toggle{display:flex !important}
@@ -415,7 +446,6 @@
 .stat-card{padding:16px}
 .stat-number{font-size:24px}
 .stat-label{font-size:12px}
-.language-switcher{padding:12px 16px}
 .sidebar-header{padding:16px;box-sizing:border-box}
 .sidebar-title{font-size:16px}
 .filter-container{width:100%;max-width:100%;box-sizing:border-box}

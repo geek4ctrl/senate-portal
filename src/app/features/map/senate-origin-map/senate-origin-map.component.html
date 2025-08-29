@@ -22,6 +22,20 @@
       </div>
     </div>
     <div class="nav-right">
+      <!-- Language Switcher in Navigation -->
+      <div class="nav-language-switcher">
+        <i class="fas fa-globe-americas"></i>
+        <select
+          [value]="currentLanguage"
+          (change)="changeLanguage($any($event.target).value)"
+          class="nav-language-select"
+          [attr.aria-label]="translate('language.select') || 'Language'">
+          <option *ngFor="let lang of availableLanguages" [value]="lang.code">
+            {{ lang.name }}
+          </option>
+        </select>
+      </div>
+      
       <!-- Mobile Menu Toggle -->
       <button class="mobile-menu-toggle" 
               *ngIf="isMobileView" 
@@ -228,21 +242,6 @@
 
     <!-- Enhanced Senators Sidebar -->
     <div class="senators-sidebar" *ngIf="activeTab === 'map'">
-      <!-- Language Switcher -->
-      <div class="language-switcher">
-        <i class="fas fa-globe-americas animate-rotate"></i>
-        <label for="language-select">{{ translate('language.select') || 'Language' }}:</label>
-        <select
-          id="language-select"
-          [value]="currentLanguage"
-          (change)="changeLanguage($any($event.target).value)"
-          class="language-select">
-          <option *ngFor="let lang of availableLanguages" [value]="lang.code">
-            {{ lang.name }}
-          </option>
-        </select>
-      </div>
-
       <!-- Sidebar Header -->
       <div class="sidebar-header">
         <h3 class="sidebar-title">
