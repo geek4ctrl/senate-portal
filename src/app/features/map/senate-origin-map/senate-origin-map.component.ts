@@ -23,7 +23,7 @@ if (typeof Highcharts === 'object') {
   selector: 'app-senate-origin-map',
   imports: [CommonModule, HighchartsChartModule],
   templateUrl: './senate-origin-map.component.html',
-  styleUrls: ['./senate-origin-map.component.scss'],
+  styleUrls: ['./senate-origin-map.component.scss']
 })
 export class SenateOriginMapComponent implements OnInit, OnDestroy {
   Highcharts: typeof Highcharts = Highcharts;
@@ -38,6 +38,10 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
 
   // Navigation tab state
   activeTab: 'map' | 'analytics' | 'constitution' = 'map';
+  
+  // Mobile menu state
+  isMobileView = false;
+  showMobileMenu = false;
 
   // Modal properties
   showModal = false;
@@ -233,11 +237,15 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     console.log('SenateOriginMapComponent initialized');
     this.updateChartTexts();
     this.initializeFilteredSenators();
+    this.checkMobileView();
+    this.setupResizeListener();
   }
 
   ngOnDestroy(): void {
     // Ensure body scroll is restored when component is destroyed
     this.preventBodyScroll(false);
+    // Remove resize listener
+    window.removeEventListener('resize', this.onWindowResize);
   }
 
   // Senators list methods
@@ -560,6 +568,38 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   onImageError(event: any): void {
     // Set a default placeholder image when senator photo fails to load
     event.target.src = 'assets/images/default-senator.svg';
+  }
+
+  // Mobile menu methods
+  private setupResizeListener = (): void => {
+    window.addEventListener('resize', this.onWindowResize);
+  };
+
+  private onWindowResize = (): void => {
+    this.checkMobileView();
+  };
+
+  private checkMobileView(): void {
+    this.isMobileView = window.innerWidth <= 768;
+    if (!this.isMobileView) {
+      this.showMobileMenu = false;
+      this.preventBodyScroll(false);
+    }
+  }
+
+  toggleMobileMenu(): void {
+    this.showMobileMenu = !this.showMobileMenu;
+    this.preventBodyScroll(this.showMobileMenu);
+  }
+
+  closeMobileMenu(): void {
+    this.showMobileMenu = false;
+    this.preventBodyScroll(false);
+  }
+
+  setActiveTabAndCloseMenu(tab: 'map' | 'analytics' | 'constitution'): void {
+    this.setActiveTab(tab);
+    this.closeMobileMenu();
   }
 
   // Navigation tab methods

@@ -18,6 +18,7 @@ export class TranslationService {
   private translations: Translations = {
     en: {
       // Navigation
+      'nav.navigation': 'Navigation',
       'nav.map': 'Map',
       'nav.analytics': 'Analytics',
       'nav.constitution': 'Constitution',
@@ -96,6 +97,7 @@ export class TranslationService {
     },
     fr: {
       // Navigation
+      'nav.navigation': 'Navigation',
       'nav.map': 'Carte',
       'nav.analytics': 'Analytiques',
       'nav.constitution': 'Constitution',
