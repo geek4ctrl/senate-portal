@@ -401,7 +401,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     return this.translationService.translate(key);
   }
 
-  changeLanguage(language: 'en' | 'fr'): void {
+  changeLanguage(language: 'en' | 'fr' | 'ln' | 'sw' | 'lu' | 'kg'): void {
     this.currentLanguage = language;
     this.translationService.setLanguage(language);
     this.updateChartTexts();
