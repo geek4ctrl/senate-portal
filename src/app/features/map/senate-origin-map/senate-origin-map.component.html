@@ -25,6 +25,34 @@
         </button>
       </div>
     </div>
+    
+    <!-- Random Senator Pictures -->
+    <div class="nav-senators" [class.hidden-mobile]="isMobileView">
+      <div class="nav-senators-container">
+        <div class="senator-avatars">
+          <div 
+            *ngFor="let senator of randomNavSenators; trackBy: getSenatorId" 
+            class="nav-senator-avatar"
+            (click)="onRandomSenatorClick(senator)"
+            [title]="senator.fullName + ' - ' + senator.originProvince"
+            [attr.aria-label]="'Senator ' + senator.fullName">
+            <img
+              [src]="senator.photo"
+              [alt]="senator.fullName"
+              (error)="onImageError($event)"
+              class="senator-nav-image">
+          </div>
+        </div>
+        <button 
+          class="refresh-senators-btn"
+          (click)="refreshRandomSenators()"
+          title="Show different senators"
+          [attr.aria-label]="'Refresh random senators'">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+      </div>
+    </div>
+    
     <div class="nav-right">
       <!-- Language Switcher in Navigation -->
       <div class="nav-language-switcher">
@@ -115,6 +143,31 @@
     </div>
     
     <div class="mobile-nav-footer">
+      <!-- Mobile Random Senators -->
+      <div class="mobile-nav-senators" *ngIf="randomNavSenators.length > 0">
+        <div class="mobile-senators-header">Featured Senators</div>
+        <div class="mobile-senator-avatars">
+          <div 
+            *ngFor="let senator of randomNavSenators; trackBy: getSenatorId" 
+            class="mobile-nav-senator-avatar"
+            (click)="onRandomSenatorClick(senator); closeMobileMenu()"
+            [title]="senator.fullName">
+            <img
+              [src]="senator.photo"
+              [alt]="senator.fullName"
+              (error)="onImageError($event)"
+              class="mobile-senator-nav-image">
+            <div class="mobile-senator-name">{{ senator.fullName.split(' ')[0] }}</div>
+          </div>
+          <button 
+            class="mobile-refresh-senators-btn"
+            (click)="refreshRandomSenators()"
+            title="Show different senators">
+            <i class="fas fa-sync-alt"></i>
+          </button>
+        </div>
+      </div>
+      
       <div class="mobile-language-switcher">
         <i class="fas fa-globe-americas"></i>
         <select

@@ -58,6 +58,9 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   selectedSenator: any = null; // For the profile card
   filteredSenators: any[] = [];
   
+  // Random senators for navigation bar
+  randomNavSenators: any[] = [];
+  
   // Sorting properties
   sortBy: 'name' | 'province' | 'party' = 'name';
   sortDirection: 'asc' | 'desc' = 'asc';
@@ -295,6 +298,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     console.log('SenateOriginMapComponent initialized');
     this.updateChartTexts();
     this.initializeFilteredSenators();
+    this.initializeRandomNavSenators();
     this.checkMobileView();
     this.setupResizeListener();
   }
@@ -310,6 +314,33 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   initializeFilteredSenators(): void {
     this.filteredSenators = [...this.senatorsData];
     this.applySorting();
+  }
+
+  // Random senators for navigation bar
+  initializeRandomNavSenators(): void {
+    // Filter senators that have photos
+    const senatorsWithPhotos = this.senatorsData.filter(senator => 
+      senator.photo && senator.photo.trim() !== ''
+    );
+    
+    // Randomly select 4 senators
+    this.randomNavSenators = this.getRandomSenators(senatorsWithPhotos, 4);
+  }
+
+  private getRandomSenators(senators: any[], count: number): any[] {
+    const shuffled = [...senators].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
+  }
+
+  refreshRandomSenators(): void {
+    this.initializeRandomNavSenators();
+  }
+
+  onRandomSenatorClick(senator: any): void {
+    // Focus the senator in the sidebar and open their profile
+    this.selectSenator(senator);
+    // Highlight their province on the map
+    this.highlightSenatorProvince(senator.originProvince);
   }
 
   onFilterChange(event: any): void {
