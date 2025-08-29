@@ -35,6 +35,12 @@ export class TranslationService {
       'sidebar.filterPlaceholder': 'Filter Senators',
       'sidebar.senatorsFound': 'senators found',
       'sidebar.noResults': 'No senators found matching your search.',
+      'sidebar.sortBy': 'Sort by',
+      'sidebar.sortName': 'Name',
+      'sidebar.sortProvince': 'Province',
+      'sidebar.sortParty': 'Party',
+      'sidebar.sortAsc': 'A-Z',
+      'sidebar.sortDesc': 'Z-A',
 
       // Chart titles
       'chart.title': 'Democratic Republic of Congo - Senate Map',
@@ -115,6 +121,12 @@ export class TranslationService {
       'sidebar.filterPlaceholder': 'Filtrer les Sénateurs',
       'sidebar.senatorsFound': 'sénateurs trouvés',
       'sidebar.noResults': 'Aucun sénateur trouvé correspondant à votre recherche.',
+      'sidebar.sortBy': 'Trier par',
+      'sidebar.sortName': 'Nom',
+      'sidebar.sortProvince': 'Province',
+      'sidebar.sortParty': 'Parti',
+      'sidebar.sortAsc': 'A-Z',
+      'sidebar.sortDesc': 'Z-A',
 
       // Chart titles
       'chart.title': 'République Démocratique du Congo - Carte du Sénat',
@@ -195,6 +207,12 @@ export class TranslationService {
       'sidebar.filterPlaceholder': 'Luka Ba Senateur',
       'sidebar.senatorsFound': 'ba senateur ezwami',
       'sidebar.noResults': 'Senateur moko te ezwami na boluki na yo.',
+      'sidebar.sortBy': 'Bongisa na',
+      'sidebar.sortName': 'Nkombo',
+      'sidebar.sortProvince': 'Etuka',
+      'sidebar.sortParty': 'Parti',
+      'sidebar.sortAsc': 'A-Z',
+      'sidebar.sortDesc': 'Z-A',
 
       // Chart titles
       'chart.title': 'République Démocratique ya Congo - Karte ya Sénat',
@@ -275,6 +293,12 @@ export class TranslationService {
       'sidebar.filterPlaceholder': 'Tafuta Maseneta',
       'sidebar.senatorsFound': 'maseneta wamepatikana',
       'sidebar.noResults': 'Hakuna seneta aliyepatikana kulingana na utafutaji wako.',
+      'sidebar.sortBy': 'Panga kwa',
+      'sidebar.sortName': 'Jina',
+      'sidebar.sortProvince': 'Mkoa',
+      'sidebar.sortParty': 'Chama',
+      'sidebar.sortAsc': 'A-Z',
+      'sidebar.sortDesc': 'Z-A',
 
       // Chart titles
       'chart.title': 'Jamhuri ya Kidemokrasia ya Kongo - Ramani ya Seneti',
@@ -355,6 +379,12 @@ export class TranslationService {
       'sidebar.filterPlaceholder': 'Loza Bantu ba Senateur',
       'sidebar.senatorsFound': 'bantu ba senateur basangile',
       'sidebar.noResults': 'Kantu ka senateur kasangile wa ku bulozebuo.',
+      'sidebar.sortBy': 'Butondi kuya na',
+      'sidebar.sortName': 'Dina',
+      'sidebar.sortProvince': 'Tshimbila',
+      'sidebar.sortParty': 'Mukanda',
+      'sidebar.sortAsc': 'A-Z',
+      'sidebar.sortDesc': 'Z-A',
 
       // Chart titles
       'chart.title': 'Republiki Democratiki wa Kongo - Karte wa Senat',
@@ -435,6 +465,12 @@ export class TranslationService {
       'sidebar.filterPlaceholder': 'Tomba Bantu ba Senateur',
       'sidebar.senatorsFound': 'bantu ba senateur bakuzolele',
       'sidebar.noResults': 'Muntu mosi ko senateur uzolele ko na nzela eno.',
+      'sidebar.sortBy': 'Songa ye',
+      'sidebar.sortName': 'Nkumbu',
+      'sidebar.sortProvince': 'Intinu',
+      'sidebar.sortParty': 'Kinkutu',
+      'sidebar.sortAsc': 'A-Z',
+      'sidebar.sortDesc': 'Z-A',
 
       // Chart titles
       'chart.title': 'Republiki Demokratiki ya Kongo - Kata ya Senat',

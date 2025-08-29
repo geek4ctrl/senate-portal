@@ -286,6 +286,29 @@
             [value]="filterText"
             (input)="onFilterChange($event)">
         </div>
+        
+        <!-- Sorting Controls -->
+        <div class="sort-container">
+          <label class="sort-label">{{ translate('sidebar.sortBy') || 'Sort by' }}:</label>
+          <div class="sort-controls">
+            <select 
+              class="sort-select"
+              [value]="sortBy"
+              (change)="onSortChange($any($event.target).value)"
+              [attr.aria-label]="translate('sidebar.sortBy') || 'Sort by'">
+              <option value="name">{{ translate('sidebar.sortName') || 'Name' }}</option>
+              <option value="province">{{ translate('sidebar.sortProvince') || 'Province' }}</option>
+              <option value="party">{{ translate('sidebar.sortParty') || 'Party' }}</option>
+            </select>
+            <button 
+              class="sort-direction-btn"
+              (click)="onSortChange(sortBy)"
+              [attr.aria-label]="sortDirection === 'asc' ? (translate('sidebar.sortAsc') || 'A-Z') : (translate('sidebar.sortDesc') || 'Z-A')"
+              [title]="sortDirection === 'asc' ? (translate('sidebar.sortAsc') || 'A-Z') : (translate('sidebar.sortDesc') || 'Z-A')">
+              <i class="fas" [class.fa-sort-alpha-down]="sortDirection === 'asc'" [class.fa-sort-alpha-up]="sortDirection === 'desc'"></i>
+            </button>
+          </div>
+        </div>
       </div>
 
       <!-- Senators Count -->

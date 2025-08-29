@@ -54,6 +54,10 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   selectedSenatorId: string | null = null;
   selectedSenator: any = null; // For the profile card
   filteredSenators: any[] = [];
+  
+  // Sorting properties
+  sortBy: 'name' | 'province' | 'party' = 'name';
+  sortDirection: 'asc' | 'desc' = 'asc';
 
   // Touch gesture detection for mobile
   private touchStartTime = 0;
@@ -302,6 +306,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   // Senators list methods
   initializeFilteredSenators(): void {
     this.filteredSenators = [...this.senatorsData];
+    this.applySorting();
   }
 
   onFilterChange(event: any): void {
@@ -319,6 +324,48 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
         senator.party?.toLowerCase().includes(this.filterText)
       );
     }
+    this.applySorting();
+  }
+
+  // Sorting methods
+  onSortChange(sortBy: 'name' | 'province' | 'party'): void {
+    if (this.sortBy === sortBy) {
+      // Toggle sort direction if same field
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    } else {
+      // Set new sort field with ascending default
+      this.sortBy = sortBy;
+      this.sortDirection = 'asc';
+    }
+    this.applySorting();
+  }
+
+  applySorting(): void {
+    this.filteredSenators.sort((a, b) => {
+      let valueA: string;
+      let valueB: string;
+
+      switch (this.sortBy) {
+        case 'name':
+          valueA = a.fullName.toLowerCase();
+          valueB = b.fullName.toLowerCase();
+          break;
+        case 'province':
+          valueA = a.originProvince.toLowerCase();
+          valueB = b.originProvince.toLowerCase();
+          break;
+        case 'party':
+          valueA = (a.party || '').toLowerCase();
+          valueB = (b.party || '').toLowerCase();
+          break;
+        default:
+          valueA = a.fullName.toLowerCase();
+          valueB = b.fullName.toLowerCase();
+      }
+
+      const comparison = valueA.localeCompare(valueB);
+      return this.sortDirection === 'asc' ? comparison : -comparison;
+    });
   }
 
   selectSenator(senator: any): void {
