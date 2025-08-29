@@ -26,6 +26,7 @@ export class TranslationService {
       'nav.map': 'Map',
       'nav.analytics': 'Analytics',
       'nav.constitution': 'Constitution',
+      'nav.news': 'News',
 
       // Language switcher
       'language.select': 'Language',
@@ -104,7 +105,27 @@ export class TranslationService {
       'constitution.statistics.totalSenators': 'Total Senators',
       'constitution.statistics.provinces': 'Provinces',
       'constitution.statistics.termYears': 'Term Years',
-      'constitution.statistics.femalePercentage': 'Female %'
+      'constitution.statistics.femalePercentage': 'Female %',
+
+      // News section
+      'news.title': 'Latest News from DRC',
+      'news.subtitle': 'Stay updated with the latest developments in the Democratic Republic of Congo',
+      'news.loading': 'Loading latest news...',
+      'news.error': 'Unable to load news at this time. Please try again later.',
+      'news.readMore': 'Read More',
+      'news.source': 'Source',
+      'news.publishedOn': 'Published on',
+      'news.noNews': 'No news available at the moment.',
+      'news.refresh': 'Refresh News',
+      'news.categories.all': 'All News',
+      'news.categories.politics': 'Politics',
+      'news.categories.economy': 'Economy',
+      'news.categories.security': 'Security',
+      'news.categories.society': 'Society',
+      'news.timeAgo.minutes': 'minutes ago',
+      'news.timeAgo.hours': 'hours ago',
+      'news.timeAgo.days': 'days ago',
+      'news.timeAgo.justNow': 'Just now'
     },
     fr: {
       // Navigation
@@ -112,6 +133,7 @@ export class TranslationService {
       'nav.map': 'Carte',
       'nav.analytics': 'Analytiques',
       'nav.constitution': 'Constitution',
+      'nav.news': 'Actualités',
 
       // Language switcher
       'language.select': 'Langue',
@@ -190,7 +212,27 @@ export class TranslationService {
       'constitution.statistics.totalSenators': 'Total Sénateurs',
       'constitution.statistics.provinces': 'Provinces',
       'constitution.statistics.termYears': 'Années du Mandat',
-      'constitution.statistics.femalePercentage': 'Femmes %'
+      'constitution.statistics.femalePercentage': 'Femmes %',
+
+      // News section
+      'news.title': 'Dernières Actualités de la RDC',
+      'news.subtitle': 'Restez informé des derniers développements en République Démocratique du Congo',
+      'news.loading': 'Chargement des dernières actualités...',
+      'news.error': 'Impossible de charger les actualités pour le moment. Veuillez réessayer plus tard.',
+      'news.readMore': 'Lire Plus',
+      'news.source': 'Source',
+      'news.publishedOn': 'Publié le',
+      'news.noNews': 'Aucune actualité disponible pour le moment.',
+      'news.refresh': 'Actualiser les Nouvelles',
+      'news.categories.all': 'Toutes les Actualités',
+      'news.categories.politics': 'Politique',
+      'news.categories.economy': 'Économie',
+      'news.categories.security': 'Sécurité',
+      'news.categories.society': 'Société',
+      'news.timeAgo.minutes': 'il y a minutes',
+      'news.timeAgo.hours': 'il y a heures',
+      'news.timeAgo.days': 'il y a jours',
+      'news.timeAgo.justNow': 'À l\'instant'
     },
     ln: {
       // Navigation
@@ -198,6 +240,7 @@ export class TranslationService {
       'nav.map': 'Karte',
       'nav.analytics': 'Makanisi',
       'nav.constitution': 'Mobeko',
+      'nav.news': 'Nsango',
 
       // Language switcher
       'language.select': 'Lokota',
@@ -276,7 +319,27 @@ export class TranslationService {
       'constitution.statistics.totalSenators': 'Motango ya Ba Senateur',
       'constitution.statistics.provinces': 'Ba Etuka',
       'constitution.statistics.termYears': 'Mibu ya Mandat',
-      'constitution.statistics.femalePercentage': 'Basi %'
+      'constitution.statistics.femalePercentage': 'Basi %',
+
+      // News section
+      'news.title': 'Ba Nsango ya Suka ya RDC',
+      'news.subtitle': 'Zala na sango ya makambu ya sika ya République Démocratique ya Congo',
+      'news.loading': 'Ezali ko charger ba nsango ya suka...',
+      'news.error': 'Tokoki kozwa nsango te na ntango oyo. Meka lisusu sima.',
+      'news.readMore': 'Tanga Mingi',
+      'news.source': 'Esika ya nsango',
+      'news.publishedOn': 'Ebimaki na',
+      'news.noNews': 'Nsango moko te ezali na ntango oyo.',
+      'news.refresh': 'Sika Ba Nsango',
+      'news.categories.all': 'Nsango Nyonso',
+      'news.categories.politics': 'Politiki',
+      'news.categories.economy': 'Nkita',
+      'news.categories.security': 'Bokengi',
+      'news.categories.society': 'Lisanga',
+      'news.timeAgo.minutes': 'minutes eleki',
+      'news.timeAgo.hours': 'bangonga eleki',
+      'news.timeAgo.days': 'mikolo eleki',
+      'news.timeAgo.justNow': 'Sikoyo'
     },
     sw: {
       // Navigation
@@ -284,6 +347,7 @@ export class TranslationService {
       'nav.map': 'Ramani',
       'nav.analytics': 'Uchambuzi',
       'nav.constitution': 'Katiba',
+      'nav.news': 'Habari',
 
       // Language switcher
       'language.select': 'Lugha',
@@ -362,7 +426,27 @@ export class TranslationService {
       'constitution.statistics.totalSenators': 'Jumla ya Maseneta',
       'constitution.statistics.provinces': 'Mikoa',
       'constitution.statistics.termYears': 'Miaka ya Muda',
-      'constitution.statistics.femalePercentage': 'Wanawake %'
+      'constitution.statistics.femalePercentage': 'Wanawake %',
+
+      // News section
+      'news.title': 'Habari za Hivi Karibuni kutoka DRC',
+      'news.subtitle': 'Fuata maendeleo ya hivi karibuni katika Jamhuri ya Kidemokrasia ya Kongo',
+      'news.loading': 'Inapakia habari za hivi karibuni...',
+      'news.error': 'Haiwezi kupakia habari kwa sasa. Tafadhali jaribu tena baadaye.',
+      'news.readMore': 'Soma Zaidi',
+      'news.source': 'Chanzo',
+      'news.publishedOn': 'Imechapishwa mnamo',
+      'news.noNews': 'Hakuna habari zinazopatikana kwa sasa.',
+      'news.refresh': 'Ongeza Habari',
+      'news.categories.all': 'Habari Zote',
+      'news.categories.politics': 'Siasa',
+      'news.categories.economy': 'Uchumi',
+      'news.categories.security': 'Usalama',
+      'news.categories.society': 'Jamii',
+      'news.timeAgo.minutes': 'dakika zilizopita',
+      'news.timeAgo.hours': 'masaa yaliyopita',
+      'news.timeAgo.days': 'siku zilizopita',
+      'news.timeAgo.justNow': 'Sasa hivi'
     },
     lu: {
       // Navigation
@@ -370,6 +454,7 @@ export class TranslationService {
       'nav.map': 'Karte',
       'nav.analytics': 'Butungulushi',
       'nav.constitution': 'Mubengele',
+      'nav.news': 'Makosa',
 
       // Language switcher
       'language.select': 'Luloba',
@@ -448,7 +533,27 @@ export class TranslationService {
       'constitution.statistics.totalSenators': 'Bantu ba Senateur Boonso',
       'constitution.statistics.provinces': 'Bitshimbila',
       'constitution.statistics.termYears': 'Myaka ya Mbilo',
-      'constitution.statistics.femalePercentage': 'Bana bakaji %'
+      'constitution.statistics.femalePercentage': 'Bana bakaji %',
+
+      // News section
+      'news.title': 'Makosa ma Shambu ma RDC',
+      'news.subtitle': 'Mona makosa ma shambu ma Republiki Democratiki wa Kongo',
+      'news.loading': 'Ulatamba makosa ma shambu...',
+      'news.error': 'Katukuila kupata makosa lelu. Kanyi bushiku.',
+      'news.readMore': 'Tanga Kamupi',
+      'news.source': 'Kisebeleshe',
+      'news.publishedOn': 'Kasebelele ku',
+      'news.noNews': 'Makosa mankaka ko ma shambu.',
+      'news.refresh': 'Sansanua Makosa',
+      'news.categories.all': 'Makosa Monso',
+      'news.categories.politics': 'Bukuluampata',
+      'news.categories.economy': 'Buchinshi',
+      'news.categories.security': 'Bululungu',
+      'news.categories.society': 'Bukole',
+      'news.timeAgo.minutes': 'miniti yisenga',
+      'news.timeAgo.hours': 'masaa asenga',
+      'news.timeAgo.days': 'maloba asenga',
+      'news.timeAgo.justNow': 'Lelu kashesa'
     },
     kg: {
       // Navigation
@@ -456,6 +561,7 @@ export class TranslationService {
       'nav.map': 'Kata',
       'nav.analytics': 'Kusoluka',
       'nav.constitution': 'Kimbangelo',
+      'nav.news': 'Madisa',
 
       // Language switcher
       'language.select': 'Kidimbu',
@@ -534,7 +640,27 @@ export class TranslationService {
       'constitution.statistics.totalSenators': 'Bantu ba Senateur Bantuwonsonso',
       'constitution.statistics.provinces': 'Tintinu',
       'constitution.statistics.termYears': 'Myaka ya Musalu',
-      'constitution.statistics.femalePercentage': 'Bakento %'
+      'constitution.statistics.femalePercentage': 'Bakento %',
+
+      // News section
+      'news.title': 'Madisa ma Yambu ma RDC',
+      'news.subtitle': 'Mona madisa ma yambu ma Republiki Demokratiki ya Kongo',
+      'news.loading': 'Kulanda madisa ma yambu...',
+      'news.error': 'Kukoki ko kuwana madisa lelu. Meka kavutu.',
+      'news.readMore': 'Tanga Mingi',
+      'news.source': 'Ntoto ya madisa',
+      'news.publishedOn': 'Matanga ku',
+      'news.noNews': 'Madisa mankaka ko ma yambu.',
+      'news.refresh': 'Vutuka Madisa',
+      'news.categories.all': 'Madisa Monso',
+      'news.categories.politics': 'Kimfumu',
+      'news.categories.economy': 'Kinene',
+      'news.categories.security': 'Kikeba',
+      'news.categories.society': 'Kikanda',
+      'news.timeAgo.minutes': 'miniti yavutuka',
+      'news.timeAgo.hours': 'mawa mavutuka',
+      'news.timeAgo.days': 'malumbu mavutuka',
+      'news.timeAgo.justNow': 'Lelu yayuma'
     },
   };
 

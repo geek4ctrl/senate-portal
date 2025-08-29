@@ -5,6 +5,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
 // Services
 import { TranslationService } from '../../../services/translation.service';
 
+// Components
+import { NewsSectionComponent } from '../../news/news-section/news-section.component';
+
 // Highcharts + modules
 import * as Highcharts from 'highcharts/highmaps';
 import ExportingModule from 'highcharts/modules/exporting';
@@ -21,7 +24,7 @@ if (typeof Highcharts === 'object') {
 @Component({
   standalone: true,
   selector: 'app-senate-origin-map',
-  imports: [CommonModule, HighchartsChartModule],
+  imports: [CommonModule, HighchartsChartModule, NewsSectionComponent],
   templateUrl: './senate-origin-map.component.html',
   styleUrls: ['./senate-origin-map.component.scss']
 })
@@ -37,7 +40,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   availableLanguages = this.translationService.getAvailableLanguages();
 
   // Navigation tab state
-  activeTab: 'map' | 'analytics' | 'constitution' = 'map';
+  activeTab: 'map' | 'analytics' | 'constitution' | 'news' = 'map';
   
   // Mobile menu state
   isMobileView = false;
@@ -772,13 +775,13 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     this.preventBodyScroll(false);
   }
 
-  setActiveTabAndCloseMenu(tab: 'map' | 'analytics' | 'constitution'): void {
+  setActiveTabAndCloseMenu(tab: 'map' | 'analytics' | 'constitution' | 'news'): void {
     this.setActiveTab(tab);
     this.closeMobileMenu();
   }
 
   // Navigation tab methods
-  setActiveTab(tab: 'map' | 'analytics' | 'constitution'): void {
+  setActiveTab(tab: 'map' | 'analytics' | 'constitution' | 'news'): void {
     this.activeTab = tab;
     // Close any open modals when switching tabs
     this.closeModal();

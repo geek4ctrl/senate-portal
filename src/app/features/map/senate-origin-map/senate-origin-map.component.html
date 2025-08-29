@@ -19,6 +19,10 @@
           <i class="fas fa-scroll tab-icon animate-fade-in"></i>
           {{ translate('nav.constitution') || 'Constitution' }}
         </button>
+        <button class="nav-tab" [class.active]="activeTab === 'news'" (click)="setActiveTab('news')">
+          <i class="fas fa-newspaper tab-icon animate-pulse"></i>
+          {{ translate('nav.news') || 'News' }}
+        </button>
       </div>
     </div>
     <div class="nav-right">
@@ -99,6 +103,14 @@
         <i class="fas fa-scroll"></i>
         <span>{{ translate('nav.constitution') || 'Constitution' }}</span>
         <i class="fas fa-chevron-right" *ngIf="activeTab === 'constitution'"></i>
+      </button>
+      
+      <button class="mobile-nav-item" 
+              [class.active]="activeTab === 'news'"
+              (click)="setActiveTabAndCloseMenu('news')">
+        <i class="fas fa-newspaper"></i>
+        <span>{{ translate('nav.news') || 'News' }}</span>
+        <i class="fas fa-chevron-right" *ngIf="activeTab === 'news'"></i>
       </button>
     </div>
     
@@ -267,6 +279,11 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- News Section -->
+    <div class="news-section-container" *ngIf="activeTab === 'news'">
+      <app-news-section></app-news-section>
     </div>
 
     <!-- Enhanced Senators Sidebar -->

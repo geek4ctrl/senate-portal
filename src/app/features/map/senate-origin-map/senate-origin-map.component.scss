@@ -321,6 +321,23 @@
   font-size:14px;color:#6c757d;font-weight:600;text-transform:uppercase;
   letter-spacing:0.5px;font-family:'Inter',sans-serif;
 }
+
+/* News Section Container Styles */
+.news-section-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: #fff;
+  animation: slide-in-up 0.8s ease-out;
+  overflow-y: auto;
+  
+  app-news-section {
+    display: block;
+    height: 100%;
+    overflow-y: auto;
+  }
+}
 .senators-sidebar{width:320px;background:#fff;border-left:1px solid #e9ecef;display:flex;flex-direction:column;overflow:hidden;box-shadow:-2px 0 10px rgba(0,0,0,0.08);box-sizing:border-box;max-width:100%;animation:slide-in-right 0.8s ease-out}
 #origin-map-host{flex:1;height:100%;display:flex;flex-direction:column}
 .map-container{position:relative;flex:1;height:100%;background:#f8f9fa;border-radius:12px;margin:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1)}

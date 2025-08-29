@@ -1,0 +1,254 @@
+<!-- News Section Container -->
+<div class="news-section">
+  <!-- News Header -->
+  <div class="news-header">
+    <div class="news-title-section">
+      <h2 class="news-title">
+        <i class="fas fa-newspaper animate-pulse"></i>
+        {{ translate('news.title') || 'Latest News from DRC' }}
+      </h2>
+      <p class="news-subtitle">
+        {{ translate('news.subtitle') || 'Stay updated with the latest developments in the Democratic Republic of Congo' }}
+      </p>
+    </div>
+    
+    <!-- News Controls -->
+    <div class="news-controls">
+      <!-- Search Bar -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            type="text"
+            class="search-input"
+            [(ngModel)]="searchQuery"
+            (keyup.enter)="onSearch()"
+            (input)="searchQuery === '' && clearSearch()"
+            [placeholder]="translate('sidebar.filterPlaceholder') || 'Search news...'"
+            [attr.aria-label]="translate('sidebar.filterPlaceholder') || 'Search news'"
+          />
+          <button
+            *ngIf="searchQuery"
+            class="clear-search-btn"
+            (click)="clearSearch()"
+            [attr.aria-label]="'Clear search'">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="category-filter">
+        <label class="filter-label">{{ translate('news.categories.all') || 'Category' }}:</label>
+        <select
+          class="category-select"
+          [value]="selectedCategory"
+          (change)="onCategoryChange($any($event.target).value)"
+          [attr.aria-label]="'Filter by category'">
+          <option 
+            *ngFor="let category of categories; trackBy: trackByCategoryValue" 
+            [value]="category.value">
+            {{ translate(category.label) || category.value }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Refresh Button -->
+      <button
+        class="refresh-btn"
+        (click)="refreshNews()"
+        [disabled]="isLoading"
+        [attr.aria-label]="translate('news.refresh') || 'Refresh news'">
+        <i class="fas fa-sync-alt" [class.fa-spin]="isLoading"></i>
+        <span class="refresh-text">{{ translate('news.refresh') || 'Refresh' }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-state">
+    <div class="loading-spinner">
+      <i class="fas fa-spinner fa-spin"></i>
+    </div>
+    <p class="loading-text">{{ translate('news.loading') || 'Loading latest news...' }}</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error && !isLoading" class="error-state">
+    <div class="error-icon">
+      <i class="fas fa-exclamation-triangle"></i>
+    </div>
+    <p class="error-text">{{ error }}</p>
+    <button class="retry-btn" (click)="loadNews()">
+      <i class="fas fa-redo"></i>
+      Try Again
+    </button>
+  </div>
+
+  <!-- No News State -->
+  <div *ngIf="!isLoading && !error && filteredArticles.length === 0" class="no-news-state">
+    <div class="no-news-icon">
+      <i class="fas fa-newspaper"></i>
+    </div>
+    <p class="no-news-text">{{ translate('news.noNews') || 'No news available at the moment.' }}</p>
+  </div>
+
+  <!-- News Articles Grid -->
+  <div *ngIf="!isLoading && !error && filteredArticles.length > 0" class="news-grid">
+    <article 
+      *ngFor="let article of filteredArticles; trackBy: trackByArticleId"
+      class="news-card"
+      [attr.aria-label]="article.title">
+      
+      <!-- Article Image -->
+      <div class="article-image-container" *ngIf="hasImage(article)">
+        <img
+          [src]="article.imageUrl"
+          [alt]="article.title"
+          class="article-image"
+          (error)="onImageError($event)"
+          loading="lazy"
+        />
+        <div class="article-category-badge">
+          {{ getCategoryLabel(article.category) }}
+        </div>
+      </div>
+
+      <!-- Article Content -->
+      <div class="article-content">
+        <!-- Article Header -->
+        <div class="article-header">
+          <h3 class="article-title" (click)="openArticle(article)">
+            {{ article.title }}
+          </h3>
+          <div class="article-meta">
+            <span class="article-time">
+              <i class="fas fa-clock"></i>
+              {{ getTimeAgo(article) }}
+            </span>
+            <span class="article-source">
+              <i class="fas fa-newspaper"></i>
+              {{ article.source }}
+            </span>
+          </div>
+        </div>
+
+        <!-- Article Summary -->
+        <p class="article-summary">
+          {{ getArticleExcerpt(article) }}
+        </p>
+
+        <!-- Article Author -->
+        <div class="article-author" *ngIf="article.author">
+          <i class="fas fa-user"></i>
+          {{ article.author }}
+        </div>
+
+        <!-- Article Actions -->
+        <div class="article-actions">
+          <button 
+            class="read-more-btn"
+            (click)="openArticle(article)"
+            [attr.aria-label]="'Read more about ' + article.title">
+            <i class="fas fa-arrow-right"></i>
+            {{ translate('news.readMore') || 'Read More' }}
+          </button>
+          
+          <button 
+            *ngIf="article.url"
+            class="external-link-btn"
+            (click)="openExternalLink(article)"
+            [attr.aria-label]="'Open external link for ' + article.title">
+            <i class="fas fa-external-link-alt"></i>
+            {{ translate('news.source') || 'Source' }}
+          </button>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- Article Modal -->
+<div 
+  *ngIf="showModal && selectedArticle" 
+  class="modal-overlay"
+  (click)="closeModal()"
+  (keydown)="onModalKeydown($event)"
+  tabindex="0"
+  role="dialog"
+  [attr.aria-label]="selectedArticle.title"
+  aria-modal="true">
+  
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <h2 class="modal-title">{{ selectedArticle.title }}</h2>
+      <button 
+        class="modal-close-btn"
+        (click)="closeModal()"
+        [attr.aria-label]="translate('modal.close') || 'Close'">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- Modal Body -->
+    <div class="modal-body">
+      <!-- Article Image -->
+      <div class="modal-image-container" *ngIf="hasImage(selectedArticle)">
+        <img
+          [src]="selectedArticle.imageUrl"
+          [alt]="selectedArticle.title"
+          class="modal-image"
+          (error)="onImageError($event)"
+        />
+      </div>
+
+      <!-- Article Meta Info -->
+      <div class="modal-meta">
+        <div class="meta-row">
+          <span class="meta-label">{{ translate('news.publishedOn') || 'Published on' }}:</span>
+          <span class="meta-value">{{ formatDate(selectedArticle.publishedAt) }}</span>
+        </div>
+        <div class="meta-row" *ngIf="selectedArticle.author">
+          <span class="meta-label">{{ translate('profile.rating') || 'Author' }}:</span>
+          <span class="meta-value">{{ selectedArticle.author }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">{{ translate('news.source') || 'Source' }}:</span>
+          <span class="meta-value">{{ selectedArticle.source }}</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Category:</span>
+          <span class="meta-value category-tag">{{ getCategoryLabel(selectedArticle.category) }}</span>
+        </div>
+      </div>
+
+      <!-- Article Content -->
+      <div class="modal-article-content">
+        <h3 class="content-subtitle">Summary</h3>
+        <p class="article-summary-full">{{ selectedArticle.summary }}</p>
+        
+        <h3 class="content-subtitle">Full Article</h3>
+        <div class="article-content-full" [innerHTML]="selectedArticle.content"></div>
+      </div>
+
+      <!-- Modal Actions -->
+      <div class="modal-actions">
+        <button 
+          *ngIf="selectedArticle.url"
+          class="modal-action-btn primary"
+          (click)="openExternalLink(selectedArticle)">
+          <i class="fas fa-external-link-alt"></i>
+          {{ translate('news.readMore') || 'Read Full Article' }}
+        </button>
+        
+        <button 
+          class="modal-action-btn secondary"
+          (click)="closeModal()">
+          <i class="fas fa-times"></i>
+          {{ translate('modal.close') || 'Close' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
