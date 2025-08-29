@@ -33,7 +33,7 @@ export class TranslationService {
 
       // Sidebar
       'sidebar.senators': 'Senators',
-      'sidebar.filterPlaceholder': 'Filter Senators',
+      'sidebar.filterPlaceholder': 'Filter',
       'sidebar.senatorsFound': 'senators found',
       'sidebar.noResults': 'No senators found matching your search.',
       'sidebar.sortBy': 'Sort by',
