@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* ===== THEME SYSTEM ===== */
+/* CSS Custom Properties for Theme Support */
+:root {
+  /* Theme colors will be set dynamically by ThemeService */
+  --theme-primary-bg: #f8f9fa;
+  --theme-secondary-bg: #ffffff;
+  --theme-card-bg: #ffffff;
+  --theme-modal-bg: #ffffff;
+  --theme-overlay-bg: rgba(0, 0, 0, 0.75);
+  
+  --theme-primary-text: #2d3748;
+  --theme-secondary-text: #4a5568;
+  --theme-muted-text: #6c757d;
+  
+  --theme-border-color: #e2e8f0;
+  --theme-separator-color: #e9ecef;
+  
+  --theme-button-primary: #667eea;
+  --theme-button-secondary: #f7fafc;
+  --theme-button-hover: #764ba2;
+  --theme-link-color: #3182ce;
+  
+  --theme-success-color: #38a169;
+  --theme-warning-color: #d69e2e;
+  --theme-error-color: #e53e3e;
+  --theme-info-color: #3182ce;
+  
+  --theme-map-bg: #f8f9fa;
+  --theme-legend-bg: #ffffff;
+  
+  --theme-nav-bg: #ffffff;
+  --theme-nav-text: #495057;
+  --theme-nav-hover: #667eea;
+  
+  --theme-news-bg: #f8f9fa;
+  --theme-news-card-bg: #ffffff;
+  
+  --theme-sidebar-bg: #ffffff;
+  --theme-sidebar-text: #495057;
+}
+
+/* Base theme styles */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--theme-primary-bg);
+  color: var(--theme-primary-text);
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+}
+
+/* Theme-aware scrollbar styles */
+/* Webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--theme-secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-muted-text);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-secondary-text);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--theme-muted-text) var(--theme-secondary-bg);
+}
+
+/* Theme toggle animation */
+.theme-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Theme-aware selection */
+::selection {
+  background-color: var(--theme-button-primary);
+  color: var(--theme-secondary-bg);
+}
+
+::-moz-selection {
+  background-color: var(--theme-button-primary);
+  color: var(--theme-secondary-bg);
+}

@@ -4,9 +4,11 @@ import { HighchartsChartModule } from 'highcharts-angular';
 
 // Services
 import { TranslationService } from '../../../services/translation.service';
+import { ThemeService } from '../../../services/theme.service';
 
 // Components
 import { NewsSectionComponent } from '../../news/news-section/news-section.component';
+import { ThemeToggleComponent } from '../../../components/theme-toggle/theme-toggle.component';
 
 // Highcharts + modules
 import * as Highcharts from 'highcharts/highmaps';
@@ -24,7 +26,7 @@ if (typeof Highcharts === 'object') {
 @Component({
   standalone: true,
   selector: 'app-senate-origin-map',
-  imports: [CommonModule, HighchartsChartModule, NewsSectionComponent],
+  imports: [CommonModule, HighchartsChartModule, NewsSectionComponent, ThemeToggleComponent],
   templateUrl: './senate-origin-map.component.html',
   styleUrls: ['./senate-origin-map.component.scss']
 })
@@ -289,7 +291,8 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly cdr: ChangeDetectorRef,
-    private readonly translationService: TranslationService
+    private readonly translationService: TranslationService,
+    private readonly themeService: ThemeService
   ) {
     this.loadMapData();
   }

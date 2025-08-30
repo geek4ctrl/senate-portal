@@ -2,7 +2,7 @@
 .news-section {
   width: 100%;
   padding: 1.5rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: var(--theme-news-bg);
   min-height: 100vh;
   box-sizing: border-box;
   
@@ -42,7 +42,7 @@
 .news-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a365d;
+  color: var(--theme-primary-text);
   margin: 0 0 1rem 0;
   display: flex;
   align-items: center;
@@ -64,7 +64,7 @@
 
 .news-subtitle {
   font-size: 1.125rem;
-  color: #4a5568;
+  color: var(--theme-secondary-text);
   line-height: 1.6;
   margin: 0;
   max-width: 600px;
@@ -124,10 +124,11 @@
 .search-input {
   width: 100%;
   padding: 12px 16px 12px 40px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--theme-border-color);
   border-radius: 8px;
   font-size: 1rem;
-  background: white;
+  background: var(--theme-secondary-bg);
+  color: var(--theme-primary-text);
   transition: all 0.3s ease;
   
   &:focus {
@@ -171,7 +172,7 @@
 
 .filter-label {
   font-weight: 600;
-  color: #2d3748;
+  color: var(--theme-primary-text);
   white-space: nowrap;
   
   @media (max-width: 767px) {
@@ -181,9 +182,10 @@
 
 .category-select {
   padding: 10px 12px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid var(--theme-border-color);
   border-radius: 6px;
-  background: white;
+  background: var(--theme-secondary-bg);
+  color: var(--theme-primary-text);
   font-size: 0.95rem;
   cursor: pointer;
   transition: border-color 0.3s ease;
@@ -205,8 +207,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 12px 20px;
-  background: #3182ce;
-  color: white;
+  background: var(--theme-button-primary);
+  color: var(--theme-secondary-bg);
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -215,7 +217,7 @@
   white-space: nowrap;
   
   &:hover:not(:disabled) {
-    background: #2c5aa0;
+    background: var(--theme-button-hover);
     transform: translateY(-1px);
   }
   
@@ -247,13 +249,13 @@
 
 .loading-spinner {
   font-size: 3rem;
-  color: #3182ce;
+  color: var(--theme-button-primary);
   margin-bottom: 1rem;
 }
 
 .loading-text {
   font-size: 1.125rem;
-  color: #4a5568;
+  color: var(--theme-secondary-text);
   margin: 0;
 }
 
@@ -269,13 +271,13 @@
 
 .error-icon {
   font-size: 3rem;
-  color: #e53e3e;
+  color: var(--theme-error-color);
   margin-bottom: 1rem;
 }
 
 .error-text {
   font-size: 1.125rem;
-  color: #e53e3e;
+  color: var(--theme-error-color);
   margin: 0 0 2rem 0;
 }
 
@@ -284,8 +286,8 @@
   align-items: center;
   gap: 0.5rem;
   padding: 12px 24px;
-  background: #e53e3e;
-  color: white;
+  background: var(--theme-error-color);
+  color: var(--theme-secondary-bg);
   border: none;
   border-radius: 8px;
   font-weight: 600;
@@ -293,7 +295,8 @@
   transition: background 0.3s ease;
   
   &:hover {
-    background: #c53030;
+    background: var(--theme-error-color);
+    opacity: 0.9;
   }
 }
 
@@ -309,13 +312,13 @@
 
 .no-news-icon {
   font-size: 3rem;
-  color: #a0aec0;
+  color: var(--theme-muted-text);
   margin-bottom: 1rem;
 }
 
 .no-news-text {
   font-size: 1.125rem;
-  color: #4a5568;
+  color: var(--theme-secondary-text);
   margin: 0;
 }
 
@@ -344,7 +347,7 @@
 
 // News Card
 .news-card {
-  background: white;
+  background: var(--theme-news-card-bg);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   overflow: hidden;
@@ -411,14 +414,14 @@
 .article-title {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #1a365d;
+  color: var(--theme-primary-text);
   margin: 0 0 0.75rem 0;
   line-height: 1.4;
   cursor: pointer;
   transition: color 0.3s ease;
   
   &:hover {
-    color: #3182ce;
+    color: var(--theme-link-color);
   }
 }
 
@@ -426,7 +429,7 @@
   display: flex;
   gap: 1rem;
   font-size: 0.875rem;
-  color: #718096;
+  color: var(--theme-muted-text);
   
   @media (max-width: 480px) {
     flex-direction: column;
@@ -442,7 +445,7 @@
 }
 
 .article-summary {
-  color: #4a5568;
+  color: var(--theme-secondary-text);
   line-height: 1.6;
   margin: 0 0 1rem 0;
   font-size: 0.95rem;
@@ -453,7 +456,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: #718096;
+  color: var(--theme-muted-text);
   margin-bottom: 1.5rem;
   font-style: italic;
 }
@@ -484,24 +487,24 @@
 }
 
 .read-more-btn {
-  background: #3182ce;
-  color: white;
+  background: var(--theme-button-primary);
+  color: var(--theme-secondary-bg);
   flex: 1;
   justify-content: center;
   
   &:hover {
-    background: #2c5aa0;
+    background: var(--theme-button-hover);
   }
 }
 
 .external-link-btn {
-  background: #f7fafc;
-  color: #4a5568;
-  border: 2px solid #e2e8f0;
+  background: var(--theme-button-secondary);
+  color: var(--theme-secondary-text);
+  border: 2px solid var(--theme-border-color);
   
   &:hover {
-    background: #edf2f7;
-    border-color: #cbd5e0;
+    background: var(--theme-button-secondary);
+    border-color: var(--theme-separator-color);
   }
 }
 
@@ -512,7 +515,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: var(--theme-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -538,7 +541,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--theme-modal-bg);
   border-radius: 12px;
   max-width: 800px;
   width: 100%;
@@ -573,7 +576,7 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 1.5rem 1.5rem 0 1.5rem;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--theme-separator-color);
   
   @media (max-width: 768px) {
     padding: 1rem 1rem 0 1rem;
@@ -587,7 +590,7 @@
 .modal-title {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #1a365d;
+  color: var(--theme-primary-text);
   margin: 0;
   line-height: 1.4;
   flex: 1;
@@ -602,15 +605,15 @@
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #a0aec0;
+  color: var(--theme-muted-text);
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 6px;
   transition: all 0.3s ease;
   
   &:hover {
-    background: #f7fafc;
-    color: #4a5568;
+    background: var(--theme-button-secondary);
+    color: var(--theme-secondary-text);
   }
 }
 
