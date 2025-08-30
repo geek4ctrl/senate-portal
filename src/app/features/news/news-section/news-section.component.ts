@@ -43,10 +43,30 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadNews();
+    this.enableScrolling();
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+    this.disableScrolling();
+  }
+
+  /**
+   * Enable proper scrolling behavior for the news section
+   */
+  private enableScrolling(): void {
+    // Ensure body can scroll when news section is active
+    document.body.style.overflowY = 'auto';
+    (document.body.style as any).webkitOverflowScrolling = 'touch';
+  }
+
+  /**
+   * Clean up scrolling behavior when component is destroyed
+   */
+  private disableScrolling(): void {
+    // Reset body overflow when component is destroyed
+    document.body.style.overflowY = '';
+    (document.body.style as any).webkitOverflowScrolling = '';
   }
 
   /**
@@ -147,7 +167,9 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
   openArticle(article: NewsArticle): void {
     this.selectedArticle = article;
     this.showModal = true;
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    // Prevent background scrolling but preserve news section scrolling
+    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
   }
 
   /**
@@ -156,7 +178,10 @@ export class NewsSectionComponent implements OnInit, OnDestroy {
   closeModal(): void {
     this.selectedArticle = null;
     this.showModal = false;
-    document.body.style.overflow = 'auto'; // Restore scrolling
+    // Restore scrolling
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = 'auto';
+    (document.body.style as any).webkitOverflowScrolling = 'touch';
   }
 
   /**

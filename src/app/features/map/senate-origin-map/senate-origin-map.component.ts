@@ -823,6 +823,10 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     this.showMobileLegend = false; // Close mobile legend
   }
 
+  navigateToMap(): void {
+    this.setActiveTab('map');
+  }
+
   // Constitution statistics methods
   getTotalSenators(): number {
     return this.senatorsData.length;

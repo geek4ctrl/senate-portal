@@ -2,7 +2,10 @@
   <!-- Top Navigation Bar -->
   <div class="top-nav">
     <div class="nav-left">
-      <h1 class="app-title">
+      <h1 class="app-title" 
+          (click)="navigateToMap()" 
+          [title]="'Click to go to Map'"
+          [attr.aria-label]="'Navigate to Map tab'">
         <i class="fas fa-university animate-pulse"></i>
         {{ 'Senat RDC' }}
       </h1>
@@ -199,7 +202,7 @@
     </div>
   </div>
 
-  <div class="main-layout">
+  <div class="main-layout" [class.news-active]="activeTab === 'news'">
     <!-- Map Section -->
     <div class="map-section" *ngIf="activeTab === 'map'">
       <div id="origin-map-host">
