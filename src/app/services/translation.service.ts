@@ -131,7 +131,13 @@ export class TranslationService {
       'analytics.title': 'Analytics Dashboard',
       'analytics.subtitle': 'Statistical insights and data visualization for Senate representation',
       'analytics.comingSoon': 'Coming Soon',
-      'analytics.comingSoonDescription': 'Advanced analytics and data visualization features are currently in development. Stay tuned for comprehensive insights into Senate representation patterns, demographic analysis, and interactive charts.'
+      'analytics.comingSoonDescription': 'Advanced analytics and data visualization features are currently in development. Stay tuned for comprehensive insights into Senate representation patterns, demographic analysis, and interactive charts.',
+      'analytics.plannedFeatures': 'Planned Analytics Features',
+      'analytics.plannedFeaturesDescription': 'Our analytics dashboard is under development and will feature comprehensive data visualization tools to help you better understand Senate representation patterns.',
+      'analytics.feature.geographic': 'Geographic Distribution',
+      'analytics.feature.demographics': 'Demographic Analysis',
+      'analytics.feature.composition': 'Senate Composition',
+      'analytics.feature.trends': 'Historical Trends'
     },
     fr: {
       // Navigation
@@ -244,7 +250,13 @@ export class TranslationService {
       'analytics.title': 'Tableau de Bord Analytique',
       'analytics.subtitle': 'Aperçus statistiques et visualisation des données pour la représentation du Sénat',
       'analytics.comingSoon': 'Bientôt Disponible',
-      'analytics.comingSoonDescription': 'Les fonctionnalités avancées d\'analyse et de visualisation des données sont actuellement en développement. Restez à l\'écoute pour des aperçus complets sur les tendances de représentation du Sénat, l\'analyse démographique et les graphiques interactifs.'
+      'analytics.comingSoonDescription': 'Les fonctionnalités avancées d\'analyse et de visualisation des données sont actuellement en développement. Restez à l\'écoute pour des aperçus complets sur les tendances de représentation du Sénat, l\'analyse démographique et les graphiques interactifs.',
+      'analytics.plannedFeatures': 'Fonctionnalités Prévue',
+      'analytics.plannedFeaturesDescription': 'Notre tableau de bord analytique est en cours de développement et comportera des outils complets de visualisation des données pour vous aider à mieux comprendre les tendances de représentation du Sénat.',
+      'analytics.feature.geographic': 'Distribution Géographique',
+      'analytics.feature.demographics': 'Analyse Démographique',
+      'analytics.feature.composition': 'Composition du Sénat',
+      'analytics.feature.trends': 'Tendances Historiques'
     },
     ln: {
       // Navigation
@@ -357,7 +369,13 @@ export class TranslationService {
       'analytics.title': 'Etando ya Makanisi',
       'analytics.subtitle': 'Makanisi ya statistiques mpe botali ya ba donné mpo na représentation ya Sénat',
       'analytics.comingSoon': 'Ekoya Kala Mingi Te',
-      'analytics.comingSoonDescription': 'Misala ya kosalela makanisi ya ba donné mpe botali ezali na kati ya bosalemi. Zala na boyokani mpo na koyeba makambo ya représentation ya Sénat, makanisi ya démographie mpe ba graphique ya interaction.'
+      'analytics.comingSoonDescription': 'Misala ya kosalela makanisi ya ba donné mpe botali ezali na kati ya bosalemi. Zala na boyokani mpo na koyeba makambo ya représentation ya Sénat, makanisi ya démographie mpe ba graphique ya interaction.',
+      'analytics.plannedFeatures': 'Makanisi oyo Ezali Kokoma',
+      'analytics.plannedFeaturesDescription': 'Etando na makanisi ezali na ngala mpe ekozala na boutil ya kosala ba graphique mpona kosalisa yo koyeba malamu bizaleli ya Sénat.',
+      'analytics.feature.geographic': 'Bisika ya Geographique',
+      'analytics.feature.demographics': 'Analyses ya Demographie',
+      'analytics.feature.composition': 'Bokomisa ya Sénat',
+      'analytics.feature.trends': 'Mizala ya Kala'
     },
     sw: {
       // Navigation
@@ -470,7 +488,13 @@ export class TranslationService {
       'analytics.title': 'Dashibodi ya Uchambuzi',
       'analytics.subtitle': 'Ufahamu wa kihesabati na uonyeshaji wa data wa uwakilishi wa Seneti',
       'analytics.comingSoon': 'Inakuja Hivi Karibuni',
-      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.'
+      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.',
+      'analytics.plannedFeatures': 'Vipengele Vilivyopangwa',
+      'analytics.plannedFeaturesDescription': 'Dashibodi yetu ya uchambuzi iko katika maendeleo na itakuwa na zana za uonyeshaji wa data kwa kusaidia kuelewa vizuri mifano ya uwakilishi wa Seneti.',
+      'analytics.feature.geographic': 'Usambazaji wa Kijiografia',
+      'analytics.feature.demographics': 'Uchambuzi wa Demografia',
+      'analytics.feature.composition': 'Uundaji wa Seneti',
+      'analytics.feature.trends': 'Mwelekeo wa Kihistoria'
     },
     lu: {
       // Navigation
@@ -583,7 +607,13 @@ export class TranslationService {
       'analytics.title': 'Butungulushi bua Dikanda',
       'analytics.subtitle': 'Ufahamu wa kihesabati ne koyekola kati ya data mpo na koyekola kati ya bato ba Senat',
       'analytics.comingSoon': 'Ebandeli Kala Mingi Te',
-      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.'
+      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.',
+      'analytics.plannedFeatures': 'Mikanda eye Ebandeli',
+      'analytics.plannedFeaturesDescription': 'Butungulushi bua dikanda bunoza kala mpe ekozala na bokonzi milai mpona kosalisa yo koyeba malamu bizaleli ya Sénat.',
+      'analytics.feature.geographic': 'Bisika ya Geographie',
+      'analytics.feature.demographics': 'Analyses ya Demographie',
+      'analytics.feature.composition': 'Bokomisa ya Sénat',
+      'analytics.feature.trends': 'Mizala ya Kala'
     },
     kg: {
       // Navigation
@@ -696,7 +726,13 @@ export class TranslationService {
       'analytics.title': 'Dikanda dia Kusoluka',
       'analytics.subtitle': 'Ufahamu wa kihesabati ne koyekola kati ya data mpo na koyekola kati ya bato ba Senat',
       'analytics.comingSoon': 'Ebandeli Kala Mingi Te',
-      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.'
+      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.',
+      'analytics.plannedFeatures': 'Mikanda eye Ebandeli',
+      'analytics.plannedFeaturesDescription': 'Dikanda dia kusoluka dia bunoza kala mpe ekozala na bokonzi milai mpona kosalisa yo koyeba malamu bizaleli ya Sénat.',
+      'analytics.feature.geographic': 'Bisika ya Geographie',
+      'analytics.feature.demographics': 'Analyses ya Demographie',
+      'analytics.feature.composition': 'Bokomisa ya Sénat',
+      'analytics.feature.trends': 'Mizala ya Kala'
     },
   };
 

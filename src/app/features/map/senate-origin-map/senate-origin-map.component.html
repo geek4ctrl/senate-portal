@@ -366,6 +366,39 @@
             {{ translate('analytics.subtitle') || 'Statistical insights and data visualization for Senate representation' }}
           </p>
         </div>
+
+        <div class="analytics-content">
+          <div class="info-card">
+            <div class="info-icon">
+              <i class="fas fa-lightbulb animate-pulse-subtle"></i>
+            </div>
+            <h3 class="info-title">{{ translate('analytics.plannedFeatures') || 'Planned Analytics Features' }}</h3>
+            <p class="info-description">
+              {{ translate('analytics.plannedFeaturesDescription') || 'Our analytics dashboard is under development and will feature comprehensive data visualization tools to help you better understand Senate representation patterns.' }}
+            </p>
+            
+            <div class="features-grid">
+              <div class="feature-item">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>{{ translate('analytics.feature.geographic') || 'Geographic Distribution' }}</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-users"></i>
+                <span>{{ translate('analytics.feature.demographics') || 'Demographic Analysis' }}</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>{{ translate('analytics.feature.composition') || 'Senate Composition' }}</span>
+              </div>
+              <div class="feature-item">
+                <i class="fas fa-history"></i>
+                <span>{{ translate('analytics.feature.trends') || 'Historical Trends' }}</span>
+              </div>
+            </div>
+            
+            <!-- Coming soon note removed as per user request -->
+          </div>
+        </div>
       </div>
     </div>
 
