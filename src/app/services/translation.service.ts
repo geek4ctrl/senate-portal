@@ -125,7 +125,13 @@ export class TranslationService {
       'news.timeAgo.minutes': 'minutes ago',
       'news.timeAgo.hours': 'hours ago',
       'news.timeAgo.days': 'days ago',
-      'news.timeAgo.justNow': 'Just now'
+      'news.timeAgo.justNow': 'Just now',
+      
+      // Analytics section
+      'analytics.title': 'Analytics Dashboard',
+      'analytics.subtitle': 'Statistical insights and data visualization for Senate representation',
+      'analytics.comingSoon': 'Coming Soon',
+      'analytics.comingSoonDescription': 'Advanced analytics and data visualization features are currently in development. Stay tuned for comprehensive insights into Senate representation patterns, demographic analysis, and interactive charts.'
     },
     fr: {
       // Navigation
@@ -232,7 +238,13 @@ export class TranslationService {
       'news.timeAgo.minutes': 'il y a minutes',
       'news.timeAgo.hours': 'il y a heures',
       'news.timeAgo.days': 'il y a jours',
-      'news.timeAgo.justNow': 'À l\'instant'
+      'news.timeAgo.justNow': 'À l\'instant',
+      
+      // Analytics section
+      'analytics.title': 'Tableau de Bord Analytique',
+      'analytics.subtitle': 'Aperçus statistiques et visualisation des données pour la représentation du Sénat',
+      'analytics.comingSoon': 'Bientôt Disponible',
+      'analytics.comingSoonDescription': 'Les fonctionnalités avancées d\'analyse et de visualisation des données sont actuellement en développement. Restez à l\'écoute pour des aperçus complets sur les tendances de représentation du Sénat, l\'analyse démographique et les graphiques interactifs.'
     },
     ln: {
       // Navigation
@@ -339,7 +351,13 @@ export class TranslationService {
       'news.timeAgo.minutes': 'minutes eleki',
       'news.timeAgo.hours': 'bangonga eleki',
       'news.timeAgo.days': 'mikolo eleki',
-      'news.timeAgo.justNow': 'Sikoyo'
+      'news.timeAgo.justNow': 'Sikoyo',
+      
+      // Analytics section
+      'analytics.title': 'Etando ya Makanisi',
+      'analytics.subtitle': 'Makanisi ya statistiques mpe botali ya ba donné mpo na représentation ya Sénat',
+      'analytics.comingSoon': 'Ekoya Kala Mingi Te',
+      'analytics.comingSoonDescription': 'Misala ya kosalela makanisi ya ba donné mpe botali ezali na kati ya bosalemi. Zala na boyokani mpo na koyeba makambo ya représentation ya Sénat, makanisi ya démographie mpe ba graphique ya interaction.'
     },
     sw: {
       // Navigation
@@ -446,7 +464,13 @@ export class TranslationService {
       'news.timeAgo.minutes': 'dakika zilizopita',
       'news.timeAgo.hours': 'masaa yaliyopita',
       'news.timeAgo.days': 'siku zilizopita',
-      'news.timeAgo.justNow': 'Sasa hivi'
+      'news.timeAgo.justNow': 'Sasa hivi',
+      
+      // Analytics section
+      'analytics.title': 'Dashibodi ya Uchambuzi',
+      'analytics.subtitle': 'Ufahamu wa kihesabati na uonyeshaji wa data wa uwakilishi wa Seneti',
+      'analytics.comingSoon': 'Inakuja Hivi Karibuni',
+      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.'
     },
     lu: {
       // Navigation
@@ -553,7 +577,13 @@ export class TranslationService {
       'news.timeAgo.minutes': 'miniti yisenga',
       'news.timeAgo.hours': 'masaa asenga',
       'news.timeAgo.days': 'maloba asenga',
-      'news.timeAgo.justNow': 'Lelu kashesa'
+      'news.timeAgo.justNow': 'Lelu kashesa',
+      
+      // Analytics section
+      'analytics.title': 'Butungulushi bua Dikanda',
+      'analytics.subtitle': 'Ufahamu wa kihesabati ne koyekola kati ya data mpo na koyekola kati ya bato ba Senat',
+      'analytics.comingSoon': 'Ebandeli Kala Mingi Te',
+      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.'
     },
     kg: {
       // Navigation
@@ -660,7 +690,13 @@ export class TranslationService {
       'news.timeAgo.minutes': 'miniti yavutuka',
       'news.timeAgo.hours': 'mawa mavutuka',
       'news.timeAgo.days': 'malumbu mavutuka',
-      'news.timeAgo.justNow': 'Lelu yayuma'
+      'news.timeAgo.justNow': 'Lelu yayuma',
+      
+      // Analytics section
+      'analytics.title': 'Dikanda dia Kusoluka',
+      'analytics.subtitle': 'Ufahamu wa kihesabati ne koyekola kati ya data mpo na koyekola kati ya bato ba Senat',
+      'analytics.comingSoon': 'Ebandeli Kala Mingi Te',
+      'analytics.comingSoonDescription': 'Vipengele vya juu vya uchambuzi na uonyeshaji wa data viko katika maendeleo. Endelea kutufuatilia kwa ufahamu wa kina kuhusu mifano ya uwakilishi wa Seneti, uchambuzi wa demografia, na chati za mwingiliano.'
     },
   };
 

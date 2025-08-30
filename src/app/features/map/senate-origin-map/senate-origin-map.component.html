@@ -354,6 +354,21 @@
       </div>
     </div>
 
+    <!-- Analytics Section -->
+    <div class="analytics-section" *ngIf="activeTab === 'analytics'">
+      <div class="analytics-container">
+        <div class="analytics-header">
+          <h2 class="analytics-title">
+            <i class="fas fa-chart-bar animate-pulse"></i>
+            {{ translate('analytics.title') || 'Analytics Dashboard' }}
+          </h2>
+          <p class="analytics-subtitle">
+            {{ translate('analytics.subtitle') || 'Statistical insights and data visualization for Senate representation' }}
+          </p>
+        </div>
+      </div>
+    </div>
+
     <!-- News Section -->
     <div class="news-section-container" *ngIf="activeTab === 'news'">
       <app-news-section></app-news-section>
