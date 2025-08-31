@@ -205,7 +205,19 @@
   <div class="main-layout" [class.news-active]="activeTab === 'news'">
     <!-- Map Section -->
     <div class="map-section" *ngIf="activeTab === 'map'">
-      <div id="origin-map-host">
+      <!-- Map Sub-tabs -->
+      <div class="map-sub-tabs">
+        <button class="map-sub-tab" [class.active]="activeMapSubTab === 'map'" (click)="activeMapSubTab = 'map'">
+          <i class="fas fa-map-marked-alt"></i>
+          {{ translate('nav.map') || 'Map' }}
+        </button>
+        <button class="map-sub-tab" [class.active]="activeMapSubTab === 'list'" (click)="activeMapSubTab = 'list'">
+          <i class="fas fa-list"></i>
+          {{ translate('sidebar.senators') || 'Senators' }}
+        </button>
+      </div>
+      
+      <div id="origin-map-host" *ngIf="activeMapSubTab === 'map'">
         <div class="map-container" 
              (click)="onMapContainerClick($event)"
              (touchstart)="onTouchStart($event)"
@@ -256,6 +268,81 @@
 
           <div *ngIf="mapLayerData && !isMapReady" class="loading-overlay">
             <p>{{ translate('loading.initializing') }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Senators List View -->
+      <div class="senators-list-view" *ngIf="activeMapSubTab === 'list'">
+        <!-- Senators List Header -->
+        <div class="sidebar-header">
+          <h3 class="sidebar-title">
+            <i class="fas fa-users animate-fade-in"></i>
+            {{ translate('sidebar.senators') || 'Senators' }}
+          </h3>
+          <div class="filter-container">
+            <i class="fas fa-search filter-icon animate-pulse-subtle"></i>
+            <input
+              type="text"
+              class="filter-input"
+              [placeholder]="translate('sidebar.filterPlaceholder') || 'Filter Senators...'"
+              [value]="filterText"
+              (input)="onFilterChange($event)">
+          </div>
+          
+          <!-- Sorting Controls -->
+          <div class="sort-container">
+            <label class="sort-label">{{ translate('sidebar.sortBy') || 'Sort by' }}:</label>
+            <div class="sort-controls">
+              <select 
+                class="sort-select"
+                [value]="sortBy"
+                (change)="onSortChange($any($event.target).value)"
+                [attr.aria-label]="translate('sidebar.sortBy') || 'Sort by'">
+                <option value="name">{{ translate('sidebar.sortName') || 'Name' }}</option>
+                <option value="province">{{ translate('sidebar.sortProvince') || 'Province' }}</option>
+                <option value="party">{{ translate('sidebar.sortParty') || 'Party' }}</option>
+              </select>
+              <button 
+                class="sort-direction-btn"
+                (click)="onSortChange(sortBy)"
+                [attr.aria-label]="sortDirection === 'asc' ? (translate('sidebar.sortAsc') || 'A-Z') : (translate('sidebar.sortDesc') || 'Z-A')"
+                [title]="sortDirection === 'asc' ? (translate('sidebar.sortAsc') || 'A-Z') : (translate('sidebar.sortDesc') || 'Z-A')">
+                <i class="fas" [class.fa-sort-alpha-down]="sortDirection === 'asc'" [class.fa-sort-alpha-up]="sortDirection === 'desc'"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Senators Count -->
+        <div class="senators-count">
+          {{ filteredSenators.length }} {{ translate('sidebar.senatorsFound') || 'senators found' }}
+        </div>
+
+        <!-- Enhanced Senators List -->
+        <div class="senators-list-container">
+          <button *ngFor="let senator of filteredSenators; trackBy: getSenatorId"
+                  class="senator-list-item"
+                  [class.active]="selectedSenatorId === senator.fullName"
+                  (click)="selectSenator(senator)"
+                  [attr.aria-label]="'Select senator ' + senator.fullName">
+
+            <img
+              [src]="senator.photo || 'assets/images/default-senator.svg'"
+              [alt]="senator.fullName"
+              (error)="onImageError($event)"
+              class="senator-avatar">
+
+            <div class="senator-details">
+              <h4 class="senator-full-name">{{ senator.fullName }}</h4>
+              <p class="senator-province">{{ senator.originProvince }}</p>
+            </div>
+
+            <div class="senator-status"></div>
+          </button>
+
+          <div *ngIf="filteredSenators.length === 0" class="no-results">
+            {{ translate('sidebar.noResults') || 'No senators found matching your search.' }}
           </div>
         </div>
       </div>
@@ -407,80 +494,7 @@
       <app-news-section></app-news-section>
     </div>
 
-    <!-- Enhanced Senators Sidebar -->
-    <div class="senators-sidebar" *ngIf="activeTab === 'map'">
-      <!-- Sidebar Header -->
-      <div class="sidebar-header">
-        <h3 class="sidebar-title">
-          <i class="fas fa-users animate-fade-in"></i>
-          {{ translate('sidebar.senators') || 'Senators' }}
-        </h3>
-        <div class="filter-container">
-          <i class="fas fa-search filter-icon animate-pulse-subtle"></i>
-          <input
-            type="text"
-            class="filter-input"
-            [placeholder]="translate('sidebar.filterPlaceholder') || 'Filter Senators...'"
-            [value]="filterText"
-            (input)="onFilterChange($event)">
-        </div>
-        
-        <!-- Sorting Controls -->
-        <div class="sort-container">
-          <label class="sort-label">{{ translate('sidebar.sortBy') || 'Sort by' }}:</label>
-          <div class="sort-controls">
-            <select 
-              class="sort-select"
-              [value]="sortBy"
-              (change)="onSortChange($any($event.target).value)"
-              [attr.aria-label]="translate('sidebar.sortBy') || 'Sort by'">
-              <option value="name">{{ translate('sidebar.sortName') || 'Name' }}</option>
-              <option value="province">{{ translate('sidebar.sortProvince') || 'Province' }}</option>
-              <option value="party">{{ translate('sidebar.sortParty') || 'Party' }}</option>
-            </select>
-            <button 
-              class="sort-direction-btn"
-              (click)="onSortChange(sortBy)"
-              [attr.aria-label]="sortDirection === 'asc' ? (translate('sidebar.sortAsc') || 'A-Z') : (translate('sidebar.sortDesc') || 'Z-A')"
-              [title]="sortDirection === 'asc' ? (translate('sidebar.sortAsc') || 'A-Z') : (translate('sidebar.sortDesc') || 'Z-A')">
-              <i class="fas" [class.fa-sort-alpha-down]="sortDirection === 'asc'" [class.fa-sort-alpha-up]="sortDirection === 'desc'"></i>
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <!-- Senators Count -->
-      <div class="senators-count">
-        {{ filteredSenators.length }} {{ translate('sidebar.senatorsFound') || 'senators found' }}
-      </div>
-
-      <!-- Enhanced Senators List -->
-      <div class="senators-list-container">
-        <button *ngFor="let senator of filteredSenators; trackBy: getSenatorId"
-                class="senator-list-item"
-                [class.active]="selectedSenatorId === senator.fullName"
-                (click)="selectSenator(senator)"
-                [attr.aria-label]="'Select senator ' + senator.fullName">
-
-          <img
-            [src]="senator.photo || 'assets/images/default-senator.svg'"
-            [alt]="senator.fullName"
-            (error)="onImageError($event)"
-            class="senator-avatar">
-
-          <div class="senator-details">
-            <h4 class="senator-full-name">{{ senator.fullName }}</h4>
-            <p class="senator-province">{{ senator.originProvince }}</p>
-          </div>
-
-          <div class="senator-status"></div>
-        </button>
-
-        <div *ngIf="filteredSenators.length === 0" class="no-results">
-          {{ translate('sidebar.noResults') || 'No senators found matching your search.' }}
-        </div>
-      </div>
-    </div>
   </div>
   
   <!-- Mobile Bottom Navigation Bar -->

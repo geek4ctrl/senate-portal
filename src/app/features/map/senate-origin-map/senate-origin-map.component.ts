@@ -43,6 +43,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
 
   // Navigation tab state
   activeTab: 'map' | 'analytics' | 'constitution' | 'news' = 'map';
+  activeMapSubTab: 'map' | 'list' = 'map'; // New property for map sub-tabs
   
   // Mobile menu state
   isMobileView = false;
@@ -66,6 +67,79 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   // Sorting properties
   sortBy: 'name' | 'province' | 'party' = 'province';
   sortDirection: 'asc' | 'desc' = 'asc';
+
+  // Chart options
+  chartOptions: Highcharts.Options = {
+    chart: {
+      map: undefined // Will be set when map data is loaded
+    },
+    title: {
+      text: 'Democratic Republic of Congo - Senate Map'
+    },
+    subtitle: {
+      text: 'Provincial distribution of Senate members and locations'
+    },
+    mapNavigation: {
+      enabled: true,
+      buttonOptions: {
+        verticalAlign: 'bottom'
+      }
+    },
+    colorAxis: {
+      min: 0,
+      max: 8, // Maximum senators (Kinshasa has 8)
+      stops: [
+        [0, '#E8F4FD'],     // Light blue for 0 senators
+        [0.2, '#BBDEFB'],   // Lighter blue for 1-2 senators
+        [0.4, '#90CAF9'],   // Medium light blue for 2-3 senators
+        [0.6, '#64B5F6'],   // Medium blue for 3-4 senators
+        [0.8, '#42A5F5'],   // Medium dark blue for 4-6 senators
+        [1, '#1E88E5']      // Dark blue for 6-8 senators
+      ],
+      labels: {
+        format: '{value}'
+      }
+    },
+    legend: {
+      enabled: true,
+      title: {
+        text: this.translate('map.senatorsPerProvince') || 'Senators per Province',
+        style: {
+          color: '#495057',
+          fontWeight: '600',
+          fontSize: '12px'
+        }
+      },
+      align: 'left',
+      verticalAlign: 'bottom',
+      floating: true,
+      layout: 'horizontal', // Changed to horizontal for better mobile fit
+      valueDecimals: 0,
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderColor: '#e9ecef',
+      borderWidth: 1,
+      borderRadius: 8,
+      shadow: true,
+      itemStyle: {
+        fontSize: '10px',
+        fontWeight: '500'
+      },
+      symbolHeight: 12,
+      symbolWidth: 60, // Make the color bar wider but shorter
+      symbolPadding: 2,
+      padding: 8,
+      margin: 10
+    },
+    tooltip: {
+      enabled: true,
+      headerFormat: '',
+      pointFormat: '<b>{point.name}</b><br/>Senators: <b>{point.value}</b>',
+      style: {
+        fontSize: '13px'
+      }
+    },
+    series: []
+  };
 
   // Touch gesture detection for mobile
   private touchStartTime = 0;
@@ -217,78 +291,6 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     console.log('Chart instance captured');
   };
 
-  chartOptions: Highcharts.Options = {
-    chart: {
-      map: undefined // Will be set when map data is loaded
-    },
-    title: {
-      text: 'Democratic Republic of Congo - Senate Map'
-    },
-    subtitle: {
-      text: 'Provincial distribution of Senate members and locations'
-    },
-    mapNavigation: {
-      enabled: true,
-      buttonOptions: {
-        verticalAlign: 'bottom'
-      }
-    },
-    colorAxis: {
-      min: 0,
-      max: 8, // Maximum senators (Kinshasa has 8)
-      stops: [
-        [0, '#E8F4FD'],     // Light blue for 0 senators
-        [0.2, '#BBDEFB'],   // Lighter blue for 1-2 senators
-        [0.4, '#90CAF9'],   // Medium light blue for 2-3 senators
-        [0.6, '#64B5F6'],   // Medium blue for 3-4 senators
-        [0.8, '#42A5F5'],   // Medium dark blue for 4-6 senators
-        [1, '#1E88E5']      // Dark blue for 6-8 senators
-      ],
-      labels: {
-        format: '{value}'
-      }
-    },
-    legend: {
-      enabled: true,
-      title: {
-        text: this.translate('map.senatorsPerProvince') || 'Senators per Province',
-        style: {
-          color: '#495057',
-          fontWeight: '600',
-          fontSize: '12px'
-        }
-      },
-      align: 'left',
-      verticalAlign: 'bottom',
-      floating: true,
-      layout: 'horizontal', // Changed to horizontal for better mobile fit
-      valueDecimals: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      borderColor: '#e9ecef',
-      borderWidth: 1,
-      borderRadius: 8,
-      shadow: true,
-      itemStyle: {
-        fontSize: '10px',
-        fontWeight: '500'
-      },
-      symbolHeight: 12,
-      symbolWidth: 60, // Make the color bar wider but shorter
-      symbolPadding: 2,
-      padding: 8,
-      margin: 10
-    },
-    tooltip: {
-      enabled: true,
-      headerFormat: '',
-      pointFormat: '<b>{point.name}</b><br/>Senators: <b>{point.value}</b>',
-      style: {
-        fontSize: '13px'
-      }
-    },
-    series: []
-  };
-
   constructor(
     private readonly cdr: ChangeDetectorRef,
     private readonly translationService: TranslationService,
@@ -311,6 +313,11 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     this.preventBodyScroll(false);
     // Remove resize listener
     window.removeEventListener('resize', this.onWindowResize);
+  }
+
+  // Method to set active map sub-tab
+  setActiveMapSubTab(tab: 'map' | 'list'): void {
+    this.activeMapSubTab = tab;
   }
 
   // Senators list methods
