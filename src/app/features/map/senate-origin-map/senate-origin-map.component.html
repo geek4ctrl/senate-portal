@@ -482,6 +482,26 @@
       </div>
     </div>
   </div>
+  
+  <!-- Mobile Bottom Navigation Bar -->
+  <div class="mobile-bottom-nav" *ngIf="isMobileView">
+    <button class="mobile-bottom-nav-item" [class.active]="activeTab === 'map'" (click)="setActiveTab('map')">
+      <i class="fas fa-map-marked-alt"></i>
+      <span>{{ translate('nav.map') || 'Map' }}</span>
+    </button>
+    <button class="mobile-bottom-nav-item" [class.active]="activeTab === 'analytics'" (click)="setActiveTab('analytics')">
+      <i class="fas fa-chart-bar"></i>
+      <span>{{ translate('nav.analytics') || 'Analytics' }}</span>
+    </button>
+    <button class="mobile-bottom-nav-item" [class.active]="activeTab === 'constitution'" (click)="setActiveTab('constitution')">
+      <i class="fas fa-scroll"></i>
+      <span>{{ translate('nav.constitution') || 'Constitution' }}</span>
+    </button>
+    <button class="mobile-bottom-nav-item" [class.active]="activeTab === 'news'" (click)="setActiveTab('news')">
+      <i class="fas fa-newspaper"></i>
+      <span>{{ translate('nav.news') || 'News' }}</span>
+    </button>
+  </div>
 </div>
 
 <!-- Modal for showing senators per region -->

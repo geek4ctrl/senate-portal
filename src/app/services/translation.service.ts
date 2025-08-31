@@ -27,7 +27,10 @@ export class TranslationService {
       'nav.analytics': 'Analytics',
       'nav.constitution': 'Constitution',
       'nav.news': 'News',
-
+      'nav.explore': 'Explore',
+      'nav.chat': 'Chat',
+      'nav.profile': 'Profile',
+      'nav.discover': 'Discover',
       // Language switcher
       'language.select': 'Language',
 
@@ -146,7 +149,10 @@ export class TranslationService {
       'nav.analytics': 'Analytiques',
       'nav.constitution': 'Constitution',
       'nav.news': 'Actualités',
-
+      'nav.explore': 'Explorer',
+      'nav.chat': 'Discuter',
+      'nav.profile': 'Profil',
+      'nav.discover': 'Découvrir',
       // Language switcher
       'language.select': 'Langue',
 
@@ -265,7 +271,10 @@ export class TranslationService {
       'nav.analytics': 'Makanisi',
       'nav.constitution': 'Mobeko',
       'nav.news': 'Nsango',
-
+      'nav.explore': 'Kotala',
+      'nav.chat': 'Kosolola',
+      'nav.profile': 'Profil',
+      'nav.discover': 'Kubuka',
       // Language switcher
       'language.select': 'Lokota',
 
@@ -384,7 +393,10 @@ export class TranslationService {
       'nav.analytics': 'Uchambuzi',
       'nav.constitution': 'Katiba',
       'nav.news': 'Habari',
-
+      'nav.explore': 'Chunguza',
+      'nav.chat': 'Ongea',
+      'nav.profile': 'Wasifu',
+      'nav.discover': 'Kuchunguza',
       // Language switcher
       'language.select': 'Lugha',
 
@@ -503,7 +515,10 @@ export class TranslationService {
       'nav.analytics': 'Butungulushi',
       'nav.constitution': 'Mubengele',
       'nav.news': 'Makosa',
-
+      'nav.explore': 'Tala',
+      'nav.chat': 'Kulungakanya',
+      'nav.profile': 'Bualu',
+      'nav.discover': 'Tala',
       // Language switcher
       'language.select': 'Luloba',
 
@@ -622,7 +637,10 @@ export class TranslationService {
       'nav.analytics': 'Kusoluka',
       'nav.constitution': 'Kimbangelo',
       'nav.news': 'Madisa',
-
+      'nav.explore': 'Tala',
+      'nav.chat': 'Tuba',
+      'nav.profile': 'Lukanu',
+      'nav.discover': 'Tala',
       // Language switcher
       'language.select': 'Kidimbu',
 
