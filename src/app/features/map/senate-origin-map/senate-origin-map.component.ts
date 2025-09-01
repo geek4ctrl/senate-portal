@@ -469,12 +469,8 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   }
 
   // Helper methods for the profile card
-  getRandomStat(type: 'distance' | 'rating'): string {
-    if (type === 'distance') {
-      return (Math.floor(Math.random() * 100) + 50).toString();
-    } else {
-      return (Math.random() * 2 + 3).toFixed(1);
-    }
+  getRandomStat(type: 'followers'): string {
+    return (Math.floor(Math.random() * 400) + 100).toString();
   }
 
   private highlightSenatorProvince(province: string): void {

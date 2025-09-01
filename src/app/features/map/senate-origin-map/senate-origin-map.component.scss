@@ -1677,6 +1677,133 @@
   font-style: italic;
 }
 
+/* Modern Senator Profile Cards */
+.senators-grid-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 100%;
+}
+
+.senator-profile-card {
+  background: #232323;
+  color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  width: 100%;
+  min-height: 260px;
+  max-height: 260px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.senator-profile-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+.senator-profile-card.active {
+  border: 2px solid #667eea;
+  transform: translateY(-5px);
+}
+
+.senator-profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.senator-profile-card:hover .senator-profile-img {
+  transform: scale(1.05);
+  border-color: #667eea;
+}
+
+.senator-profile-name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+}
+
+.verified-badge {
+  color: #667eea;
+  margin-left: 8px;
+  font-size: 18px;
+}
+
+.senator-profile-bio {
+  color: #adb5bd;
+  font-size: 12px;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.senator-profile-stats {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.senator-profile-stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.senator-profile-stat-icon {
+  color: #667eea;
+  font-size: 18px;
+}
+
+.senator-profile-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.senator-profile-follow {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: auto;
+  font-size: 14px;
+}
+
+.senator-profile-follow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.senator-profile-follow:active {
+  transform: translateY(0);
+}
+
 .features-grid {
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
@@ -1964,14 +2091,7 @@
 .profile-modal-body .stat{text-align:center;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);padding:16px 12px;border-radius:12px;flex:1;position:relative}
 .profile-modal-body .stat-value{font-size:20px;font-weight:700;display:block;color:#2c3e50;margin-bottom:6px}
 .profile-modal-body .stat-label{font-size:12px;color:#6c757d;font-weight:600;text-transform:uppercase;letter-spacing:0.5px}
-.profile-modal-body .profile-timeline{margin-top:20px}
-.profile-modal-body .timeline-header{font-size:13px;font-weight:700;margin-bottom:16px;color:#495057;text-transform:uppercase;letter-spacing:0.5px}
-.profile-modal-body .timeline-bars{display:flex;height:10px;border-radius:5px;overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,0.1);margin-bottom:10px}
-.profile-modal-body .timeline-bar{flex:1}
-.profile-modal-body .timeline-bar.blue{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)}
-.profile-modal-body .timeline-bar.green{background:linear-gradient(135deg,#11998e 0%,#38ef7d 100%)}
-.profile-modal-body .timeline-bar.yellow{background:linear-gradient(135deg,#fcb045 0%,#fd1d1d 100%)}
-.profile-modal-body .timeline-labels{display:flex;justify-content:space-between;font-size:11px;color:#6c757d;font-weight:500}
+
 
 :host ::ng-deep highcharts-chart{display:block !important;width:100% !important;height:100% !important;flex:1;border-radius:0;overflow:hidden;min-height:calc(100vh - 80px)}
 :host ::ng-deep highcharts-chart div{height:100% !important;border-radius:0}
@@ -2199,6 +2319,42 @@
 .sort-label{font-size:10px;margin-bottom:4px;display:none}
 .sort-controls{gap:4px;margin-bottom:8px}
 .sort-select{padding:6px 8px;font-size:11px;border-radius:6px;height:32px}
+
+/* Mobile Modern Senator Cards */
+.senators-grid-modern {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.senator-profile-card {
+  min-height: 240px;
+  max-height: 240px;
+  padding: 16px;
+}
+
+.senator-profile-img {
+  width: 70px;
+  height: 70px;
+}
+
+.senator-profile-name {
+  font-size: 16px;
+}
+
+.senator-profile-bio {
+  font-size: 11px;
+  -webkit-line-clamp: 2;
+}
+
+.senator-profile-stat-value {
+  font-size: 16px;
+}
+
+.senator-profile-follow {
+  padding: 8px 12px;
+  font-size: 13px;
+}
 .sort-direction-btn{width:32px;height:32px;font-size:11px;border-radius:6px}
 .senator-list-item{padding:10px 16px}
 .senator-avatar{width:36px;height:36px}
@@ -2240,7 +2396,7 @@ body.modal-open{overflow:hidden !important}
 .profile-modal-body{padding:16px}
 .profile-modal-body .profile-stats{flex-direction:column;gap:12px}
 .profile-modal-body .stat{margin-bottom:0}
-.profile-modal-body .timeline-bars{height:8px}
+
 .profile-modal-close{top:16px;right:16px;width:40px;height:40px;font-size:20px}
 
 /* Statistics grid for very small screens */
@@ -2329,6 +2485,42 @@ body.modal-open{overflow:hidden !important}
 
 .senator-province{
   font-size:10px;
+}
+
+/* Very Small Screen Modern Senator Cards */
+.senators-grid-modern {
+  grid-template-columns: 1fr;
+  gap: 12px;
+  padding: 12px;
+}
+
+.senator-profile-card {
+  min-height: 220px;
+  max-height: 220px;
+  padding: 12px;
+}
+
+.senator-profile-img {
+  width: 60px;
+  height: 60px;
+}
+
+.senator-profile-name {
+  font-size: 14px;
+}
+
+.senator-profile-bio {
+  font-size: 12px;
+  -webkit-line-clamp: 2;
+}
+
+.senator-profile-stat-value {
+  font-size: 14px;
+}
+
+.senator-profile-follow {
+  padding: 6px 10px;
+  font-size: 12px;
 }
 }
 
