@@ -17,7 +17,7 @@ export interface Translations {
   providedIn: 'root'
 })
 export class TranslationService {
-  private currentLanguage = 'en';
+  private currentLanguage = 'fr'; // Changed default to French
 
   private translations: Translations = {
     en: {
