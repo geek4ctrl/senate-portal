@@ -44,7 +44,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   // Navigation tab state
   activeTab: 'map' | 'analytics' | 'constitution' | 'news' = 'map';
   activeMapSubTab: 'map' | 'list' = 'map'; // New property for map sub-tabs
-  
+
   // Mobile menu state
   isMobileView = false;
   showMobileMenu = false;
@@ -60,10 +60,10 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   selectedSenatorId: string | null = null;
   selectedSenator: any = null; // For the profile card
   filteredSenators: any[] = [];
-  
+
   // Random senators for navigation bar
   randomNavSenators: any[] = [];
-  
+
   // Sorting properties
   sortBy: 'name' | 'province' | 'party' = 'province';
   sortDirection: 'asc' | 'desc' = 'asc';
@@ -74,10 +74,10 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
       map: undefined // Will be set when map data is loaded
     },
     title: {
-      text: 'Democratic Republic of Congo - Senate Map'
+      text: 'Senate Map RDC'
     },
     subtitle: {
-      text: 'Provincial distribution of Senate members and locations'
+      text: 'Explore where senators of the Democratic Republic of Congo come from. Click a province to view its representatives.'
     },
     mapNavigation: {
       enabled: true,
@@ -329,10 +329,10 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   // Random senators for navigation bar
   initializeRandomNavSenators(): void {
     // Filter senators that have photos
-    const senatorsWithPhotos = this.senatorsData.filter(senator => 
+    const senatorsWithPhotos = this.senatorsData.filter(senator =>
       senator.photo && senator.photo.trim() !== ''
     );
-    
+
     // Randomly select 4 senators
     this.randomNavSenators = this.getRandomSenators(senatorsWithPhotos, 4);
   }
@@ -454,10 +454,10 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     const touchEndTime = Date.now();
     const touchEndX = event.changedTouches[0].clientX;
     const touchEndY = event.changedTouches[0].clientY;
-    
+
     const duration = touchEndTime - this.touchStartTime;
     const distance = Math.sqrt(
-      Math.pow(touchEndX - this.touchStartX, 2) + 
+      Math.pow(touchEndX - this.touchStartX, 2) +
       Math.pow(touchEndY - this.touchStartY, 2)
     );
 
@@ -578,7 +578,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
           data: this.mapLayerData.map((feature: any) => {
             const provinceName = feature.properties.name || feature.properties['NAME'] || feature.properties['NAME_1'];
             const senatorCount = this.getProvinceColorValue(provinceName);
-            
+
             return {
               'hc-key': feature.properties['hc-key'] || feature.properties.name,
               value: senatorCount,
@@ -778,7 +778,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   private updateLegendForScreenSize(): void {
     if (this.chartOptions.legend) {
       const isMobile = window.innerWidth <= 768;
-      
+
       this.chartOptions = {
         ...this.chartOptions,
         legend: {
@@ -794,7 +794,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
           }
         }
       };
-      
+
       // Trigger chart update if chart is already initialized
       if (this.isMapReady) {
         this.updateChart();
@@ -843,18 +843,18 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   // Province senator counting for color gradient
   private getSenatorsPerProvince(): { [province: string]: number } {
     const provinceCounts: { [province: string]: number } = {};
-    
+
     this.senatorsData.forEach(senator => {
       const province = senator.originProvince;
       provinceCounts[province] = (provinceCounts[province] || 0) + 1;
     });
-    
+
     return provinceCounts;
   }
 
   private getProvinceColorValue(provinceName: string): number {
     const provinceCounts = this.getSenatorsPerProvince();
-    
+
     // Map common variations of province names to standardized names
     const provinceMapping: { [key: string]: string } = {
       'Kinshasa': 'Kinshasa',
@@ -886,19 +886,19 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
       'Tanganyika': 'Tanganyika',
       'Tshuapa': 'Tshuapa'
     };
-    
+
     // Try to find the province by exact match or mapped name
     const mappedProvince = provinceMapping[provinceName] || provinceName;
-    const count = provinceCounts[mappedProvince] || 
-                  provinceCounts[provinceName] || 
-                  Object.keys(provinceCounts).find(key => 
+    const count = provinceCounts[mappedProvince] ||
+                  provinceCounts[provinceName] ||
+                  Object.keys(provinceCounts).find(key =>
                     key.toLowerCase().includes(provinceName.toLowerCase()) ||
                     provinceName.toLowerCase().includes(key.toLowerCase())
-                  ) ? provinceCounts[Object.keys(provinceCounts).find(key => 
+                  ) ? provinceCounts[Object.keys(provinceCounts).find(key =>
                     key.toLowerCase().includes(provinceName.toLowerCase()) ||
                     provinceName.toLowerCase().includes(key.toLowerCase())
                   )!] : 0;
-    
+
     return count;
   }
 
@@ -915,9 +915,9 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   }
 
   getFemaleSenatorsCount(): string {
-    // Note: This is a simplified calculation. In a real implementation, 
+    // Note: This is a simplified calculation. In a real implementation,
     // you would have gender data in the senator objects
-    const femaleNames = this.senatorsData.filter(senator => 
+    const femaleNames = this.senatorsData.filter(senator =>
       senator.fullName.toLowerCase().includes('anne') ||
       senator.fullName.toLowerCase().includes('anna') ||
       senator.fullName.toLowerCase().includes('carole') ||
@@ -934,7 +934,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
       senator.fullName.toLowerCase().includes('francoise') ||
       senator.fullName.toLowerCase().includes('arlette')
     ).length;
-    
+
     const percentage = ((femaleNames / this.senatorsData.length) * 100).toFixed(1);
     return `${percentage}%`;
   }

@@ -2,8 +2,8 @@
   <!-- Top Navigation Bar -->
   <div class="top-nav">
     <div class="nav-left">
-      <h1 class="app-title" 
-          (click)="navigateToMap()" 
+      <h1 class="app-title"
+          (click)="navigateToMap()"
           [title]="'Click to go to Map'"
           [attr.aria-label]="'Navigate to Map tab'">
         <i class="fas fa-university animate-pulse"></i>
@@ -28,13 +28,13 @@
         </button>
       </div>
     </div>
-    
+
     <!-- Random Senator Pictures -->
     <div class="nav-senators" [class.hidden-mobile]="isMobileView">
       <div class="nav-senators-container">
         <div class="senator-avatars">
-          <div 
-            *ngFor="let senator of randomNavSenators; trackBy: getSenatorId" 
+          <div
+            *ngFor="let senator of randomNavSenators; trackBy: getSenatorId"
             class="nav-senator-avatar"
             (click)="onRandomSenatorClick(senator)"
             [title]="senator.fullName + ' - ' + senator.originProvince"
@@ -46,7 +46,7 @@
               class="senator-nav-image">
           </div>
         </div>
-        <button 
+        <button
           class="refresh-senators-btn"
           (click)="refreshRandomSenators()"
           title="Show different senators"
@@ -55,7 +55,7 @@
         </button>
       </div>
     </div>
-    
+
     <div class="nav-right">
       <!-- Language Switcher in Navigation -->
       <div class="nav-language-switcher">
@@ -70,10 +70,10 @@
           </option>
         </select>
       </div>
-      
+
       <!-- Theme Toggle -->
       <app-theme-toggle></app-theme-toggle>
-      
+
       <!-- Mobile Language Switcher (visible on mobile) -->
       <div class="mobile-language-switcher-nav" *ngIf="isMobileView">
         <i class="fas fa-globe-americas"></i>
@@ -87,16 +87,16 @@
           </option>
         </select>
       </div>
-      
+
       <!-- Mobile Menu Toggle -->
-      <button class="mobile-menu-toggle" 
-              *ngIf="isMobileView" 
+      <button class="mobile-menu-toggle"
+              *ngIf="isMobileView"
               (click)="toggleMobileMenu()"
               [attr.aria-expanded]="showMobileMenu"
               aria-label="Toggle navigation menu">
         <i class="fas" [class.fa-bars]="!showMobileMenu" [class.fa-times]="showMobileMenu"></i>
       </button>
-      
+
       <div class="nav-controls" [class.hidden-mobile]="isMobileView">
         <button class="nav-btn" title="Notifications">
           <i class="fas fa-bell animate-swing"></i>
@@ -112,48 +112,48 @@
   </div>
 
   <!-- Mobile Navigation Menu -->
-  <div class="mobile-nav-overlay" 
-       *ngIf="isMobileView && showMobileMenu" 
+  <div class="mobile-nav-overlay"
+       *ngIf="isMobileView && showMobileMenu"
        (click)="closeMobileMenu()"></div>
-       
-  <div class="mobile-nav-menu" 
-       *ngIf="isMobileView" 
+
+  <div class="mobile-nav-menu"
+       *ngIf="isMobileView"
        [class.active]="showMobileMenu">
     <div class="mobile-nav-header">
       <h3>{{ translate('nav.navigation') || 'Navigation' }}</h3>
-      <button class="mobile-nav-close" 
+      <button class="mobile-nav-close"
               (click)="closeMobileMenu()"
               aria-label="Close navigation menu">
         <i class="fas fa-times"></i>
       </button>
     </div>
-    
+
     <div class="mobile-nav-content">
-      <button class="mobile-nav-item" 
+      <button class="mobile-nav-item"
               [class.active]="activeTab === 'map'"
               (click)="setActiveTabAndCloseMenu('map')">
         <i class="fas fa-map-marked-alt"></i>
         <span>{{ translate('nav.map') || 'Map' }}</span>
         <i class="fas fa-chevron-right" *ngIf="activeTab === 'map'"></i>
       </button>
-      
-      <button class="mobile-nav-item" 
+
+      <button class="mobile-nav-item"
               [class.active]="activeTab === 'analytics'"
               (click)="setActiveTabAndCloseMenu('analytics')">
         <i class="fas fa-chart-bar"></i>
         <span>{{ translate('nav.analytics') || 'Analytics' }}</span>
         <i class="fas fa-chevron-right" *ngIf="activeTab === 'analytics'"></i>
       </button>
-      
-      <button class="mobile-nav-item" 
+
+      <button class="mobile-nav-item"
               [class.active]="activeTab === 'constitution'"
               (click)="setActiveTabAndCloseMenu('constitution')">
         <i class="fas fa-scroll"></i>
         <span>{{ translate('nav.constitution') || 'Constitution' }}</span>
         <i class="fas fa-chevron-right" *ngIf="activeTab === 'constitution'"></i>
       </button>
-      
-      <button class="mobile-nav-item" 
+
+      <button class="mobile-nav-item"
               [class.active]="activeTab === 'news'"
               (click)="setActiveTabAndCloseMenu('news')">
         <i class="fas fa-newspaper"></i>
@@ -161,14 +161,14 @@
         <i class="fas fa-chevron-right" *ngIf="activeTab === 'news'"></i>
       </button>
     </div>
-    
+
     <div class="mobile-nav-footer">
       <!-- Mobile Random Senators -->
       <div class="mobile-nav-senators" *ngIf="randomNavSenators.length > 0">
         <div class="mobile-senators-header">Featured Senators</div>
         <div class="mobile-senator-avatars">
-          <div 
-            *ngFor="let senator of randomNavSenators; trackBy: getSenatorId" 
+          <div
+            *ngFor="let senator of randomNavSenators; trackBy: getSenatorId"
             class="mobile-nav-senator-avatar"
             (click)="onRandomSenatorClick(senator); closeMobileMenu()"
             [title]="senator.fullName">
@@ -179,7 +179,7 @@
               class="mobile-senator-nav-image">
             <div class="mobile-senator-name">{{ senator.fullName.split(' ')[0] }}</div>
           </div>
-          <button 
+          <button
             class="mobile-refresh-senators-btn"
             (click)="refreshRandomSenators()"
             title="Show different senators">
@@ -187,7 +187,7 @@
           </button>
         </div>
       </div>
-      
+
       <div class="mobile-language-switcher">
         <i class="fas fa-globe-americas"></i>
         <select
@@ -216,9 +216,26 @@
           {{ translate('sidebar.senators') || 'Senators' }}
         </button>
       </div>
-      
+
+      <!-- Map Header/Banner -->
+      <div class="map-header-banner" *ngIf="activeMapSubTab === 'map'">
+        <div class="map-header-content">
+          <h1 class="map-banner-title">
+            <i class="fas fa-map-marked-alt"></i>
+            {{ translate('map.banner.title') || 'Senate Map RDC' }}
+          </h1>
+          <p class="map-banner-subtitle">
+            {{ translate('map.banner.subtitle') || 'Explore where senators of the Democratic Republic of Congo come from. Click a province to view its representatives.' }}
+          </p>
+          <div class="map-info-badge">
+            <i class="fas fa-info-circle"></i>
+            {{ translate('map.banner.lastUpdated') || 'Last updated' }}: Aug 2025 • {{ translate('map.banner.source') || 'Source' }}: {{ translate('map.banner.officialGazette') || 'Official Gazette' }}
+          </div>
+        </div>
+      </div>
+
       <div id="origin-map-host" *ngIf="activeMapSubTab === 'map'">
-        <div class="map-container" 
+        <div class="map-container"
              (click)="onMapContainerClick($event)"
              (touchstart)="onTouchStart($event)"
              (touchend)="onTouchEnd($event)">
@@ -228,16 +245,16 @@
 
           <div *ngIf="mapLayerData" class="map-content">
             <!-- Mobile Legend Info Button -->
-            <button class="mobile-legend-button" 
+            <button class="mobile-legend-button"
                     *ngIf="isMobileView && activeTab === 'map'"
                     (click)="showMobileLegend = !showMobileLegend"
                     [class.active]="showMobileLegend"
                     title="Show color scale">
               <i class="fas fa-palette"></i>
             </button>
-            
+
             <!-- Mobile Legend Popup -->
-            <div class="mobile-legend-popup" 
+            <div class="mobile-legend-popup"
                  *ngIf="isMobileView && showMobileLegend && activeTab === 'map'"
                  (click)="showMobileLegend = false">
               <div class="mobile-legend-content" (click)="$event.stopPropagation()">
@@ -255,7 +272,7 @@
                 </div>
               </div>
             </div>
-            
+
             <highcharts-chart
               [Highcharts]="Highcharts"
               [constructorType]="chartConstructor"
@@ -271,7 +288,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Senators List View -->
       <div class="senators-list-view" *ngIf="activeMapSubTab === 'list'">
         <!-- Senators List Header -->
@@ -289,12 +306,12 @@
               [value]="filterText"
               (input)="onFilterChange($event)">
           </div>
-          
+
           <!-- Sorting Controls -->
           <div class="sort-container">
             <label class="sort-label">{{ translate('sidebar.sortBy') || 'Sort by' }}:</label>
             <div class="sort-controls">
-              <select 
+              <select
                 class="sort-select"
                 [value]="sortBy"
                 (change)="onSortChange($any($event.target).value)"
@@ -303,7 +320,7 @@
                 <option value="province">{{ translate('sidebar.sortProvince') || 'Province' }}</option>
                 <option value="party">{{ translate('sidebar.sortParty') || 'Party' }}</option>
               </select>
-              <button 
+              <button
                 class="sort-direction-btn"
                 (click)="onSortChange(sortBy)"
                 [attr.aria-label]="sortDirection === 'asc' ? (translate('sidebar.sortAsc') || 'A-Z') : (translate('sidebar.sortDesc') || 'Z-A')"
@@ -341,36 +358,36 @@
 
             <div class="senator-status"></div>
           </button>
-          
+
           <!-- Modern Card View -->
           <div class="senators-grid-modern">
             <div *ngFor="let senator of filteredSenators; trackBy: getSenatorId"
                  class="senator-profile-card"
                  [class.active]="selectedSenatorId === senator.fullName"
                  (click)="selectSenator(senator)">
-              <img 
+              <img
                 [src]="senator.photo || 'assets/images/default-senator.svg'"
                 [alt]="senator.fullName"
                 (error)="onImageError($event)"
                 class="senator-profile-img">
-              
+
               <div class="senator-profile-name">
                 {{ senator.fullName }}
                 <i class="fas fa-check-circle verified-badge"></i>
               </div>
-              
+
               <div class="senator-profile-bio">
                 {{ translate('profile.senatorTitle') || 'Senator' }} from {{ senator.originProvince }}
                 focused on {{ senator.party || translate('modal.independent') }} initiatives.
               </div>
-              
+
               <div class="senator-profile-stats">
                 <div class="senator-profile-stat">
                   <i class="fas fa-users senator-profile-stat-icon"></i>
                   <span class="senator-profile-stat-value">{{ getRandomStat('followers') }}</span>
                 </div>
               </div>
-              
+
               <button class="senator-profile-follow" (click)="$event.stopPropagation()">
                 {{ translate('profile.follow') || 'Follow' }}
                 <i class="fas fa-plus"></i>
@@ -408,10 +425,10 @@
             <div class="article-content">
               <h4>{{ translate('constitution.composition.article98') || 'Article 98' }}</h4>
               <p>{{ translate('constitution.composition.content98') || 'The Senate is composed of senators elected for a term of five years renewable.' }}</p>
-              
+
               <h4>{{ translate('constitution.composition.article99') || 'Article 99' }}</h4>
               <p>{{ translate('constitution.composition.content99') || 'Each province elects four senators. The city of Kinshasa elects eight senators.' }}</p>
-              
+
               <h4>{{ translate('constitution.composition.article100') || 'Article 100' }}</h4>
               <p>{{ translate('constitution.composition.content100') || 'The senators are elected by the provincial assemblies and the council of the city of Kinshasa by indirect universal suffrage.' }}</p>
             </div>
@@ -426,7 +443,7 @@
             <div class="article-content">
               <h4>{{ translate('constitution.powers.article101') || 'Article 101' }}</h4>
               <p>{{ translate('constitution.powers.content101') || 'The Senate exercises legislative power concurrently with the National Assembly.' }}</p>
-              
+
               <h4>{{ translate('constitution.powers.article102') || 'Article 102' }}</h4>
               <p>{{ translate('constitution.powers.content102') || 'The Senate has specific powers including the trial of the President of the Republic in case of high treason.' }}</p>
             </div>
@@ -441,7 +458,7 @@
             <div class="article-content">
               <h4>{{ translate('constitution.organization.article103') || 'Article 103' }}</h4>
               <p>{{ translate('constitution.organization.content103') || 'The Senate elects its President and other members of its Bureau at the beginning of the legislature.' }}</p>
-              
+
               <h4>{{ translate('constitution.organization.article104') || 'Article 104' }}</h4>
               <p>{{ translate('constitution.organization.content104') || 'The Senate establishes its internal regulations which determine its organization and functioning.' }}</p>
             </div>
@@ -500,7 +517,7 @@
             <p class="info-description">
               {{ translate('analytics.plannedFeaturesDescription') || 'Our analytics dashboard is under development and will feature comprehensive data visualization tools to help you better understand Senate representation patterns.' }}
             </p>
-            
+
             <div class="features-grid">
               <div class="feature-item">
                 <i class="fas fa-map-marked-alt"></i>
@@ -519,7 +536,7 @@
                 <span>{{ translate('analytics.feature.trends') || 'Historical Trends' }}</span>
               </div>
             </div>
-            
+
             <!-- Coming soon note removed as per user request -->
           </div>
         </div>
@@ -533,7 +550,7 @@
 
 
   </div>
-  
+
   <!-- Mobile Bottom Navigation Bar -->
   <div class="mobile-bottom-nav" *ngIf="isMobileView">
     <button class="mobile-bottom-nav-item" [class.active]="activeTab === 'map'" (click)="setActiveTab('map')">
@@ -607,17 +624,17 @@
 </div>
 
 <!-- Senator Profile Modal -->
-<div class="profile-modal-overlay" 
-     *ngIf="selectedSenator" 
+<div class="profile-modal-overlay"
+     *ngIf="selectedSenator"
      (click)="deselectSenator()">
-  <div class="profile-modal-content" 
-       (click)="$event.stopPropagation()" 
-       role="dialog" 
+  <div class="profile-modal-content"
+       (click)="$event.stopPropagation()"
+       role="dialog"
        aria-modal="true"
        [attr.aria-label]="'Senator profile for ' + selectedSenator?.fullName">
-    
-    <button class="profile-modal-close" 
-            (click)="deselectSenator()" 
+
+    <button class="profile-modal-close"
+            (click)="deselectSenator()"
             aria-label="Close senator profile">
       <i class="fas fa-times"></i>
     </button>
