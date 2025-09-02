@@ -55,17 +55,18 @@
   align-items:center;
   box-shadow:0 2px 10px rgba(0,0,0,0.08);
   animation:slide-in-up 0.8s ease-out;
-  min-height:60px;
-  flex-wrap:wrap;
-  gap:8px;
+  min-height:56px;
+  flex-wrap:nowrap;
+  gap:4px;
+  overflow-x:visible;
 }
 
 .nav-left{
   display:flex;
   align-items:center;
-  gap:16px;
-  flex:1;
-  min-width:200px;
+  gap:8px;
+  flex:1 1 0;
+  min-width:120px;
 }
 
 .app-title{
@@ -554,9 +555,9 @@
   }
 
   .mobile-menu-toggle {
-    width: 36px;
-    height: 36px;
-    font-size: 14px;
+  width: 28px;
+  height: 28px;
+  font-size: 13px;
   }
 
   .mobile-nav-menu.mobile-view {

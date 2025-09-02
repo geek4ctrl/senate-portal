@@ -848,6 +848,15 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     this.setActiveTab('map');
   }
 
+  navigateToAbout(): void {
+    // For now, we'll add this as a new tab. You can later implement routing to a dedicated About page
+    // or show the about content in a modal. Here's a simple implementation:
+    console.log('Navigate to About page - to be implemented');
+    // TODO: Add routing to dedicated About page
+    // For now, let's show an alert with the information
+    alert('About This Project\n\nMission: To make DRC Senate information more accessible and transparent.\n\nTeam: Dedicated developers and civic engagement advocates.\n\nData Sources: Official government records and public documents.\n\nThis will be replaced with a dedicated About page.');
+  }
+
   // Constitution statistics methods
   getTotalSenators(): number {
     return this.senatorsData.length;

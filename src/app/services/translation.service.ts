@@ -83,6 +83,10 @@ export class TranslationService {
       'profile.rating': 'Rating',
       'profile.today': 'TODAY',
 
+      // About section
+      'about.description': 'This platform was created to make information about the DRC Senate more accessible, transparent, and engaging for citizens, journalists, and researchers. Our goal is to strengthen accountability and civic participation.',
+      'about.cta': 'About This Project',
+
       // Constitution section
       'constitution.title': 'Constitution of the Democratic Republic of Congo',
       'constitution.subtitle': 'Senate: Composition and Powers',
@@ -211,6 +215,10 @@ export class TranslationService {
       'profile.distance': 'Distance',
       'profile.rating': 'Évaluation',
       'profile.today': "AUJOURD'HUI",
+
+      // About section
+      'about.description': 'Cette plateforme a été créée pour rendre les informations sur le Sénat de la RDC plus accessibles, transparentes et engageantes pour les citoyens, journalistes et chercheurs. Notre objectif est de renforcer la responsabilité et la participation civique.',
+      'about.cta': 'À Propos de Ce Projet',
 
       // Constitution section
       'constitution.title': 'Constitution de la République Démocratique du Congo',
@@ -341,6 +349,10 @@ export class TranslationService {
       'profile.rating': 'Kopesa motuya',
       'profile.today': 'LELO',
 
+      // About section
+      'about.description': 'Biso tosalaki plateforme oyo mpo na kosala ete basango ya Sénat ya RDC ekoma pe koyeba na polele, mpe ekobenda bato, ba journaliste pe ba chercheur. Mokano na biso ezali ya kolendisa bopesi nzela pe bosangani ya bato na makambo ya ekolo.',
+      'about.cta': 'Makambo ya Mosala Oyo',
+
       // Constitution section
       'constitution.title': 'Mobeko ya République Démocratique ya Congo',
       'constitution.subtitle': 'Sénat: Bosangani mpe Nguya',
@@ -469,6 +481,10 @@ export class TranslationService {
       'profile.distance': 'Umbali',
       'profile.rating': 'Ukadiriaji',
       'profile.today': 'LEO',
+
+      // About section
+      'about.description': 'Jukwaa hili liliundwa ili kufanya habari kuhusu Seneti ya DRC iwe inaweza kufikika zaidi, uwazi, na kuvutia kwa raia, waandishi wa habari, na watafiti. Lengo letu ni kuimarisha uwajibikaji na ushiriki wa kiraia.',
+      'about.cta': 'Kuhusu Mradi Huu',
 
       // Constitution section
       'constitution.title': 'Katiba ya Jamhuri ya Kidemokrasia ya Kongo',
@@ -599,6 +615,10 @@ export class TranslationService {
       'profile.rating': 'Bukaya',
       'profile.today': 'LELU',
 
+      // About section
+      'about.description': 'Tukusambenyu uyu tusambile kwamba makenga ma Senateur wa DRC makale kwavanga bantu, bantu ba bulebule ne bantu ba kulonga. Mukanu wetu udi kwesha bumfumu ne kusangana kwa bantu mu makambo ya lukalu.',
+      'about.cta': 'Makambo ya Musebele Uyu',
+
       // Constitution section
       'constitution.title': 'Mubengele wa Republiki Democratiki wa Kongo',
       'constitution.subtitle': 'Senat: Butambishe ne Bukumu',
@@ -727,6 +747,10 @@ export class TranslationService {
       'profile.distance': 'Umpata',
       'profile.rating': 'Kutaila',
       'profile.today': 'LELU',
+
+      // About section
+      'about.description': 'Tukuvangu uyu tuvangile kwamba makambo ma Senateur wa RDC makale kwavanga bantu, bantu ba nkanda ne bantu ba kulonda. Mukanu wetu udi kwikisa bumfumu ne kusangana kwa bantu mu makambo ya lukalu.',
+      'about.cta': 'Makambo ya Nkenda Uyu',
 
       // Constitution section
       'constitution.title': 'Kimbangelo kia Republiki Demokratiki ya Kongo',
