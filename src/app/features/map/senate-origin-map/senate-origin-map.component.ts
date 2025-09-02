@@ -45,8 +45,13 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   activeTab: 'map' | 'analytics' | 'constitution' | 'news' = 'map';
   activeMapSubTab: 'map' | 'list' = 'map'; // New property for map sub-tabs
 
-  // Mobile menu state
+  // Mobile and tablet menu state
   isMobileView = false;
+  isTabletView = false;
+  isSmallTabletView = false;
+  isLargeTabletView = false;
+  isDesktopView = false;
+  isLargeDesktopView = false;
   showMobileMenu = false;
   showMobileLegend = false;
 
@@ -304,7 +309,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     this.updateChartTexts();
     this.initializeFilteredSenators();
     this.initializeRandomNavSenators();
-    this.checkMobileView();
+    this.checkViewportSize();
     this.setupResizeListener();
   }
 
@@ -762,22 +767,35 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   };
 
   private onWindowResize = (): void => {
-    this.checkMobileView();
+    this.checkViewportSize();
   };
 
-  private checkMobileView(): void {
-    this.isMobileView = window.innerWidth <= 768;
-    if (!this.isMobileView) {
+  private checkViewportSize(): void {
+    const width = window.innerWidth;
+
+    // Comprehensive viewport detection
+    this.isMobileView = width <= 768;
+    this.isSmallTabletView = width > 768 && width <= 900;
+    this.isLargeTabletView = width > 900 && width <= 1024;
+    this.isTabletView = width > 768 && width <= 1024;
+    this.isDesktopView = width > 1024 && width <= 1440;
+    this.isLargeDesktopView = width > 1440;
+
+    // Close mobile menu on desktop/tablet views
+    if (!this.isMobileView && !this.isSmallTabletView) {
       this.showMobileMenu = false;
       this.preventBodyScroll(false);
     }
+
     // Update legend configuration when screen size changes
     this.updateLegendForScreenSize();
   }
 
   private updateLegendForScreenSize(): void {
     if (this.chartOptions.legend) {
-      const isMobile = window.innerWidth <= 768;
+      const width = window.innerWidth;
+      const isMobile = width <= 768;
+      const isTablet = width > 768 && width <= 1024;
 
       this.chartOptions = {
         ...this.chartOptions,

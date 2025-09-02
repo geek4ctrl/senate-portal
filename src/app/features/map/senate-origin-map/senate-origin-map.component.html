@@ -30,7 +30,11 @@
     </div>
 
     <!-- Random Senator Pictures -->
-    <div class="nav-senators" [class.hidden-mobile]="isMobileView">
+    <div class="nav-senators"
+         [class.hidden-mobile]="isMobileView"
+         [class.hidden-small-tablet]="isSmallTabletView"
+         [class.visible-large-tablet]="isLargeTabletView"
+         [class.visible-desktop]="isDesktopView || isLargeDesktopView">
       <div class="nav-senators-container">
         <div class="senator-avatars">
           <div
@@ -74,8 +78,8 @@
       <!-- Theme Toggle -->
       <app-theme-toggle></app-theme-toggle>
 
-      <!-- Mobile Language Switcher (visible on mobile) -->
-      <div class="mobile-language-switcher-nav" *ngIf="isMobileView">
+      <!-- Mobile Language Switcher (visible on mobile and small tablet) -->
+      <div class="mobile-language-switcher-nav" *ngIf="isMobileView || isSmallTabletView">
         <i class="fas fa-globe-americas"></i>
         <select
           [value]="currentLanguage"
@@ -90,14 +94,18 @@
 
       <!-- Mobile Menu Toggle -->
       <button class="mobile-menu-toggle"
-              *ngIf="isMobileView"
+              *ngIf="isMobileView || isSmallTabletView"
               (click)="toggleMobileMenu()"
               [attr.aria-expanded]="showMobileMenu"
               aria-label="Toggle navigation menu">
         <i class="fas" [class.fa-bars]="!showMobileMenu" [class.fa-times]="showMobileMenu"></i>
       </button>
 
-      <div class="nav-controls" [class.hidden-mobile]="isMobileView">
+      <div class="nav-controls"
+           [class.hidden-mobile]="isMobileView"
+           [class.hidden-small-tablet]="isSmallTabletView"
+           [class.visible-large-tablet]="isLargeTabletView"
+           [class.visible-desktop]="isDesktopView || isLargeDesktopView">
         <button class="nav-btn" title="Notifications">
           <i class="fas fa-bell animate-swing"></i>
         </button>
@@ -113,12 +121,14 @@
 
   <!-- Mobile Navigation Menu -->
   <div class="mobile-nav-overlay"
-       *ngIf="isMobileView && showMobileMenu"
+       *ngIf="(isMobileView || isSmallTabletView) && showMobileMenu"
        (click)="closeMobileMenu()"></div>
 
   <div class="mobile-nav-menu"
-       *ngIf="isMobileView"
-       [class.active]="showMobileMenu">
+       *ngIf="isMobileView || isSmallTabletView"
+       [class.active]="showMobileMenu"
+       [class.mobile-view]="isMobileView"
+       [class.small-tablet-view]="isSmallTabletView">
     <div class="mobile-nav-header">
       <h3>{{ translate('nav.navigation') || 'Navigation' }}</h3>
       <button class="mobile-nav-close"
@@ -551,8 +561,8 @@
 
   </div>
 
-  <!-- Mobile Bottom Navigation Bar -->
-  <div class="mobile-bottom-nav" *ngIf="isMobileView">
+  <!-- Mobile Bottom Navigation Bar (only for phones, not tablets) -->
+  <div class="mobile-bottom-nav" *ngIf="isMobileView && !isTabletView">
     <button class="mobile-bottom-nav-item" [class.active]="activeTab === 'map'" (click)="setActiveTab('map')">
       <i class="fas fa-map-marked-alt"></i>
       <span>{{ translate('nav.map') || 'Map' }}</span>
