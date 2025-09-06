@@ -38,7 +38,7 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   mapLayerData: any = null;
 
   // Translation properties
-  currentLanguage = 'en';
+  currentLanguage = 'fr';
   availableLanguages = this.translationService.getAvailableLanguages();
 
   // Navigation tab state
@@ -301,11 +301,16 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     private readonly translationService: TranslationService,
     private readonly themeService: ThemeService
   ) {
+    // Set French as default language
+    this.translationService.setLanguage('fr');
+    this.currentLanguage = 'fr';
     this.loadMapData();
   }
 
   ngOnInit(): void {
     console.log('SenateOriginMapComponent initialized');
+    // Sync with translation service language
+    this.currentLanguage = this.translationService.getCurrentLanguage();
     this.updateChartTexts();
     this.initializeFilteredSenators();
     this.initializeRandomNavSenators();
@@ -493,6 +498,70 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
     return this.translationService.translate(key);
   }
 
+  private generateConnectionLines(): any[] {
+    const kinshasaCoords = { lat: -4.4419, lon: 15.2663 };
+
+    // Define all provincial capitals with their coordinates
+    const provincialCapitals = [
+      { name: 'Lubumbashi', province: 'Haut-Katanga', lat: -11.6645, lon: 27.4797, senators: 4 },
+      { name: 'Kisangani', province: 'Tshopo', lat: 0.5149, lon: 25.1972, senators: 4 },
+      { name: 'Kananga', province: 'Kasai Central', lat: -5.8921, lon: 22.4454, senators: 4 },
+      { name: 'Bukavu', province: 'Sud-Kivu', lat: -2.5089, lon: 28.8473, senators: 4 },
+      { name: 'Goma', province: 'Nord-Kivu', lat: 1.2103, lon: 29.2348, senators: 4 },
+      { name: 'Mbuji-Mayi', province: 'Kasai Oriental', lat: -6.1583, lon: 23.6014, senators: 4 },
+      { name: 'Bandundu', province: 'Kwilu', lat: -3.3098, lon: 17.3157, senators: 4 },
+      { name: 'Buta', province: 'Bas-Uele', lat: 3.7167, lon: 22.4167, senators: 4 },
+      { name: 'Mbandaka', province: 'Equateur', lat: 0.0389, lon: 18.2656, senators: 4 },
+      { name: 'Kamina', province: 'Haut-Lomami', lat: -9.2167, lon: 25.8167, senators: 4 },
+      { name: 'Isiro', province: 'Haut-Uele', lat: 3.4833, lon: 25.6333, senators: 4 },
+      { name: 'Bunia', province: 'Ituri', lat: 1.6667, lon: 30.8333, senators: 4 },
+      { name: 'Luebo', province: 'Kasai', lat: -5.1833, lon: 20.7500, senators: 4 },
+      { name: 'Matadi', province: 'Kongo Central', lat: -5.7833, lon: 14.2167, senators: 4 },
+      { name: 'Kenge', province: 'Kwango', lat: -5.9333, lon: 16.9500, senators: 4 },
+      { name: 'Gbadolite', province: 'Nord-Ubangi', lat: 4.2500, lon: 21.4833, senators: 4 },
+      { name: 'Kabinda', province: 'Lomami', lat: -8.8000, lon: 25.4000, senators: 4 },
+      { name: 'Kolwezi', province: 'Lualaba', lat: -10.6833, lon: 25.4000, senators: 4 },
+      { name: 'Inongo', province: 'Mai-Ndombe', lat: -2.6500, lon: 17.8333, senators: 4 },
+      { name: 'Kindu', province: 'Maniema', lat: -4.2167, lon: 26.2833, senators: 4 },
+      { name: 'Lisala', province: 'Mongala', lat: 1.8333, lon: 19.9167, senators: 4 },
+      { name: 'Lodja', province: 'Sankuru', lat: -7.2333, lon: 24.7333, senators: 4 },
+      { name: 'Gemena', province: 'Sud-Ubangi', lat: 3.4000, lon: 18.6000, senators: 4 },
+      { name: 'Kalemie', province: 'Tanganyika', lat: -6.8500, lon: 27.4833, senators: 4 },
+      { name: 'Boende', province: 'Tshuapa', lat: -2.3167, lon: 20.8500, senators: 4 }
+    ];
+
+    // Generate connection lines from each provincial capital to Kinshasa
+    return provincialCapitals.map(capital => ({
+      name: `${capital.name} → Kinshasa`,
+      geometry: {
+        type: 'LineString',
+        coordinates: [
+          [capital.lon, capital.lat],
+          [kinshasaCoords.lon, kinshasaCoords.lat]
+        ]
+      },
+      custom: {
+        from: capital.name,
+        to: 'Kinshasa',
+        province: capital.province,
+        senators: capital.senators,
+        distance: this.calculateDistance(capital.lat, capital.lon, kinshasaCoords.lat, kinshasaCoords.lon)
+      }
+    }));
+  }
+
+  private calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+    // Calculate distance in kilometers using Haversine formula
+    const R = 6371; // Earth's radius in km
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return Math.round(R * c);
+  }
+
   changeLanguage(language: 'en' | 'fr' | 'ln' | 'sw' | 'lu' | 'kg'): void {
     this.currentLanguage = language;
     this.translationService.setLanguage(language);
@@ -639,6 +708,28 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
               }
             }
           }
+        },
+        {
+          type: 'mapline',
+          name: this.translate('map.senateConnections') || 'Senate Connections',
+          showInLegend: true,
+          data: this.generateConnectionLines(),
+          color: '#667eea',
+          lineWidth: 2,
+          opacity: 0.6,
+          states: {
+            hover: {
+              color: '#4f46e5',
+              opacity: 0.8,
+              lineWidth: 3
+            }
+          },
+          tooltip: {
+            pointFormat: '<b>{point.name}</b><br/>From: <b>{point.custom.from}</b><br/>To: <b>{point.custom.to}</b><br/>Senators: <b>{point.custom.senators}</b><br/>Distance: <b>{point.custom.distance} km</b><br/>' +
+                        '<em>Senators from {point.custom.from} converge to the capital</em>'
+          },
+          zIndex: 50,
+          enableMouseTracking: true
         },
         {
           type: 'mappoint',

@@ -66,6 +66,7 @@ export class TranslationService {
       // Map legend
       'map.drcProvinces': 'DRC Provinces',
       'map.senateLocations': 'Senate Locations',
+      'map.senateConnections': 'Senate Connections',
       'map.senatorsPerProvince': 'Senators per Province',
 
       // Map header banner
@@ -204,6 +205,7 @@ export class TranslationService {
       // Map legend
       'map.drcProvinces': 'Provinces de la RDC',
       'map.senateLocations': 'Emplacements du Sénat',
+      'map.senateConnections': 'Connexions du Sénat',
       'map.senatorsPerProvince': 'Sénateurs par Province',
 
       // Map header banner
@@ -342,6 +344,7 @@ export class TranslationService {
       // Map legend
       'map.drcProvinces': 'Ba Etuka ya RDC',
       'map.senateLocations': 'Bisika ya Sénat',
+      'map.senateConnections': 'Bokutani ya Sénat',
       'map.senatorsPerProvince': 'Ba Senateur na Etuka',
 
       // Map header banner
@@ -480,6 +483,7 @@ export class TranslationService {
       // Map legend
       'map.drcProvinces': 'Mikoa ya DRC',
       'map.senateLocations': 'Maeneo ya Seneti',
+      'map.senateConnections': 'Miunganiko ya Seneti',
       'map.senatorsPerProvince': 'Maseneta kwa Mkoa',
 
       // Map header banner
@@ -618,6 +622,7 @@ export class TranslationService {
       // Map legend
       'map.drcProvinces': 'Bitshimbila bia RDC',
       'map.senateLocations': 'Bialu bia Senat',
+      'map.senateConnections': 'Bukutanji bua Senat',
       'map.senatorsPerProvince': 'Bantu ba Senateur ne Tshimbila',
 
       // Map header banner
@@ -756,6 +761,7 @@ export class TranslationService {
       // Map legend
       'map.drcProvinces': 'Tintinu ya RDC',
       'map.senateLocations': 'Bisimbu bia Senat',
+      'map.senateConnections': 'Bukutani bua Senat',
       'map.senatorsPerProvince': 'Bantu ba Senateur ku Intinu',
 
       // Map header banner
