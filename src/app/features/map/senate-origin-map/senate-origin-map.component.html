@@ -475,7 +475,24 @@
           </p>
         </div>
 
-        <div class="constitution-content">
+        <!-- Constitution Navigation Tabs -->
+        <div class="constitution-nav-tabs">
+          <button class="constitution-nav-tab"
+                  [class.active]="constitutionView === 'senate'"
+                  (click)="constitutionView = 'senate'">
+            <i class="fas fa-users"></i>
+            {{ translate('constitution.nav.senateArticles') || 'Senate Articles' }}
+          </button>
+          <button class="constitution-nav-tab"
+                  [class.active]="constitutionView === 'full'"
+                  (click)="constitutionView = 'full'">
+            <i class="fas fa-book"></i>
+            {{ translate('constitution.nav.fullConstitution') || 'Full Constitution (1-229)' }}
+          </button>
+        </div>
+
+        <!-- Senate Articles Content -->
+        <div class="constitution-content" *ngIf="constitutionView === 'senate'">
           <!-- Senate Composition Section -->
           <div class="constitution-article">
             <h3 class="article-title">
@@ -524,6 +541,78 @@
             </div>
           </div>
 
+          <!-- Parliamentary Procedures -->
+          <div class="constitution-article">
+            <h3 class="article-title">
+              <i class="fas fa-balance-scale"></i>
+              {{ translate('constitution.procedures.title') || 'Parliamentary Procedures' }}
+            </h3>
+            <div class="article-content">
+              <h4>{{ translate('constitution.procedures.article105') || 'Article 105' }}</h4>
+              <p>{{ translate('constitution.procedures.content105') || 'The sessions of the Senate are public. However, the Senate may sit in camera at the request of the President of the Republic, the Prime Minister, or one-tenth of its members.' }}</p>
+
+              <h4>{{ translate('constitution.procedures.article106') || 'Article 106' }}</h4>
+              <p>{{ translate('constitution.procedures.content106') || 'The Senate can only deliberate when at least half of its members are present. Its decisions are taken by simple majority of the votes cast.' }}</p>
+
+              <h4>{{ translate('constitution.procedures.article107') || 'Article 107' }}</h4>
+              <p>{{ translate('constitution.procedures.content107') || 'In case of a tie, the President of the Senate has the casting vote.' }}</p>
+            </div>
+          </div>
+
+          <!-- Legislative Process -->
+          <div class="constitution-article">
+            <h3 class="article-title">
+              <i class="fas fa-file-contract"></i>
+              {{ translate('constitution.legislative.title') || 'Legislative Process' }}
+            </h3>
+            <div class="article-content">
+              <h4>{{ translate('constitution.legislative.article108') || 'Article 108' }}</h4>
+              <p>{{ translate('constitution.legislative.content108') || 'Bills and proposed laws are submitted to either the National Assembly or the Senate.' }}</p>
+
+              <h4>{{ translate('constitution.legislative.article109') || 'Article 109' }}</h4>
+              <p>{{ translate('constitution.legislative.content109') || 'Every bill or proposed law is successively examined by the two chambers of Parliament.' }}</p>
+
+              <h4>{{ translate('constitution.legislative.article110') || 'Article 110' }}</h4>
+              <p>{{ translate('constitution.legislative.content110') || 'A law is definitively adopted when it has been voted in identical terms by the National Assembly and the Senate.' }}</p>
+            </div>
+          </div>
+
+          <!-- Senate Specific Powers -->
+          <div class="constitution-article">
+            <h3 class="article-title">
+              <i class="fas fa-shield-alt"></i>
+              {{ translate('constitution.specificPowers.title') || 'Senate Specific Powers' }}
+            </h3>
+            <div class="article-content">
+              <h4>{{ translate('constitution.specificPowers.article111') || 'Article 111' }}</h4>
+              <p>{{ translate('constitution.specificPowers.content111') || 'The Senate has exclusive jurisdiction to try the President of the Republic for high treason and members of the Government for crimes committed in the exercise of their functions.' }}</p>
+
+              <h4>{{ translate('constitution.specificPowers.article112') || 'Article 112' }}</h4>
+              <p>{{ translate('constitution.specificPowers.content112') || 'The Senate gives its opinion on appointments to high positions in the administration, diplomatic missions, and public enterprises as provided by law.' }}</p>
+
+              <h4>{{ translate('constitution.specificPowers.article113') || 'Article 113' }}</h4>
+              <p>{{ translate('constitution.specificPowers.content113') || 'The Senate ensures the representation of territorial entities and defends their interests.' }}</p>
+            </div>
+          </div>
+
+          <!-- Senate Immunity -->
+          <div class="constitution-article">
+            <h3 class="article-title">
+              <i class="fas fa-user-shield"></i>
+              {{ translate('constitution.immunity.title') || 'Parliamentary Immunity' }}
+            </h3>
+            <div class="article-content">
+              <h4>{{ translate('constitution.immunity.article114') || 'Article 114' }}</h4>
+              <p>{{ translate('constitution.immunity.content114') || 'No senator may be prosecuted, sought, arrested, detained or tried for opinions or votes expressed by him in the exercise of his functions.' }}</p>
+
+              <h4>{{ translate('constitution.immunity.article115') || 'Article 115' }}</h4>
+              <p>{{ translate('constitution.immunity.content115') || 'Outside parliamentary sessions, no senator may be arrested except in the case of flagrant offence or pursuant to a final judicial decision.' }}</p>
+
+              <h4>{{ translate('constitution.immunity.article116') || 'Article 116' }}</h4>
+              <p>{{ translate('constitution.immunity.content116') || 'During parliamentary sessions, no senator may be arrested or prosecuted without the prior authorization of the Senate.' }}</p>
+            </div>
+          </div>
+
           <!-- Current Senate Statistics -->
           <div class="constitution-article">
             <h3 class="article-title">
@@ -550,6 +639,45 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Full Constitution Content -->
+        <div class="full-constitution-content" *ngIf="constitutionView === 'full'">
+          <div class="constitution-search">
+            <div class="search-container">
+              <i class="fas fa-search search-icon"></i>
+              <input
+                type="text"
+                class="search-input"
+                [(ngModel)]="constitutionSearchTerm"
+                [placeholder]="translate('constitution.search.placeholder') || 'Search articles...'"
+                (input)="filterConstitutionArticles()">
+            </div>
+            <div class="article-counter">
+              {{ filteredArticles.length }} {{ translate('constitution.search.articlesFound') || 'articles found' }}
+            </div>
+          </div>
+
+          <div class="articles-container">
+            <div class="article-item"
+                 *ngFor="let article of filteredArticles; trackBy: trackByArticleNumber"
+                 [class.highlighted]="article.highlighted">
+              <div class="article-number">
+                {{ translate('constitution.article') || 'Article' }} {{ article.number }}
+              </div>
+              <div class="article-text" [innerHTML]="article.text"></div>
+              <div class="article-chapter" *ngIf="article.chapter">
+                {{ translate('constitution.chapter') || 'Chapter' }}: {{ article.chapter }}
+              </div>
+            </div>
+          </div>
+
+          <div class="constitution-footer">
+            <p class="constitution-note">
+              <i class="fas fa-info-circle"></i>
+              {{ translate('constitution.fullText.note') || 'This is the complete text of the Constitution of the Democratic Republic of Congo, adopted in 2011.' }}
+            </p>
           </div>
         </div>
       </div>
