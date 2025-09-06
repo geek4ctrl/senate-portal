@@ -81,6 +81,27 @@ export class TranslationService {
       'map.description.interactiveGuide': 'This interactive map allows you to discover who represents your province in the higher chamber of Parliament. By hovering over a province, you can immediately see the senators elected from that region. Clicking on a province reveals more details about each senator, their political affiliation, and the role they play in shaping national decisions.',
       'map.description.platformGoal': 'The goal of this platform is to bring the Senate closer to the people. It helps you understand how representation is distributed across the Democratic Republic of the Congo, and highlights the connection between local communities and the national institutions that speak on their behalf. By making this information accessible, we encourage citizens to stay informed, to hold their representatives accountable, and to actively engage in the democratic life of our country.',
 
+      // Feedback section
+      'feedback.title': 'Your Voice Matters',
+      'feedback.subtitle': 'Help us understand how citizens feel about their representation',
+      'feedback.question': 'Do you think your province is well represented in the Senate?',
+      'feedback.participate': 'Participate in Poll',
+      'feedback.resultsPreview': 'Community Feedback:',
+      'feedback.wellRepresented': 'Well Represented',
+      'feedback.poorly': 'Needs Improvement',
+      'feedback.unsure': 'Unsure',
+      'feedback.pollTitle': 'Senate Representation Poll',
+      'feedback.pollDescription': 'Your anonymous feedback helps us understand public opinion about senate representation across the Democratic Republic of Congo.',
+      'feedback.selectProvince': 'Select your province:',
+      'feedback.chooseProvince': 'Choose your province...',
+      'feedback.yes': 'Yes, well represented',
+      'feedback.no': 'No, needs improvement',
+      'feedback.currentResults': 'Current results for',
+      'feedback.totalVotes': 'Total votes',
+      'feedback.submit': 'Submit Vote',
+      'feedback.thankYou': 'Thank you for your feedback!',
+      'feedback.successMessage': 'Your voice has been recorded and will help improve democratic representation.',
+
       // Tooltip
       'tooltip.senators': 'Senators',
 
@@ -219,6 +240,27 @@ export class TranslationService {
       'map.description.voiceMatters': 'Chaque province a une voix au Sénat, et chaque voix compte.',
       'map.description.interactiveGuide': 'Cette carte interactive vous permet de découvrir qui représente votre province dans la chambre haute du Parlement. En survolant une province, vous pouvez immédiatement voir les sénateurs élus de cette région. En cliquant sur une province, vous obtenez plus de détails sur chaque sénateur, son affiliation politique et le rôle qu\'il joue dans les décisions nationales.',
       'map.description.platformGoal': 'L\'objectif de cette plateforme est de rapprocher le Sénat du peuple. Elle vous aide à comprendre comment la représentation est distribuée à travers la République Démocratique du Congo, et met en évidence le lien entre les communautés locales et les institutions nationales qui parlent en leur nom. En rendant ces informations accessibles, nous encourageons les citoyens à rester informés, à tenir leurs représentants responsables, et à s\'engager activement dans la vie démocratique de notre pays.',
+
+      // Feedback section
+      'feedback.title': 'Votre Voix Compte',
+      'feedback.subtitle': 'Aidez-nous à comprendre comment les citoyens perçoivent leur représentation',
+      'feedback.question': 'Pensez-vous que votre province est bien représentée au Sénat ?',
+      'feedback.participate': 'Participer au Sondage',
+      'feedback.resultsPreview': 'Retour de la Communauté :',
+      'feedback.wellRepresented': 'Bien Représentée',
+      'feedback.poorly': 'À Améliorer',
+      'feedback.unsure': 'Pas Sûr',
+      'feedback.pollTitle': 'Sondage sur la Représentation au Sénat',
+      'feedback.pollDescription': 'Vos commentaires anonymes nous aident à comprendre l\'opinion publique sur la représentation sénatoriale à travers la République Démocratique du Congo.',
+      'feedback.selectProvince': 'Sélectionnez votre province :',
+      'feedback.chooseProvince': 'Choisissez votre province...',
+      'feedback.yes': 'Oui, bien représentée',
+      'feedback.no': 'Non, à améliorer',
+      'feedback.currentResults': 'Résultats actuels pour',
+      'feedback.totalVotes': 'Total des votes',
+      'feedback.submit': 'Soumettre le Vote',
+      'feedback.thankYou': 'Merci pour vos commentaires !',
+      'feedback.successMessage': 'Votre voix a été enregistrée et aidera à améliorer la représentation démocratique.',
 
       // Tooltip
       'tooltip.senators': 'Sénateurs',
@@ -359,6 +401,27 @@ export class TranslationService {
       'map.description.interactiveGuide': 'Karte oyo ya interaction ekopesa yo nzela ya koyeba nani azali ko représenter etuka na yo na chambre ya likolo ya Parlement. Soki otié cursor na likolo ya etuka moko, okoki komona mbala moko ba sénateurs oyo baponami na région wana. Soki ofiní etuka moko, okozwa ba détails mingi na ntina ya sénateur moko na moko, parti politique na ye, mpe mosala oyo asalaka na ba décisions ya ekolo.',
       'map.description.platformGoal': 'Mokano ya plateforme oyo ezali ya kopusana Sénat na bato. Ekosalisa yo kososola ndenge représentation ekabwani na République Démocratique ya Congo mobimba, mpe ekolakisa boyokani kati ya ba communautés ya mboka mpe ba institutions ya ekolo oyo elobelaka na kombo na bango. Na kosala ba informations oyo ezala accessible, tozali kolendisa ba citoyens bázala na ba informations, bamema ba représentants na bango na responsabilité, mpe basangana na bomoi ya démocratie ya ekolo na biso.',
 
+      // Feedback section
+      'feedback.title': 'Mongongo Na Yo Ezali Na Ntina',
+      'feedback.subtitle': 'Salisa biso tososola ndenge bato bamoni représentation na bango',
+      'feedback.question': 'Okanisi ete etuka na yo ezali malamu na représentation na Sénat?',
+      'feedback.participate': 'Sangana na Botuni',
+      'feedback.resultsPreview': 'Makanisi ya Lisanga:',
+      'feedback.wellRepresented': 'Malamu na Représentation',
+      'feedback.poorly': 'Esengeli Kobongisa',
+      'feedback.unsure': 'Nayebi Te',
+      'feedback.pollTitle': 'Botuni ya Représentation na Sénat',
+      'feedback.pollDescription': 'Makanisi na yo oyo emonani te ekosalisa biso tososola makanisi ya bato na ntina ya représentation ya sénat na République Démocratique ya Congo mobimba.',
+      'feedback.selectProvince': 'Pona etuka na yo:',
+      'feedback.chooseProvince': 'Pona etuka na yo...',
+      'feedback.yes': 'Iyo, malamu na représentation',
+      'feedback.no': 'Te, esengeli kobongisa',
+      'feedback.currentResults': 'Ba résultats ya lelo mpo na',
+      'feedback.totalVotes': 'Motango ya ba vote',
+      'feedback.submit': 'Tinda Vote',
+      'feedback.thankYou': 'Merci mpo na makanisi na yo!',
+      'feedback.successMessage': 'Mongongo na yo ekomemi mpe ekosalisa mpo na kobongisa représentation ya démocratie.',
+
        // Tooltip
        'tooltip.senators': 'Ba Senateur',
 
@@ -498,6 +561,27 @@ export class TranslationService {
       'map.description.interactiveGuide': 'Ramani hii ya maingiliano inakuruhusu kugundua ni nani anayewakilisha jimbo lako katika chumba cha juu cha Bunge. Kwa kuweka kipanya juu ya jimbo, unaweza kuona mara moja maseneta waliochaguliwa kutoka eneo hilo. Kubonyeza jimbo kunaonyesha maelezo zaidi kuhusu kila seneta, ushirikiano wake wa kisiasa, na jukumu analolicheza katika maamuzi ya kitaifa.',
       'map.description.platformGoal': 'Lengo la jukwaa hili ni kuikaribisha Seneti kwa watu. Inakusaidia kuelewa jinsi uwakilishi umegawanywa katika Jamhuri ya Kidemokrasia ya Kongo, na inaangazia uhusiano kati ya jamii za mitaa na taasisi za kitaifa zinazozungumza kwa niaba yao. Kwa kufanya habari hii ipatikane, tunahimiza raia kubaki na habari, kuwashika wawakilishi wao wajibu, na kushiriki kikamilifu katika maisha ya kidemokrasia ya nchi yetu.',
 
+      // Feedback section
+      'feedback.title': 'Sauti Yako Ni Muhimu',
+      'feedback.subtitle': 'Tusaidie kuelewa jinsi raia wanavyoona uwakilishi wao',
+      'feedback.question': 'Je, unafikiri jimbo lako linawakilishwa vizuri katika Seneti?',
+      'feedback.participate': 'Shiriki katika Uchunguzi',
+      'feedback.resultsPreview': 'Maoni ya Jamii:',
+      'feedback.wellRepresented': 'Imewakilishwa Vizuri',
+      'feedback.poorly': 'Inahitaji Kuboresha',
+      'feedback.unsure': 'Sijui',
+      'feedback.pollTitle': 'Uchunguzi wa Uwakilishi wa Seneti',
+      'feedback.pollDescription': 'Maoni yako ya faragha yanasaidia kuelewa maoni ya umma kuhusu uwakilishi wa seneti katika Jamhuri ya Kidemokrasia ya Kongo.',
+      'feedback.selectProvince': 'Chagua jimbo lako:',
+      'feedback.chooseProvince': 'Chagua jimbo lako...',
+      'feedback.yes': 'Ndio, imewakilishwa vizuri',
+      'feedback.no': 'Hapana, inahitaji kuboresha',
+      'feedback.currentResults': 'Matokeo ya sasa kwa',
+      'feedback.totalVotes': 'Jumla ya kura',
+      'feedback.submit': 'Wasilisha Kura',
+      'feedback.thankYou': 'Asante kwa maoni yako!',
+      'feedback.successMessage': 'Sauti yako imerekodiwa na itasaidia kuboresha uwakilishi wa kidemokrasia.',
+
       // Tooltip
       'tooltip.senators': 'Maseneta',
 
@@ -636,6 +720,27 @@ export class TranslationService {
       'map.description.voiceMatters': 'Tshimbila tshimu tshimu tshine dibanza mu Senat, ne dibanza dimu dimu dine bukaya.',
       'map.description.interactiveGuide': 'Karte uyu wa kusangana ukupela nzela ya kumanya nani ukurepresenter tshimbila yaku mu nzo ya likolo ya Parlement. Soki utia cursor pa likolo ya tshimbila, ukumona mbala moya bantu ba sénateurs baponiami mu région ina. Soki ukanya tshimbila, ukozwa ba détails bingi pa ntina ya sénateur moya moya, parti politique yabo, ne musalu baukosala mu ba décisions ya lukalu.',
       'map.description.platformGoal': 'Mukanu wa plateforme uyu udi wa kupusana Senat ne bantu. Ukusalidisha kumanya ndenge représentation ikabwani mu Republiki Democratiki wa Kongo yonso, ne ukulakisha boyokani kati ya ba communautés ya mboka ne ba institutions ya lukalu bikulobela mu nkombo yabo. Mu kosala ba informations uyu bizala accessible, tukukolendisha ba citoyens bazala na ba informations, bamema ba représentants babo na responsabilité, ne basangana na bomoi ya démocratie ya lukalu wetu.',
+
+      // Feedback section
+      'feedback.title': 'Dibanza Diobe Dine Bukaya',
+      'feedback.subtitle': 'Tusalishe tushikile ndenge bantu bamona représentation yabo',
+      'feedback.question': 'Unakanisha dina tshimbila yobe irepresenter bua mu Senat?',
+      'feedback.participate': 'Sangana ne Tubotuna',
+      'feedback.resultsPreview': 'Makanishi ya Bantu:',
+      'feedback.wellRepresented': 'Irepresenter Bua',
+      'feedback.poorly': 'Ifwaya Kubongisha',
+      'feedback.unsure': 'Nshimanya Katu',
+      'feedback.pollTitle': 'Tubotuna wa Représentation wa Senat',
+      'feedback.pollDescription': 'Makanishi yobe asona buya ukusalidisha tushikile makanishi ya bantu pa ntina ya représentation ya senat mu Republiki Democratiki wa Kongo yonso.',
+      'feedback.selectProvince': 'Pona tshimbila yobe:',
+      'feedback.chooseProvince': 'Pona tshimbila yobe...',
+      'feedback.yes': 'Iyo, irepresenter bua',
+      'feedback.no': 'Katu, ifwaya kubongisha',
+      'feedback.currentResults': 'Ba résultats ya lelu bu',
+      'feedback.totalVotes': 'Motango wa ba vote',
+      'feedback.submit': 'Tuma Vote',
+      'feedback.thankYou': 'Tusakidila ku makanishi yobe!',
+      'feedback.successMessage': 'Dibanza diobe dikomiwedi ne dikusalidisha kubongisha représentation ya démocratie.',
 
        // Tooltip
        'tooltip.senators': 'Bantu ba Senateur',
@@ -783,6 +888,26 @@ export class TranslationService {
       'profile.distance': 'Umpata',
       'profile.rating': 'Kutaila',
       'profile.today': 'LELU',
+
+      // Feedback section
+      'feedback.title': 'Makinua maku mazali lokwa?',
+      'feedback.question': 'Okanisi intinu yaku inalakisami malamu?',
+      'feedback.button': 'Pesa makinua',
+      'feedback.modalTitle': 'Omenga intinu mpe pesa makinua',
+      'feedback.selectProvince': 'Menga intinu',
+      'feedback.chooseProvince': 'Menga intinu...',
+      'feedback.response': 'Makinua maku:',
+      'feedback.yes': 'Iyo, inalakisami malamu',
+      'feedback.no': 'Te, ezali na mikakatano',
+      'feedback.neutral': 'Nazali na ndai te',
+      'feedback.submitButton': 'Tinda makinua',
+      'feedback.cancelButton': 'Longola',
+      'feedback.thankYou': 'Asante mingi mpo na makinua maku!',
+      'feedback.results': 'Mayano ma makinua:',
+      'feedback.positiveVotes': 'Maponi ma malamu',
+      'feedback.negativeVotes': 'Maponi ma mabe',
+      'feedback.neutralVotes': 'Maponi ya kati',
+      'feedback.alreadyVoted': 'Oponi kala mpo na intinu yayi',
 
       // About section
       'about.description': 'Tukuvangu uyu tuvangile kwamba makambo ma Senateur wa RDC makale kwavanga bantu, bantu ba nkanda ne bantu ba kulonda. Mukanu wetu udi kwikisa bumfumu ne kusangana kwa bantu mu makambo ya lukalu.',

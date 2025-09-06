@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HighchartsChartModule } from 'highcharts-angular';
 
 // Services
@@ -26,7 +27,7 @@ if (typeof Highcharts === 'object') {
 @Component({
   standalone: true,
   selector: 'app-senate-origin-map',
-  imports: [CommonModule, HighchartsChartModule, NewsSectionComponent, ThemeToggleComponent],
+  imports: [CommonModule, FormsModule, HighchartsChartModule, NewsSectionComponent, ThemeToggleComponent],
   templateUrl: './senate-origin-map.component.html',
   styleUrls: ['./senate-origin-map.component.scss']
 })
@@ -72,6 +73,18 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
   // Sorting properties
   sortBy: 'name' | 'province' | 'party' = 'province';
   sortDirection: 'asc' | 'desc' = 'asc';
+
+  // Feedback poll properties
+  showFeedback = false;
+  selectedProvince = '';
+  feedbackResponse: 'yes' | 'no' | 'unsure' | null = null;
+  hasVoted = false;
+  feedbackStats = {
+    yes: 0,
+    no: 0,
+    unsure: 0,
+    total: 0
+  };
 
   // Chart options
   chartOptions: Highcharts.Options = {
@@ -1055,5 +1068,67 @@ export class SenateOriginMapComponent implements OnInit, OnDestroy {
 
     const percentage = ((femaleNames / this.senatorsData.length) * 100).toFixed(1);
     return `${percentage}%`;
+  }
+
+  // Feedback poll methods
+  getUniqueProvinces(): string[] {
+    const provinces = [...new Set(this.senatorsData.map(senator => senator.originProvince))];
+    return provinces.sort();
+  }
+
+  openFeedback(): void {
+    this.showFeedback = true;
+    this.loadFeedbackStats();
+  }
+
+  closeFeedback(): void {
+    this.showFeedback = false;
+    this.feedbackResponse = null;
+    this.selectedProvince = '';
+  }
+
+  submitFeedback(): void {
+    if (!this.selectedProvince || !this.feedbackResponse) {
+      return;
+    }
+
+    // Update local stats (in a real app, this would go to a backend)
+    this.feedbackStats[this.feedbackResponse]++;
+    this.feedbackStats.total++;
+
+    // Save to localStorage for demo purposes
+    const feedbackKey = `feedback_${this.selectedProvince}`;
+    const existingFeedback = localStorage.getItem(feedbackKey);
+    const feedbackData = existingFeedback ? JSON.parse(existingFeedback) : { yes: 0, no: 0, unsure: 0, total: 0 };
+
+    feedbackData[this.feedbackResponse]++;
+    feedbackData.total++;
+
+    localStorage.setItem(feedbackKey, JSON.stringify(feedbackData));
+
+    this.hasVoted = true;
+
+    // Auto-close after 2 seconds
+    setTimeout(() => {
+      this.closeFeedback();
+      this.hasVoted = false;
+    }, 2000);
+  }
+
+  loadFeedbackStats(): void {
+    if (this.selectedProvince) {
+      const feedbackKey = `feedback_${this.selectedProvince}`;
+      const existingFeedback = localStorage.getItem(feedbackKey);
+      if (existingFeedback) {
+        this.feedbackStats = JSON.parse(existingFeedback);
+      } else {
+        this.feedbackStats = { yes: 0, no: 0, unsure: 0, total: 0 };
+      }
+    }
+  }
+
+  getFeedbackPercentage(response: 'yes' | 'no' | 'unsure'): number {
+    if (this.feedbackStats.total === 0) return 0;
+    return Math.round((this.feedbackStats[response] / this.feedbackStats.total) * 100);
   }
 }

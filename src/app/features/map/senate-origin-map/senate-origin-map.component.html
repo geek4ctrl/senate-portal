@@ -305,6 +305,40 @@
           <p>{{ translate('map.description.interactiveGuide') || 'This interactive map allows you to discover who represents your province in the higher chamber of Parliament. By hovering over a province, you can immediately see the senators elected from that region. Clicking on a province reveals more details about each senator, their political affiliation, and the role they play in shaping national decisions.' }}</p>
           <p>{{ translate('map.description.platformGoal') || 'The goal of this platform is to bring the Senate closer to the people. It helps you understand how representation is distributed across the Democratic Republic of the Congo, and highlights the connection between local communities and the national institutions that speak on their behalf. By making this information accessible, we encourage citizens to stay informed, to hold their representatives accountable, and to actively engage in the democratic life of our country.' }}</p>
         </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback-section" *ngIf="activeMapSubTab === 'map'">
+          <div class="feedback-container">
+            <div class="feedback-header">
+              <h3 class="feedback-title">
+                <i class="fas fa-poll-h"></i>
+                {{ translate('feedback.title') || 'Your Voice Matters' }}
+              </h3>
+              <p class="feedback-subtitle">
+                {{ translate('feedback.subtitle') || 'Help us understand how citizens feel about their representation' }}
+              </p>
+            </div>
+
+            <div class="feedback-cta">
+              <p class="feedback-question">
+                {{ translate('feedback.question') || 'Do you think your province is well represented in the Senate?' }}
+              </p>
+              <button class="feedback-btn" (click)="openFeedback()">
+                <i class="fas fa-vote-yea"></i>
+                {{ translate('feedback.participate') || 'Participate in Poll' }}
+              </button>
+            </div>
+
+            <div class="feedback-stats" *ngIf="feedbackStats.total > 0">
+              <p class="stats-label">{{ translate('feedback.resultsPreview') || 'Community Feedback:' }}</p>
+              <div class="stats-preview">
+                <span class="stat-item positive">{{ getFeedbackPercentage('yes') }}% {{ translate('feedback.wellRepresented') || 'Well Represented' }}</span>
+                <span class="stat-item negative">{{ getFeedbackPercentage('no') }}% {{ translate('feedback.poorly') || 'Needs Improvement' }}</span>
+                <span class="stat-item neutral">{{ getFeedbackPercentage('unsure') }}% {{ translate('feedback.unsure') || 'Unsure' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Senators List View -->
         <div class="senators-list-view" *ngIf="activeMapSubTab === 'list'">
         <!-- Senators List Header -->
@@ -665,6 +699,132 @@
       <div class="profile-name">{{ selectedSenator.fullName }}</div>
       <div class="profile-title">{{ selectedSenator.party || translate('modal.independent') }}</div>
       <div class="profile-province">{{ translate('modal.province') }}: {{ selectedSenator.originProvince }}</div>
+    </div>
+  </div>
+</div>
+
+<!-- Feedback Poll Modal -->
+<div class="modal-overlay feedback-modal-overlay"
+     *ngIf="showFeedback"
+     (click)="closeFeedback()">
+  <div class="modal-content feedback-modal"
+       (click)="$event.stopPropagation()"
+       role="dialog"
+       aria-modal="true">
+
+    <div class="feedback-modal-header">
+      <h3 class="feedback-modal-title">
+        <i class="fas fa-poll-h"></i>
+        {{ translate('feedback.pollTitle') || 'Senate Representation Poll' }}
+      </h3>
+      <button class="close-button"
+              (click)="closeFeedback()"
+              aria-label="Close feedback poll">&times;</button>
+    </div>
+
+    <div class="feedback-modal-body" *ngIf="!hasVoted">
+      <div class="feedback-question-section">
+        <h4 class="poll-question">{{ translate('feedback.question') || 'Do you think your province is well represented in the Senate?' }}</h4>
+        <p class="poll-description">{{ translate('feedback.pollDescription') || 'Your anonymous feedback helps us understand public opinion about senate representation across the Democratic Republic of Congo.' }}</p>
+      </div>
+
+      <div class="province-selector">
+        <label for="province-select" class="province-label">
+          {{ translate('feedback.selectProvince') || 'Select your province:' }}
+        </label>
+        <select id="province-select"
+                [(ngModel)]="selectedProvince"
+                (change)="loadFeedbackStats()"
+                class="province-select">
+          <option value="" disabled>{{ translate('feedback.chooseProvince') || 'Choose your province...' }}</option>
+          <option *ngFor="let province of getUniqueProvinces()" [value]="province">
+            {{ province }}
+          </option>
+        </select>
+      </div>
+
+      <div class="feedback-options" *ngIf="selectedProvince">
+        <div class="feedback-option">
+          <input type="radio"
+                 id="feedback-yes"
+                 name="feedback"
+                 value="yes"
+                 [(ngModel)]="feedbackResponse">
+          <label for="feedback-yes" class="feedback-label feedback-yes">
+            <i class="fas fa-thumbs-up"></i>
+            {{ translate('feedback.yes') || 'Yes, well represented' }}
+          </label>
+        </div>
+
+        <div class="feedback-option">
+          <input type="radio"
+                 id="feedback-no"
+                 name="feedback"
+                 value="no"
+                 [(ngModel)]="feedbackResponse">
+          <label for="feedback-no" class="feedback-label feedback-no">
+            <i class="fas fa-thumbs-down"></i>
+            {{ translate('feedback.no') || 'No, needs improvement' }}
+          </label>
+        </div>
+
+        <div class="feedback-option">
+          <input type="radio"
+                 id="feedback-unsure"
+                 name="feedback"
+                 value="unsure"
+                 [(ngModel)]="feedbackResponse">
+          <label for="feedback-unsure" class="feedback-label feedback-unsure">
+            <i class="fas fa-question-circle"></i>
+            {{ translate('feedback.unsure') || 'Not sure' }}
+          </label>
+        </div>
+      </div>
+
+      <div class="current-stats" *ngIf="selectedProvince && feedbackStats.total > 0">
+        <h5>{{ translate('feedback.currentResults') || 'Current results for' }} {{ selectedProvince }}:</h5>
+        <div class="stats-bars">
+          <div class="stat-bar">
+            <span class="stat-label">{{ translate('feedback.wellRepresented') || 'Well Represented' }}</span>
+            <div class="progress-bar">
+              <div class="progress-fill positive" [style.width.%]="getFeedbackPercentage('yes')"></div>
+            </div>
+            <span class="stat-percentage">{{ getFeedbackPercentage('yes') }}%</span>
+          </div>
+          <div class="stat-bar">
+            <span class="stat-label">{{ translate('feedback.poorly') || 'Needs Improvement' }}</span>
+            <div class="progress-bar">
+              <div class="progress-fill negative" [style.width.%]="getFeedbackPercentage('no')"></div>
+            </div>
+            <span class="stat-percentage">{{ getFeedbackPercentage('no') }}%</span>
+          </div>
+          <div class="stat-bar">
+            <span class="stat-label">{{ translate('feedback.unsure') || 'Unsure' }}</span>
+            <div class="progress-bar">
+              <div class="progress-fill neutral" [style.width.%]="getFeedbackPercentage('unsure')"></div>
+            </div>
+            <span class="stat-percentage">{{ getFeedbackPercentage('unsure') }}%</span>
+          </div>
+        </div>
+        <p class="total-votes">{{ translate('feedback.totalVotes') || 'Total votes' }}: {{ feedbackStats.total }}</p>
+      </div>
+
+      <div class="feedback-actions">
+        <button class="btn-submit"
+                (click)="submitFeedback()"
+                [disabled]="!selectedProvince || !feedbackResponse">
+          <i class="fas fa-paper-plane"></i>
+          {{ translate('feedback.submit') || 'Submit Vote' }}
+        </button>
+      </div>
+    </div>
+
+    <div class="feedback-success" *ngIf="hasVoted">
+      <div class="success-content">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h4>{{ translate('feedback.thankYou') || 'Thank you for your feedback!' }}</h4>
+        <p>{{ translate('feedback.successMessage') || 'Your voice has been recorded and will help improve democratic representation.' }}</p>
+      </div>
     </div>
   </div>
 </div>
