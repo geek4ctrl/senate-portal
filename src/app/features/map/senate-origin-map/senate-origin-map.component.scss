@@ -174,6 +174,51 @@
 .nav-tab:hover .tab-icon {
   transform: scale(1.2);
 }
+
+/* Poll-specific navigation styling */
+.nav-tab.poll-tab {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  border: 2px solid transparent;
+  animation: poll-pulse 2s infinite;
+}
+
+.nav-tab.poll-tab:hover {
+  background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(240, 147, 251, 0.4);
+}
+
+@keyframes poll-pulse {
+  0%, 100% { box-shadow: 0 6px 20px rgba(240, 147, 251, 0.3); }
+  50% { box-shadow: 0 8px 25px rgba(240, 147, 251, 0.5); }
+}
+
+.mobile-nav-item.poll-item {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  border: none;
+  margin: 8px 12px;
+  border-radius: 12px;
+}
+
+.mobile-nav-item.poll-item:hover {
+  background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+  transform: translateX(8px);
+}
+
+.mobile-bottom-nav-item.poll-bottom-nav {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: #fff;
+  border-radius: 12px;
+  margin: 0 2px;
+}
+
+.mobile-bottom-nav-item.poll-bottom-nav:hover {
+  background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%);
+  transform: translateY(-2px);
+}
+
 .nav-right{display:flex;align-items:center;gap:18px}
 .nav-controls{display:flex;gap:8px}
 .nav-btn{background:var(--theme-button-secondary);border:1px solid var(--theme-border-color);width:40px;height:40px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}

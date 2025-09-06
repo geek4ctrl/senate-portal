@@ -26,6 +26,10 @@
           <i class="fas fa-newspaper tab-icon animate-pulse"></i>
           {{ translate('nav.news') || 'News' }}
         </button>
+        <button class="nav-tab poll-tab" (click)="openFeedback()">
+          <i class="fas fa-poll tab-icon animate-bounce-gentle"></i>
+          {{ translate('nav.participateInPoll') || 'Participate in Poll' }}
+        </button>
       </div>
     </div>
 
@@ -169,6 +173,12 @@
         <i class="fas fa-newspaper"></i>
         <span>{{ translate('nav.news') || 'News' }}</span>
         <i class="fas fa-chevron-right" *ngIf="activeTab === 'news'"></i>
+      </button>
+
+      <button class="mobile-nav-item poll-item" (click)="openFeedback(); closeMobileMenu()">
+        <i class="fas fa-poll"></i>
+        <span>{{ translate('nav.participateInPoll') || 'Participate in Poll' }}</span>
+        <i class="fas fa-external-link-alt"></i>
       </button>
     </div>
 
@@ -618,6 +628,10 @@
     <button class="mobile-bottom-nav-item" [class.active]="activeTab === 'news'" (click)="setActiveTab('news')">
       <i class="fas fa-newspaper"></i>
       <span>{{ translate('nav.news') || 'News' }}</span>
+    </button>
+    <button class="mobile-bottom-nav-item poll-bottom-nav" (click)="openFeedback()">
+      <i class="fas fa-poll"></i>
+      <span>{{ translate('nav.poll') || 'Poll' }}</span>
     </button>
   </div>
 </div>
