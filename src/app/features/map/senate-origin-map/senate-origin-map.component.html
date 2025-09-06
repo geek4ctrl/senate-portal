@@ -299,8 +299,14 @@
         </div>
       </div>
 
-      <!-- Senators List View -->
-      <div class="senators-list-view" *ngIf="activeMapSubTab === 'list'">
+        <!-- Paragraph below the map -->
+        <div class="map-below-paragraph" *ngIf="activeMapSubTab === 'map'">
+          <p>{{ translate('map.description.voiceMatters') || 'Every province has a voice in the Senate, and every voice matters.' }}</p>
+          <p>{{ translate('map.description.interactiveGuide') || 'This interactive map allows you to discover who represents your province in the higher chamber of Parliament. By hovering over a province, you can immediately see the senators elected from that region. Clicking on a province reveals more details about each senator, their political affiliation, and the role they play in shaping national decisions.' }}</p>
+          <p>{{ translate('map.description.platformGoal') || 'The goal of this platform is to bring the Senate closer to the people. It helps you understand how representation is distributed across the Democratic Republic of the Congo, and highlights the connection between local communities and the national institutions that speak on their behalf. By making this information accessible, we encourage citizens to stay informed, to hold their representatives accountable, and to actively engage in the democratic life of our country.' }}</p>
+        </div>
+        <!-- Senators List View -->
+        <div class="senators-list-view" *ngIf="activeMapSubTab === 'list'">
         <!-- Senators List Header -->
         <div class="sidebar-header">
           <h3 class="sidebar-title">

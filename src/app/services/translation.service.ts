@@ -75,6 +75,11 @@ export class TranslationService {
       'map.banner.source': 'Source',
       'map.banner.officialGazette': 'Official Gazette',
 
+      // Map description
+      'map.description.voiceMatters': 'Every province has a voice in the Senate, and every voice matters.',
+      'map.description.interactiveGuide': 'This interactive map allows you to discover who represents your province in the higher chamber of Parliament. By hovering over a province, you can immediately see the senators elected from that region. Clicking on a province reveals more details about each senator, their political affiliation, and the role they play in shaping national decisions.',
+      'map.description.platformGoal': 'The goal of this platform is to bring the Senate closer to the people. It helps you understand how representation is distributed across the Democratic Republic of the Congo, and highlights the connection between local communities and the national institutions that speak on their behalf. By making this information accessible, we encourage citizens to stay informed, to hold their representatives accountable, and to actively engage in the democratic life of our country.',
+
       // Tooltip
       'tooltip.senators': 'Senators',
 
@@ -207,6 +212,11 @@ export class TranslationService {
       'map.banner.lastUpdated': 'Dernière mise à jour',
       'map.banner.source': 'Source',
       'map.banner.officialGazette': 'Journal Officiel',
+
+      // Map description
+      'map.description.voiceMatters': 'Chaque province a une voix au Sénat, et chaque voix compte.',
+      'map.description.interactiveGuide': 'Cette carte interactive vous permet de découvrir qui représente votre province dans la chambre haute du Parlement. En survolant une province, vous pouvez immédiatement voir les sénateurs élus de cette région. En cliquant sur une province, vous obtenez plus de détails sur chaque sénateur, son affiliation politique et le rôle qu\'il joue dans les décisions nationales.',
+      'map.description.platformGoal': 'L\'objectif de cette plateforme est de rapprocher le Sénat du peuple. Elle vous aide à comprendre comment la représentation est distribuée à travers la République Démocratique du Congo, et met en évidence le lien entre les communautés locales et les institutions nationales qui parlent en leur nom. En rendant ces informations accessibles, nous encourageons les citoyens à rester informés, à tenir leurs représentants responsables, et à s\'engager activement dans la vie démocratique de notre pays.',
 
       // Tooltip
       'tooltip.senators': 'Sénateurs',
@@ -341,8 +351,13 @@ export class TranslationService {
       'map.banner.source': 'Esika ya nsango',
       'map.banner.officialGazette': 'Journal Officiel',
 
-      // Tooltip
-      'tooltip.senators': 'Ba Senateur',
+      // Map description
+      'map.description.voiceMatters': 'Etuka nyonso ezali na mongongo na Sénat, mpe mongongo nyonso ezali na ntina.',
+      'map.description.interactiveGuide': 'Karte oyo ya interaction ekopesa yo nzela ya koyeba nani azali ko représenter etuka na yo na chambre ya likolo ya Parlement. Soki otié cursor na likolo ya etuka moko, okoki komona mbala moko ba sénateurs oyo baponami na région wana. Soki ofiní etuka moko, okozwa ba détails mingi na ntina ya sénateur moko na moko, parti politique na ye, mpe mosala oyo asalaka na ba décisions ya ekolo.',
+      'map.description.platformGoal': 'Mokano ya plateforme oyo ezali ya kopusana Sénat na bato. Ekosalisa yo kososola ndenge représentation ekabwani na République Démocratique ya Congo mobimba, mpe ekolakisa boyokani kati ya ba communautés ya mboka mpe ba institutions ya ekolo oyo elobelaka na kombo na bango. Na kosala ba informations oyo ezala accessible, tozali kolendisa ba citoyens bázala na ba informations, bamema ba représentants na bango na responsabilité, mpe basangana na bomoi ya démocratie ya ekolo na biso.',
+
+       // Tooltip
+       'tooltip.senators': 'Ba Senateur',
 
       // Profile card
       'profile.distance': 'Mokano',
@@ -468,11 +483,16 @@ export class TranslationService {
       'map.senatorsPerProvince': 'Maseneta kwa Mkoa',
 
       // Map header banner
-      'map.banner.title': 'Ramani ya Seneti DRC',
-      'map.banner.subtitle': 'Chunguza mahali maseneta wa Jamhuri ya Kidemokrasia ya Kongo wanatoka. Bofya mkoa kuona wawakilishi wake.',
-      'map.banner.lastUpdated': 'Imesasishwa mwisho',
+      'map.banner.title': 'Ramani ya Seneti RDC',
+      'map.banner.subtitle': 'Chunguza mahali ambapo maseneta wa Jamhuri ya Kidemokrasia ya Kongo wanatoka. Bonyeza jimbo ili kuona wawakilishi wake.',
+      'map.banner.lastUpdated': 'Ilisasishwa mwisho',
       'map.banner.source': 'Chanzo',
       'map.banner.officialGazette': 'Gazeti Rasmi',
+
+      // Map description
+      'map.description.voiceMatters': 'Kila jimbo lina sauti katika Seneti, na kila sauti ni muhimu.',
+      'map.description.interactiveGuide': 'Ramani hii ya maingiliano inakuruhusu kugundua ni nani anayewakilisha jimbo lako katika chumba cha juu cha Bunge. Kwa kuweka kipanya juu ya jimbo, unaweza kuona mara moja maseneta waliochaguliwa kutoka eneo hilo. Kubonyeza jimbo kunaonyesha maelezo zaidi kuhusu kila seneta, ushirikiano wake wa kisiasa, na jukumu analolicheza katika maamuzi ya kitaifa.',
+      'map.description.platformGoal': 'Lengo la jukwaa hili ni kuikaribisha Seneti kwa watu. Inakusaidia kuelewa jinsi uwakilishi umegawanywa katika Jamhuri ya Kidemokrasia ya Kongo, na inaangazia uhusiano kati ya jamii za mitaa na taasisi za kitaifa zinazozungumza kwa niaba yao. Kwa kufanya habari hii ipatikane, tunahimiza raia kubaki na habari, kuwashika wawakilishi wao wajibu, na kushiriki kikamilifu katika maisha ya kidemokrasia ya nchi yetu.',
 
       // Tooltip
       'tooltip.senators': 'Maseneta',
@@ -607,8 +627,13 @@ export class TranslationService {
       'map.banner.source': 'Kisebeleshe',
       'map.banner.officialGazette': 'Bulebule bwa Mfumu',
 
-      // Tooltip
-      'tooltip.senators': 'Bantu ba Senateur',
+      // Map description
+      'map.description.voiceMatters': 'Tshimbila tshimu tshimu tshine dibanza mu Senat, ne dibanza dimu dimu dine bukaya.',
+      'map.description.interactiveGuide': 'Karte uyu wa kusangana ukupela nzela ya kumanya nani ukurepresenter tshimbila yaku mu nzo ya likolo ya Parlement. Soki utia cursor pa likolo ya tshimbila, ukumona mbala moya bantu ba sénateurs baponiami mu région ina. Soki ukanya tshimbila, ukozwa ba détails bingi pa ntina ya sénateur moya moya, parti politique yabo, ne musalu baukosala mu ba décisions ya lukalu.',
+      'map.description.platformGoal': 'Mukanu wa plateforme uyu udi wa kupusana Senat ne bantu. Ukusalidisha kumanya ndenge représentation ikabwani mu Republiki Democratiki wa Kongo yonso, ne ukulakisha boyokani kati ya ba communautés ya mboka ne ba institutions ya lukalu bikulobela mu nkombo yabo. Mu kosala ba informations uyu bizala accessible, tukukolendisha ba citoyens bazala na ba informations, bamema ba représentants babo na responsabilité, ne basangana na bomoi ya démocratie ya lukalu wetu.',
+
+       // Tooltip
+       'tooltip.senators': 'Bantu ba Senateur',
 
       // Profile card
       'profile.distance': 'Bulele',
@@ -740,6 +765,11 @@ export class TranslationService {
       'map.banner.source': 'Ntoto ya madisa',
       'map.banner.officialGazette': 'Buku ya Mfumu',
 
+      // Map description
+      'map.description.voiceMatters': 'Intinu yonso yina dibanza mu Senat, ye dibanza dyonso dina nkwa.',
+      'map.description.interactiveGuide': 'Kata yayi ya kusangana ikuvana nzela ya koyeba nani azali korepresenter intinu yaku mu nzo ya likolo ya Parlement. Soki otia cursor na likolo ya intinu, okoki komona mbala moko ba senateur baponiami na région ina. Soki okanda intinu, okozwa ba détails mingi na ntina ya senateur moko na moko, parti politique na ye, mpe mosala asalaka na ba décisions ya nsi.',
+      'map.description.platformGoal': 'Mukanu wa plateforme yayi udi wa kopusana Senat na batu. Ukosalisa yo kososola ndenge représentation ikabwani na Republiki Demokratiki ya Kongo yonso, mpe ukolakisa boyokani kati ya ba communautés ya mboka mpe ba institutions ya nsi oyo ilobelaka na nkumbu yabo. Na kosala ba informations yayi izala accessible, tozali kolendisa ba citoyens bazala na ba informations, bamema ba représentants na bango na responsabilité, mpe basangana na bomoi ya démocratie ya nsi na biso.',
+
       // Tooltip
       'tooltip.senators': 'Bantu ba Senateur',
 
@@ -817,7 +847,7 @@ export class TranslationService {
       'analytics.feature.demographics': 'Analyses ya Demographie',
       'analytics.feature.composition': 'Bokomisa ya Sénat',
       'analytics.feature.trends': 'Mizala ya Kala'
-    },
+    }
   };
 
   setLanguage(language: 'en' | 'fr' | 'ln' | 'sw' | 'lu' | 'kg'): void {
