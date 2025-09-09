@@ -37,7 +37,7 @@ export class OnboardingComponent implements OnInit, OnDestroy {
     },
     {
       id: 'language',
-      title: 'onboarding.language.title', 
+      title: 'onboarding.language.title',
       description: 'onboarding.language.description',
       targetSelector: '.language-selector',
       position: 'bottom',
@@ -119,13 +119,13 @@ export class OnboardingComponent implements OnInit, OnDestroy {
 
     this.currentStepIndex = stepIndex;
     this.currentStep = this.steps[stepIndex];
-    
+
     // Remove previous highlights
     this.clearHighlights();
-    
+
     // Highlight target element
     this.highlightElement(this.currentStep.targetSelector);
-    
+
     // Position tooltip
     this.positionTooltip();
   }
@@ -165,11 +165,11 @@ export class OnboardingComponent implements OnInit, OnDestroy {
       element.classList.add('onboarding-highlight');
       element.style.zIndex = '10001';
       element.style.position = 'relative';
-      
+
       // Scroll element into view if needed
-      element.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'center' 
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
       });
     }
   }
@@ -190,14 +190,14 @@ export class OnboardingComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       const targetElement = document.querySelector(this.currentStep?.targetSelector || '') as HTMLElement;
       const tooltip = this.onboardingOverlay.nativeElement.querySelector('.onboarding-tooltip') as HTMLElement;
-      
+
       if (targetElement && tooltip) {
         const targetRect = targetElement.getBoundingClientRect();
         const tooltipRect = tooltip.getBoundingClientRect();
-        
+
         let top = 0;
         let left = 0;
-        
+
         switch (this.currentStep?.position) {
           case 'bottom':
             top = targetRect.bottom + 10;
@@ -221,11 +221,11 @@ export class OnboardingComponent implements OnInit, OnDestroy {
             left = window.innerWidth / 2 - tooltipRect.width / 2;
             break;
         }
-        
+
         // Ensure tooltip stays within viewport
         top = Math.max(10, Math.min(top, window.innerHeight - tooltipRect.height - 10));
         left = Math.max(10, Math.min(left, window.innerWidth - tooltipRect.width - 10));
-        
+
         tooltip.style.top = `${top}px`;
         tooltip.style.left = `${left}px`;
       }

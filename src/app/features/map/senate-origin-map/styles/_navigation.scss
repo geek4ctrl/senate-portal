@@ -45,6 +45,7 @@
   transition: all var(--duration-normal) var(--ease-out);
   white-space: nowrap;
   flex-shrink: 0;
+  z-index: 0 !important
 }
 
 .app-title:hover {

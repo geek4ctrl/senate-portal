@@ -1,10 +1,10 @@
 <div class="onboarding-overlay" *ngIf="isVisible" #onboardingOverlay>
   <!-- Dark backdrop -->
   <div class="onboarding-backdrop"></div>
-  
+
   <!-- Spotlight effect for highlighted element -->
   <div class="onboarding-spotlight"></div>
-  
+
   <!-- Onboarding tooltip -->
   <div class="onboarding-tooltip" *ngIf="currentStep">
     <!-- Progress indicator -->
@@ -16,7 +16,7 @@
         {{ currentStepIndex + 1 }} / {{ totalSteps }}
       </span>
     </div>
-    
+
     <!-- Step content -->
     <div class="onboarding-content">
       <div class="onboarding-header">
@@ -28,43 +28,43 @@
           <i class="fas fa-times"></i>
         </button>
       </div>
-      
+
       <div class="onboarding-body">
         <p class="onboarding-description">
           {{ translate(currentStep.description) }}
         </p>
-        
+
         <div class="onboarding-action" *ngIf="currentStep.action">
           <i class="fas fa-hand-pointer action-icon"></i>
           <span class="action-text">{{ translate(currentStep.action) }}</span>
         </div>
-        
+
         <div class="onboarding-optional" *ngIf="currentStep.isOptional">
           <i class="fas fa-info-circle optional-icon"></i>
           <span class="optional-text">{{ translate('onboarding.optional') }}</span>
         </div>
       </div>
-      
+
       <!-- Navigation buttons -->
       <div class="onboarding-footer">
         <div class="onboarding-nav-left">
-          <button 
-            class="onboarding-btn onboarding-btn-secondary" 
+          <button
+            class="onboarding-btn onboarding-btn-secondary"
             *ngIf="!isFirstStep"
             (click)="previousStep()">
             <i class="fas fa-arrow-left"></i>
             {{ translate('onboarding.previous') }}
           </button>
         </div>
-        
+
         <div class="onboarding-nav-right">
-          <button 
-            class="onboarding-btn onboarding-btn-ghost" 
+          <button
+            class="onboarding-btn onboarding-btn-ghost"
             (click)="skipOnboarding()">
             {{ translate('onboarding.skip') }}
           </button>
-          
-          <button 
+
+          <button
             class="onboarding-btn onboarding-btn-primary"
             (click)="nextStep()">
             <span *ngIf="!isLastStep">
@@ -79,11 +79,11 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Tooltip arrow -->
     <div class="tooltip-arrow" [ngClass]="'arrow-' + currentStep.position"></div>
   </div>
-  
+
   <!-- Welcome modal for first step -->
   <div class="onboarding-welcome-modal" *ngIf="currentStepIndex === 0">
     <div class="welcome-modal-content">
@@ -94,7 +94,7 @@
         <h2 class="welcome-title">{{ translate('onboarding.welcome.modalTitle') }}</h2>
         <p class="welcome-subtitle">{{ translate('onboarding.welcome.modalSubtitle') }}</p>
       </div>
-      
+
       <div class="welcome-features">
         <div class="feature-item">
           <i class="fas fa-globe-africa feature-icon"></i>
@@ -103,7 +103,7 @@
             <p>{{ translate('onboarding.features.multilingual.description') }}</p>
           </div>
         </div>
-        
+
         <div class="feature-item">
           <i class="fas fa-scroll feature-icon"></i>
           <div class="feature-content">
@@ -111,7 +111,7 @@
             <p>{{ translate('onboarding.features.constitution.description') }}</p>
           </div>
         </div>
-        
+
         <div class="feature-item">
           <i class="fas fa-users feature-icon"></i>
           <div class="feature-content">
@@ -119,7 +119,7 @@
             <p>{{ translate('onboarding.features.senators.description') }}</p>
           </div>
         </div>
-        
+
         <div class="feature-item">
           <i class="fas fa-newspaper feature-icon"></i>
           <div class="feature-content">
@@ -128,7 +128,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="welcome-footer">
         <button class="onboarding-btn onboarding-btn-ghost" (click)="skipOnboarding()">
           {{ translate('onboarding.skipTour') }}

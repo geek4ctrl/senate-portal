@@ -3139,7 +3139,7 @@
 @media (min-width: 769px) and (max-width: 1024px) {
   .top-nav{padding:14px 20px;height:64px;min-height:64px;max-height:64px}
   .nav-left{gap:24px}
-  .app-title{font-size:20px}
+  .app-title{font-size:20px; z-index: 0 !important}
   .nav-right{gap:14px}
 
   /* Hide random senators on tablet for space */
@@ -3200,7 +3200,7 @@
 @media(max-width:768px){
 .top-nav{padding:12px 16px;height:64px;min-height:64px;max-height:64px}
 .nav-left{gap:16px}
-.app-title{font-size:18px}
+.app-title{font-size:18px; z-index: 0 !important}
 .nav-tabs{display:none}
 .nav-right{gap:12px;align-items:center}
 
@@ -4395,6 +4395,7 @@ body.modal-open{overflow:hidden !important}
 @media (min-width: 900px) and (max-width: 1100px) {
   .app-title {
     font-size: 10px !important;
+    z-index: 0 !important
   }
 
   .nav-tab {
