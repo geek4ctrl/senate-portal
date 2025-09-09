@@ -19,7 +19,7 @@ export interface Translations {
 export class TranslationService {
   private currentLanguage = 'fr'; // Changed default to French
 
-  private translations: Translations = {
+  private readonly translations: Translations = {
     en: {
       // Navigation
       'nav.navigation': 'Navigation',
@@ -1130,6 +1130,18 @@ export class TranslationService {
       'constitution.articles.article39': 'Moto nyonso azali na ndingisa ya kobikisama na nzala.',
       'constitution.articles.article40': 'Moto nyonso azali na ndingisa ya ndako.',
 
+      // Constitution articles - Economic and Social Rights (41-50)
+      'constitution.articles.article41': 'Moto nyonso azali na ndingisa ya mai.',
+      'constitution.articles.article42': 'Moto nyonso azali na ndingisa ya koyekola.',
+      'constitution.articles.article43': 'Koyekola ya liboso ezali ya ntina pe ya ofele na ba ndako ya leta.',
+      'constitution.articles.article44': 'Moto nyonso azali na ndingisa ya kosepela na mayemi pe ya kosangana na bomoi ya mimeseno ya lisanga.',
+      'constitution.articles.article45': 'Moto nyonso azali na ndingisa ya zando ya malamu oyo ekokola bokoli na ye.',
+      'constitution.articles.article46': 'Moto nyonso azali na ndingisa ya biloko na ye.',
+      'constitution.articles.article47': 'Moto moko te akoki kobotolama biloko na ye longola kaka mpo na bolamu ya bato pe na kokabana mbongo ya sembo liboso.',
+      'constitution.articles.article48': 'Ndingisa ya kozwa libula ya bato bakufi ezali na ndimbola.',
+      'constitution.articles.article49': 'Mukongo nyonso azali na ndingisa ya kotambola pe ya kovanda na bisika oyo alingi na mokili ya ekolo.',
+      'constitution.articles.article50': 'Mukongo nyonso azali na ndingisa pe mokumba ya kobatela mboka.',
+
       // Constitution articles - Rights and Duties continued (51-59)
       'constitution.articles.article51': 'Moto nyonso ya Congo azali na ndingisa ya kopona pe ya koponama.',
       'constitution.articles.article52': 'Moto nyonso azali na ndingisa ya kosangana na makambo ya eta.',
@@ -1140,6 +1152,17 @@ export class TranslationService {
       'constitution.articles.article57': 'Moto nyonso azali na ndingisa ya lisalisi ya bomoi.',
       'constitution.articles.article58': 'Ba mosali bazali na ndingisa ya kotika mosala.',
       'constitution.articles.article59': 'Moto nyonso azali na ndingisa ya kokotisa na ba syndicat.',
+
+      // Citizen Duties and State Organization (Articles 60-68)
+      'constitution.articles.article60': 'Moto nyonso ya Congo azali na mokumba ya kotanga eta pe ya kosala misala oyo eta epesi.',
+      'constitution.articles.article61': 'Moto nyonso azali na mokumba ya komema lidusu na eta pe ya kofuta ba mpako.',
+      'constitution.articles.article62': 'Moto nyonso azali na mokumba ya kobatela liloba ya eta pe ya kozwa monganga ya eta.',
+      'constitution.articles.article63': 'Moto nyonso azali na mokumba ya kobatela zando ya liboso pe ya bato ya mboka.',
+      'constitution.articles.article64': 'Moto nyonso azali na mokumba ya kosala mpo na boyokani pe na bomoi malamu ya bato nyonso.',
+      'constitution.articles.article65': 'Bana bazali na mokumba ya kosalela malamu ntango ya kelasi pe ya kondima ba malako ya bato bazali',
+      'constitution.articles.article66': 'Baboti bazali na mokumba ya kolendisa bana na bango pe ya kopesa bango malako.',
+      'constitution.articles.article67': 'Mikolo ya bonsomi pe ya ba fête ya eta ekozala korespectuer.',
+      'constitution.articles.article68': 'Falanse ezali monoko ya ofisiele ya République Démocratique ya Congo.',
 
       // Constitution articles - Executive Power (69-75)
       'constitution.articles.article69': 'Mokambi ya République ezali motó ya eta pe ezali komonisa yango na bapaya.',
@@ -1508,6 +1531,18 @@ export class TranslationService {
       'constitution.articles.article39': 'Kila mtu ana haki ya usalama wa chakula.',
       'constitution.articles.article40': 'Kila mtu ana haki ya makao.',
 
+      // Constitution articles - Economic and Social Rights (41-50)
+      'constitution.articles.article41': 'Kila mtu ana haki ya maji.',
+      'constitution.articles.article42': 'Kila mtu ana haki ya elimu.',
+      'constitution.articles.article43': 'Elimu ya msingi ni ya lazima na ya bure katika taasisi za umma.',
+      'constitution.articles.article44': 'Kila mtu ana haki ya kufurahia sanaa na kushiriki kwa uhuru katika maisha ya kitamaduni ya jamii.',
+      'constitution.articles.article45': 'Kila mtu ana haki ya mazingira mazuri yanayofaa kwa maendeleo yake.',
+      'constitution.articles.article46': 'Kila mtu ana haki ya mali.',
+      'constitution.articles.article47': 'Hakuna mtu anayeweza kunyimwa mali yake isipokuwa kwa manufaa ya umma na kwa fidia ya haki na ya awali.',
+      'constitution.articles.article48': 'Haki ya urithi imedhaminiwa.',
+      'constitution.articles.article49': 'Kila Mkongo ana haki ya kusonga na kukaa kwa uhuru katika eneo la kitaifa.',
+      'constitution.articles.article50': 'Kila Mkongo ana haki na wajibu wa kulinda nchi.',
+
       // Constitution articles - Rights and Duties continued (51-59)
       'constitution.articles.article51': 'Kila Mkongo ana haki ya kupiga kura na kuchaguliwa.',
       'constitution.articles.article52': 'Kila mtu ana haki ya kushiriki katika uongozi wa mambo ya umma.',
@@ -1518,6 +1553,17 @@ export class TranslationService {
       'constitution.articles.article57': 'Kila mtu ana haki ya usalama wa kijamii.',
       'constitution.articles.article58': 'Wafanyakazi wana haki ya kuandamana.',
       'constitution.articles.article59': 'Kila mtu ana haki ya uanachama wa vyama vya wafanyakazi.',
+
+      // Citizen Duties and State Organization (Articles 60-68)
+      'constitution.articles.article60': 'Kila Mkongo ana wajibu wa kuheshimu serikali na kufuata amri za serikali.',
+      'constitution.articles.article61': 'Kila mtu ana wajibu wa kushiriki katika uzito wa serikali na kulipa kodi.',
+      'constitution.articles.article62': 'Kila mtu ana wajibu wa kuheshimu amri za serikali na kupokea huduma za serikali.',
+      'constitution.articles.article63': 'Kila mtu ana wajibu wa kulinda mazingira ya kwanza na watu wa taifa.',
+      'constitution.articles.article64': 'Kila mtu ana wajibu wa kufanya kazi kwa amani na maisha mazuri ya watu wote.',
+      'constitution.articles.article65': 'Watoto wana wajibu wa kutumia vizuri wakati wa shule na kukubali maagizo ya watu wazima.',
+      'constitution.articles.article66': 'Wazazi wana wajibu wa kulea watoto wao na kuwapa maelekezo.',
+      'constitution.articles.article67': 'Siku za mapumziko na sikukuu za serikali zitaheshimiwa.',
+      'constitution.articles.article68': 'Kifaransa ni lugha rasmi ya Jamhuri ya Kidemokrasia ya Kongo.',
 
       // Constitution articles - Executive Power (69-75)
       'constitution.articles.article69': 'Rais wa Jamhuri ni mkuu wa serikali na anawakilisha nchi kwa majirani.',
@@ -1886,6 +1932,18 @@ export class TranslationService {
       'constitution.articles.article39': 'Muntu weetu une dilengiso dia kukanisilwa mu nzala.',
       'constitution.articles.article40': 'Muntu weetu une dilengiso dia nzo.',
 
+      // Constitution articles - Economic and Social Rights (41-50)
+      'constitution.articles.article41': 'Muntu weetu une dilengiso dia mai.',
+      'constitution.articles.article42': 'Muntu weetu une dilengiso dia malongi.',
+      'constitution.articles.article43': 'Malongi ma bwantu ma kutangisha mafuala ne ma mpepo mu makampu ma leta.',
+      'constitution.articles.article44': 'Muntu weetu une dilengiso dia kusepela ni buyemi ne kuya mu bukalenge bua kimbanda kia busantu.',
+      'constitution.articles.article45': 'Muntu weetu une dilengiso dia ukondo ua malamu uukilangane ne mukulu waawu.',
+      'constitution.articles.article46': 'Muntu weetu une dilengiso dia bindu byaawu.',
+      'constitution.articles.article47': 'Muntu yakayaka ukumona kubotolwa bindu byaawu katshi mu bulamu bua bantu ne kuabika mbongo ya busembo buya kwanza.',
+      'constitution.articles.article48': 'Dilengiso dia kuwana bulua bua batu bafuile dine dibapila.',
+      'constitution.articles.article49': 'Mukongo weetu une dilengiso dia kwendelesha ne kuyenda mu bisalako bonso mu ntoto ua kanda.',
+      'constitution.articles.article50': 'Mukongo weetu une dilengiso ne muya ua kulinda mboka.',
+
       // Constitution articles - Rights and Duties continued (51-59)
       'constitution.articles.article51': 'Mukongo weetu une dilengiso dia kusolola ne kusololo.',
       'constitution.articles.article52': 'Muntu weetu une dilengiso dia kuya mu malonga ma leta.',
@@ -1896,6 +1954,17 @@ export class TranslationService {
       'constitution.articles.article57': 'Muntu weetu une dilengiso dia busuakidilu bua bumuntu.',
       'constitution.articles.article58': 'Ba mosali bane dilengiso dia kutika musalu.',
       'constitution.articles.article59': 'Muntu weetu une dilengiso dia kuya mu ba syndicat.',
+
+      // Citizen Duties and State Organization (Articles 60-68)
+      'constitution.articles.article60': 'Mukongo weetu une muya ua kuyaya leta ne kulandisha misalu yamuye leta.',
+      'constitution.articles.article61': 'Muntu weetu une muya ua kusanga buito bua leta ne kufuta ba mpako.',
+      'constitution.articles.article62': 'Muntu weetu une muya ua kuyaya malako ma leta ne kutambula malongi ma leta.',
+      'constitution.articles.article63': 'Muntu weetu une muya ua kulinda buzaba bua kwanza ne batu ba kanda.',
+      'constitution.articles.article64': 'Muntu weetu une muya ua kusala mu ndjala ne buumi butambulufu bua batu boonso.',
+      'constitution.articles.article65': 'Bana bane muya ua kusala bulamu katumpu ka malongi ne kuwana malako ma batu bazibikilu.',
+      'constitution.articles.article66': 'Ba dikolodi bane muya ua kulela bana baabo ne kumupa malako.',
+      'constitution.articles.article67': 'Bilumbu bya kupumula ne bya bifueshi bya leta bikuyayilwa.',
+      'constitution.articles.article68': 'Kifalanse ni lukumu lua bufisi lua Republiki ya Ntanda ya Kongo.',
 
       // Constitution articles - Executive Power (69-75)
       'constitution.articles.article69': 'Mukalenga ua Republiki undi mutue ua leta ne umonekisha kanda ku apaya.',
@@ -2263,6 +2332,18 @@ export class TranslationService {
       'constitution.articles.article39': 'Muntu woso uzayila ndingisa ya kukanisilwa mu nzala.',
       'constitution.articles.article40': 'Muntu woso uzayila ndingisa ya nzo.',
 
+      // Economic and Social Rights (Articles 41-50)
+      'constitution.articles.article41': 'Ndingisa ye ndoki ya maza ma banlongo mazayila mu mioko mia besi ba leta.',
+      'constitution.articles.article42': 'Bwana bua malongi buzayila mubika leta. Leta izayila butika malongi ma bana.',
+      'constitution.articles.article43': 'Leta izayila butika mayela ma bwanga ye musalu ku bamuntu bonso.',
+      'constitution.articles.article44': 'Besi ba leta bazayila wila kulonga mbote ya biloko.',
+      'constitution.articles.article45': 'Leta izayila butika nzo ye buabamangi bua bamuntu bonso.',
+      'constitution.articles.article46': 'Mbote ya muntu ye ya bamuntu wonso izayila mu mioko mia leta.',
+      'constitution.articles.article47': 'Muntu uzayila ndingisa ya biloko biaye bonso.',
+      'constitution.articles.article48': 'Leta izayila wila buka ndonga mbote mu mayela ma biziku ye ba mayela.',
+      'constitution.articles.article49': 'Ndonga ya kupumuka ye ya kusepela izayila mu mioko mia leta.',
+      'constitution.articles.article50': 'Leta izayila butika mayela ma makanda ye makutu ku bana bonso.',
+
       // Constitution articles - Rights and Duties continued (51-59)
       'constitution.articles.article51': 'Mukongo woso uzayila ndingisa ya kupiga vote ye kusololo.',
       'constitution.articles.article52': 'Muntu woso uzayila ndingisa ya kuya mu malonga ma leta.',
@@ -2273,6 +2354,17 @@ export class TranslationService {
       'constitution.articles.article57': 'Muntu woso uzayila ndingisa ya busuakidilu bua bumuntu.',
       'constitution.articles.article58': 'Ba mosali bazayila ndingisa ya kutika musalu.',
       'constitution.articles.article59': 'Muntu woso uzayila ndingisa ya kuya mu ba syndicat.',
+
+      // Citizen Duties and State Organization (Articles 60-68)
+      'constitution.articles.article60': 'Mukongo woso uzayila muya wa kuyaya leta ye kulandisa misalu imuaye leta.',
+      'constitution.articles.article61': 'Muntu woso uzayila muya wa kusanga buito bua leta ye kutunga ba mpako.',
+      'constitution.articles.article62': 'Muntu woso uzayila muya wa kuyaya malako ma leta ye kutambula malongi ma leta.',
+      'constitution.articles.article63': 'Muntu woso uzayila muya wa kulinda buzaba bua kwanza ye batu ba kanda.',
+      'constitution.articles.article64': 'Muntu woso uzayila muya wa kusala mu ndjala ye buumi bua lulendo bua batu wonso.',
+      'constitution.articles.article65': 'Bana bazayila muya wa kusala malamu katumbu ka malongi ye kuwana malako ma batu banene.',
+      'constitution.articles.article66': 'Ba dikolodi bazayila muya wa kulela bana baawu ye kumupa malako.',
+      'constitution.articles.article67': 'Bilumbu bya kupumuka ye bya mifueshi ya leta bikuyayilwa.',
+      'constitution.articles.article68': 'Kifalanse ni lukumu lua ndimi ya leta ya République Démocratique ya Kongo.',
 
       // Constitution articles - Executive Power (69-75)
       'constitution.articles.article69': 'Mfumu ya Republiki yidi ntu ya leta ye imonekisa kanda kuna bampaya.',

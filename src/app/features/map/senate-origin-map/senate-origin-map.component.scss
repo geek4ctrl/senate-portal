@@ -1156,7 +1156,7 @@
   height: auto;
   min-height: calc(100vh - 60px);
 }
-.map-section{flex:1;display:flex;flex-direction:column;position:relative;background:var(--theme-secondary-bg);animation:slide-in-up 0.8s ease-out;height:100%;min-height:calc(100vh - 60px);overflow:hidden}
+.map-section{flex:1;display:flex;flex-direction:column;position:relative;background:var(--theme-secondary-bg);animation:slide-in-up 0.8s ease-out;height:100%;min-height:calc(100vh - 60px);overflow-y:auto;-webkit-overflow-scrolling:touch}
 
 /* Constitution Section Styles */
 .constitution-section{
@@ -2838,7 +2838,7 @@
   }
 }
 .senators-sidebar{width:320px;background:#fff;border-left:1px solid #e9ecef;display:flex;flex-direction:column;overflow:hidden;box-shadow:-2px 0 10px rgba(0,0,0,0.08);box-sizing:border-box;max-width:100%;animation:slide-in-right 0.8s ease-out}
-#origin-map-host{flex:1;height:100%;display:flex;flex-direction:column;min-height:calc(100vh - 200px)}
+#origin-map-host{flex:1;height:100%;display:flex;flex-direction:column;min-height:calc(100vh - 200px);overflow-y:auto;-webkit-overflow-scrolling:touch}
 .map-container{position:relative;flex:1;height:100%;background:#f8f9fa;border-radius:0;margin:0;overflow:hidden;box-shadow:none}
 
 /* Paragraph below the map */
@@ -3100,9 +3100,16 @@
 
 /* Desktop Map Full Height */
 .main-layout{height:100vh !important}
-.map-section{height:100vh !important;padding:0}
-#origin-map-host{height:calc(100vh - 200px) !important;margin:0;padding:0}
+.map-section{height:100vh !important;padding:0;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#origin-map-host{height:calc(100vh - 300px) !important;margin:0;padding:0}
 .map-container{height:100% !important;margin:0 !important;border-radius:0 !important;box-shadow:none !important}
+
+/* Desktop Feedback Section Visibility */
+.feedback-section {
+  margin: 32px 0 80px 0;
+  padding: 0 24px 80px 24px;
+}
+
 :host ::ng-deep highcharts-chart{height:100% !important;min-height:calc(100vh - 60px) !important;border-radius:0 !important}
 :host ::ng-deep highcharts-chart div{height:100% !important;border-radius:0 !important}
 :host ::ng-deep .highcharts-container{height:100% !important;border-radius:0 !important}
@@ -3561,8 +3568,8 @@ body.modal-open{overflow:hidden !important}
 
 /* ===== FEEDBACK SECTION STYLES ===== */
 .feedback-section {
-  margin: 24px 0;
-  padding: 0 16px;
+  margin: 24px 0 48px 0;
+  padding: 0 16px 48px 16px;
 }
 
 .feedback-container {
@@ -3696,6 +3703,7 @@ body.modal-open{overflow:hidden !important}
 .feedback-modal-overlay {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 .feedback-modal {
@@ -3705,6 +3713,7 @@ body.modal-open{overflow:hidden !important}
   overflow-y: auto;
   border-radius: 20px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  margin-bottom: 40px;
 }
 
 .feedback-modal-header {
@@ -3728,7 +3737,8 @@ body.modal-open{overflow:hidden !important}
 }
 
 .feedback-modal-body {
-  padding: 32px;
+  padding: 32px 32px 48px 32px;
+  padding-bottom: max(48px, env(safe-area-inset-bottom, 48px));
 }
 
 .feedback-question-section {
@@ -4015,7 +4025,8 @@ body.modal-open{overflow:hidden !important}
 
   .feedback-modal {
     width: 95%;
-    margin: 20px;
+    margin: 20px auto 40px auto;
+    max-height: calc(100vh - 40px);
   }
 
   .feedback-modal-header {
@@ -4027,7 +4038,8 @@ body.modal-open{overflow:hidden !important}
   }
 
   .feedback-modal-body {
-    padding: 24px 20px;
+    padding: 24px 20px 48px 20px;
+    padding-bottom: max(48px, env(safe-area-inset-bottom, 48px));
   }
 
   .stat-bar {
@@ -4369,5 +4381,19 @@ body.modal-open{overflow:hidden !important}
     padding: 6px 10px !important;
     font-size: 8px !important;
     min-width: 70px !important;
+  }
+}
+
+/* Large Desktop Feedback Section - Extra Spacing */
+@media (min-width: 1440px) {
+  .feedback-section {
+    margin: 40px 0 100px 0;
+    padding: 0 32px 100px 32px;
+  }
+
+  .feedback-container {
+    padding: 40px;
+    margin: 0 auto;
+    max-width: 800px;
   }
 }
