@@ -1,0 +1,148 @@
+<div class="onboarding-overlay" *ngIf="isVisible" #onboardingOverlay>
+  <!-- Dark backdrop -->
+  <div class="onboarding-backdrop"></div>
+  
+  <!-- Spotlight effect for highlighted element -->
+  <div class="onboarding-spotlight"></div>
+  
+  <!-- Onboarding tooltip -->
+  <div class="onboarding-tooltip" *ngIf="currentStep">
+    <!-- Progress indicator -->
+    <div class="onboarding-progress">
+      <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="progressPercentage"></div>
+      </div>
+      <span class="progress-text">
+        {{ currentStepIndex + 1 }} / {{ totalSteps }}
+      </span>
+    </div>
+    
+    <!-- Step content -->
+    <div class="onboarding-content">
+      <div class="onboarding-header">
+        <h3 class="onboarding-title">
+          <i class="fas fa-lightbulb onboarding-icon"></i>
+          {{ translate(currentStep.title) }}
+        </h3>
+        <button class="onboarding-close" (click)="skipOnboarding()" [title]="translate('onboarding.skip')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <div class="onboarding-body">
+        <p class="onboarding-description">
+          {{ translate(currentStep.description) }}
+        </p>
+        
+        <div class="onboarding-action" *ngIf="currentStep.action">
+          <i class="fas fa-hand-pointer action-icon"></i>
+          <span class="action-text">{{ translate(currentStep.action) }}</span>
+        </div>
+        
+        <div class="onboarding-optional" *ngIf="currentStep.isOptional">
+          <i class="fas fa-info-circle optional-icon"></i>
+          <span class="optional-text">{{ translate('onboarding.optional') }}</span>
+        </div>
+      </div>
+      
+      <!-- Navigation buttons -->
+      <div class="onboarding-footer">
+        <div class="onboarding-nav-left">
+          <button 
+            class="onboarding-btn onboarding-btn-secondary" 
+            *ngIf="!isFirstStep"
+            (click)="previousStep()">
+            <i class="fas fa-arrow-left"></i>
+            {{ translate('onboarding.previous') }}
+          </button>
+        </div>
+        
+        <div class="onboarding-nav-right">
+          <button 
+            class="onboarding-btn onboarding-btn-ghost" 
+            (click)="skipOnboarding()">
+            {{ translate('onboarding.skip') }}
+          </button>
+          
+          <button 
+            class="onboarding-btn onboarding-btn-primary"
+            (click)="nextStep()">
+            <span *ngIf="!isLastStep">
+              {{ translate('onboarding.next') }}
+              <i class="fas fa-arrow-right"></i>
+            </span>
+            <span *ngIf="isLastStep">
+              {{ translate('onboarding.finish') }}
+              <i class="fas fa-check"></i>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Tooltip arrow -->
+    <div class="tooltip-arrow" [ngClass]="'arrow-' + currentStep.position"></div>
+  </div>
+  
+  <!-- Welcome modal for first step -->
+  <div class="onboarding-welcome-modal" *ngIf="currentStepIndex === 0">
+    <div class="welcome-modal-content">
+      <div class="welcome-header">
+        <div class="welcome-logo">
+          <i class="fas fa-university"></i>
+        </div>
+        <h2 class="welcome-title">{{ translate('onboarding.welcome.modalTitle') }}</h2>
+        <p class="welcome-subtitle">{{ translate('onboarding.welcome.modalSubtitle') }}</p>
+      </div>
+      
+      <div class="welcome-features">
+        <div class="feature-item">
+          <i class="fas fa-globe-africa feature-icon"></i>
+          <div class="feature-content">
+            <h4>{{ translate('onboarding.features.multilingual.title') }}</h4>
+            <p>{{ translate('onboarding.features.multilingual.description') }}</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <i class="fas fa-scroll feature-icon"></i>
+          <div class="feature-content">
+            <h4>{{ translate('onboarding.features.constitution.title') }}</h4>
+            <p>{{ translate('onboarding.features.constitution.description') }}</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <i class="fas fa-users feature-icon"></i>
+          <div class="feature-content">
+            <h4>{{ translate('onboarding.features.senators.title') }}</h4>
+            <p>{{ translate('onboarding.features.senators.description') }}</p>
+          </div>
+        </div>
+        
+        <div class="feature-item">
+          <i class="fas fa-newspaper feature-icon"></i>
+          <div class="feature-content">
+            <h4>{{ translate('onboarding.features.news.title') }}</h4>
+            <p>{{ translate('onboarding.features.news.description') }}</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="welcome-footer">
+        <button class="onboarding-btn onboarding-btn-ghost" (click)="skipOnboarding()">
+          {{ translate('onboarding.skipTour') }}
+        </button>
+        <button class="onboarding-btn onboarding-btn-primary" (click)="nextStep()">
+          {{ translate('onboarding.startTour') }}
+          <i class="fas fa-rocket"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Floating help button (always visible) -->
+<div class="onboarding-help-fab" *ngIf="!isVisible" (click)="resetOnboarding()" [title]="translate('onboarding.help')">
+  <i class="fas fa-question-circle"></i>
+</div>

@@ -477,7 +477,60 @@ export class TranslationService {
       'analytics.feature.geographic': 'Geographic Distribution',
       'analytics.feature.demographics': 'Demographic Analysis',
       'analytics.feature.composition': 'Senate Composition',
-      'analytics.feature.trends': 'Historical Trends'
+      'analytics.feature.trends': 'Historical Trends',
+
+      // Onboarding
+      'onboarding.welcome.title': 'Welcome to Senate Portal RDC',
+      'onboarding.welcome.description': 'Let me show you how to navigate and use this platform effectively.',
+      'onboarding.welcome.modalTitle': 'Welcome to the Senate Portal RDC',
+      'onboarding.welcome.modalSubtitle': 'Your gateway to understanding the Democratic Republic of Congo\'s Senate representation',
+      
+      'onboarding.language.title': 'Choose Your Language',
+      'onboarding.language.description': 'Select your preferred language from 6 available options including local languages.',
+      'onboarding.language.action': 'Click here to change language',
+      
+      'onboarding.navigation.title': 'Main Navigation',
+      'onboarding.navigation.description': 'These tabs let you explore different sections: Map, Analytics, Constitution, and News.',
+      
+      'onboarding.map.title': 'Interactive Senate Map',
+      'onboarding.map.description': 'Explore provinces and discover senators representing each region.',
+      'onboarding.map.action': 'Click to view the interactive map',
+      
+      'onboarding.constitution.title': 'Constitution Access',
+      'onboarding.constitution.description': 'Browse all 229 articles of the DRC Constitution in your preferred language.',
+      'onboarding.constitution.action': 'Click to read the Constitution',
+      
+      'onboarding.senators.title': 'Senator Information',
+      'onboarding.senators.description': 'View photos and information about current senators (optional feature).',
+      
+      'onboarding.news.title': 'Latest News',
+      'onboarding.news.description': 'Stay updated with the latest news and updates from the Senate.',
+      'onboarding.news.action': 'Click to read latest news',
+      
+      'onboarding.feedback.title': 'Participate & Give Feedback',
+      'onboarding.feedback.description': 'Share your opinion through polls and help improve representation.',
+      'onboarding.feedback.action': 'Click to participate in polls',
+      
+      'onboarding.features.multilingual.title': 'Multilingual Support',
+      'onboarding.features.multilingual.description': 'Access content in 6 languages including French, English, and local languages',
+      
+      'onboarding.features.constitution.title': 'Complete Constitution',
+      'onboarding.features.constitution.description': 'Browse all 229 articles with full translations and search capabilities',
+      
+      'onboarding.features.senators.title': 'Senator Profiles',
+      'onboarding.features.senators.description': 'Discover who represents your province with detailed senator information',
+      
+      'onboarding.features.news.title': 'Real-time Updates',
+      'onboarding.features.news.description': 'Stay informed with the latest news and updates from the Senate',
+      
+      'onboarding.next': 'Next',
+      'onboarding.previous': 'Previous',
+      'onboarding.skip': 'Skip',
+      'onboarding.finish': 'Get Started',
+      'onboarding.skipTour': 'Skip Tour',
+      'onboarding.startTour': 'Start Tour',
+      'onboarding.help': 'Help & Tour',
+      'onboarding.optional': 'This section is optional'
     },
     fr: {
       // Navigation
@@ -904,7 +957,60 @@ export class TranslationService {
       'analytics.feature.geographic': 'Distribution Géographique',
       'analytics.feature.demographics': 'Analyse Démographique',
       'analytics.feature.composition': 'Composition du Sénat',
-      'analytics.feature.trends': 'Tendances Historiques'
+      'analytics.feature.trends': 'Tendances Historiques',
+
+      // Onboarding
+      'onboarding.welcome.title': 'Bienvenue sur le Portail du Sénat RDC',
+      'onboarding.welcome.description': 'Permettez-moi de vous montrer comment naviguer et utiliser efficacement cette plateforme.',
+      'onboarding.welcome.modalTitle': 'Bienvenue sur le Portail du Sénat RDC',
+      'onboarding.welcome.modalSubtitle': 'Votre passerelle pour comprendre la représentation sénatoriale de la République Démocratique du Congo',
+      
+      'onboarding.language.title': 'Choisissez Votre Langue',
+      'onboarding.language.description': 'Sélectionnez votre langue préférée parmi 6 options disponibles, y compris les langues locales.',
+      'onboarding.language.action': 'Cliquez ici pour changer de langue',
+      
+      'onboarding.navigation.title': 'Navigation Principale',
+      'onboarding.navigation.description': 'Ces onglets vous permettent d\'explorer différentes sections : Carte, Analyses, Constitution et Actualités.',
+      
+      'onboarding.map.title': 'Carte Interactive du Sénat',
+      'onboarding.map.description': 'Explorez les provinces et découvrez les sénateurs représentant chaque région.',
+      'onboarding.map.action': 'Cliquez pour voir la carte interactive',
+      
+      'onboarding.constitution.title': 'Accès à la Constitution',
+      'onboarding.constitution.description': 'Consultez tous les 229 articles de la Constitution de la RDC dans votre langue préférée.',
+      'onboarding.constitution.action': 'Cliquez pour lire la Constitution',
+      
+      'onboarding.senators.title': 'Informations sur les Sénateurs',
+      'onboarding.senators.description': 'Consultez les photos et informations des sénateurs actuels (fonctionnalité optionnelle).',
+      
+      'onboarding.news.title': 'Dernières Actualités',
+      'onboarding.news.description': 'Restez informé des dernières nouvelles et mises à jour du Sénat.',
+      'onboarding.news.action': 'Cliquez pour lire les dernières actualités',
+      
+      'onboarding.feedback.title': 'Participez et Donnez Votre Avis',
+      'onboarding.feedback.description': 'Partagez votre opinion via des sondages et aidez à améliorer la représentation.',
+      'onboarding.feedback.action': 'Cliquez pour participer aux sondages',
+      
+      'onboarding.features.multilingual.title': 'Support Multilingue',
+      'onboarding.features.multilingual.description': 'Accédez au contenu en 6 langues, incluant le français, l\'anglais et les langues locales',
+      
+      'onboarding.features.constitution.title': 'Constitution Complète',
+      'onboarding.features.constitution.description': 'Consultez tous les 229 articles avec traductions complètes et capacités de recherche',
+      
+      'onboarding.features.senators.title': 'Profils des Sénateurs',
+      'onboarding.features.senators.description': 'Découvrez qui représente votre province avec des informations détaillées sur les sénateurs',
+      
+      'onboarding.features.news.title': 'Mises à Jour en Temps Réel',
+      'onboarding.features.news.description': 'Restez informé avec les dernières nouvelles et mises à jour du Sénat',
+      
+      'onboarding.next': 'Suivant',
+      'onboarding.previous': 'Précédent',
+      'onboarding.skip': 'Ignorer',
+      'onboarding.finish': 'Commencer',
+      'onboarding.skipTour': 'Ignorer la Visite',
+      'onboarding.startTour': 'Commencer la Visite',
+      'onboarding.help': 'Aide et Visite',
+      'onboarding.optional': 'Cette section est optionnelle'
     },
     ln: {
       // Navigation

@@ -10,6 +10,7 @@ import { ThemeService } from '../../../services/theme.service';
 // Components
 import { NewsSectionComponent } from '../../news/news-section/news-section.component';
 import { ThemeToggleComponent } from '../../../components/theme-toggle/theme-toggle.component';
+import { OnboardingComponent } from '../../../components/onboarding/onboarding.component';
 
 // Highcharts + modules
 import * as Highcharts from 'highcharts/highmaps';
@@ -27,7 +28,7 @@ if (typeof Highcharts === 'object') {
 @Component({
   standalone: true,
   selector: 'app-senate-origin-map',
-  imports: [CommonModule, FormsModule, HighchartsChartModule, NewsSectionComponent, ThemeToggleComponent],
+  imports: [CommonModule, FormsModule, HighchartsChartModule, NewsSectionComponent, ThemeToggleComponent, OnboardingComponent],
   templateUrl: './senate-origin-map.component.html',
   styleUrls: ['./senate-origin-map.component.scss']
 })
