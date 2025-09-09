@@ -1,0 +1,206 @@
+/* ===== MODERN SENATE PORTAL STYLES ===== */
+/* Modular, Accessible, Performance-Optimized Design System */
+
+/* Import Design Tokens First */
+@import 'design-tokens';
+
+/* Import Core Systems */
+@import 'accessibility';
+@import 'animations';
+
+/* Import Component Styles */
+@import 'navigation';
+@import 'mobile-navigation';
+
+/* Import Responsive Styles Last */
+@import 'responsive';
+
+/* Host Component Styles */
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  background: var(--theme-primary-bg);
+  font-family: 'Inter', 'Poppins', system-ui, -apple-system, sans-serif;
+}
+
+/* Main Layout */
+.main-layout {
+  display: flex;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  overflow: hidden;
+  animation: fade-in var(--duration-slower) var(--ease-out) 0.2s both;
+  height: calc(100vh - 64px); /* Adjust based on nav height */
+}
+
+/* Content Areas */
+.main-content {
+  flex: 1;
+  padding: var(--space-4);
+  overflow-y: auto;
+  background: var(--theme-secondary-bg);
+}
+
+/* Utility Classes */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-4);
+}
+
+.section {
+  margin-bottom: var(--space-8);
+}
+
+.card {
+  background: var(--theme-card-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--theme-border-color);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  border: 1px solid transparent;
+  min-height: var(--touch-target-sm);
+  text-decoration: none;
+}
+
+.button-primary {
+  background: var(--theme-button-primary);
+  color: #ffffff;
+  border-color: var(--theme-button-primary);
+}
+
+.button-primary:hover {
+  background: var(--theme-button-hover);
+  border-color: var(--theme-button-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.button-secondary {
+  background: var(--theme-button-secondary);
+  color: var(--theme-primary-text);
+  border-color: var(--theme-border-color);
+}
+
+.button-secondary:hover {
+  background: var(--theme-button-hover);
+  color: #ffffff;
+  border-color: var(--theme-button-hover);
+}
+
+/* Loading States */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(102, 126, 234, 0.2),
+    transparent
+  );
+  animation: shimmer 2s infinite;
+}
+
+/* Error States */
+.error {
+  color: var(--theme-error-color);
+  background: rgba(229, 62, 62, 0.1);
+  border: 1px solid rgba(229, 62, 62, 0.3);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+/* Success States */
+.success {
+  color: var(--theme-success-color);
+  background: rgba(56, 161, 105, 0.1);
+  border: 1px solid rgba(56, 161, 105, 0.3);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  font-size: var(--text-sm);
+}
+
+/* Text Utilities */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.font-bold { font-weight: var(--font-bold); }
+.font-medium { font-weight: var(--font-medium); }
+.font-normal { font-weight: var(--font-normal); }
+
+.text-sm { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg { font-size: var(--text-lg); }
+.text-xl { font-size: var(--text-xl); }
+
+/* Spacing Utilities */
+.m-0 { margin: 0; }
+.mt-2 { margin-top: var(--space-2); }
+.mb-4 { margin-bottom: var(--space-4); }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+
+.p-4 { padding: var(--space-4); }
+.px-4 { padding-left: var(--space-4); padding-right: var(--space-4); }
+.py-2 { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+
+/* Display Utilities */
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.block { display: block; }
+.hidden { display: none; }
+
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+
+/* Border Utilities */
+.rounded { border-radius: var(--radius); }
+.rounded-lg { border-radius: var(--radius-lg); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* Shadow Utilities */
+.shadow { box-shadow: var(--shadow); }
+.shadow-md { box-shadow: var(--shadow-md); }
+.shadow-lg { box-shadow: var(--shadow-lg); }

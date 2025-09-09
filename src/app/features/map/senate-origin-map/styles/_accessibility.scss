@@ -1,0 +1,157 @@
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+/* WCAG 2.1 AA Compliant Styles */
+
+/* Focus Management */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: var(--ring-width) solid var(--theme-button-primary);
+  outline-offset: var(--ring-offset);
+  border-radius: var(--radius-sm);
+}
+
+/* Interactive Elements Focus */
+.nav-tab:focus-visible,
+.nav-btn:focus-visible,
+.mobile-nav-item:focus-visible,
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: var(--ring-width) solid var(--theme-button-primary);
+  outline-offset: var(--ring-offset);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, var(--ring-opacity));
+}
+
+/* Skip Links for Screen Readers */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--theme-primary-bg);
+  color: var(--theme-primary-text);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--radius);
+  z-index: var(--z-tooltip);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .nav-tab {
+    border: 1px solid var(--theme-border-color);
+  }
+
+  .nav-btn {
+    border-width: 2px;
+  }
+
+  .mobile-nav-item {
+    border-bottom: 1px solid var(--theme-border-color);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: var(--duration-fast) !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: var(--duration-fast) !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable problematic animations */
+  .animate-pulse,
+  .animate-bounce-gentle,
+  .animate-swing,
+  .animate-spin-slow,
+  .animate-glow,
+  .animate-rotate {
+    animation: none !important;
+  }
+
+  /* Keep essential transitions but make them faster */
+  .nav-tab,
+  .nav-btn,
+  .mobile-nav-item {
+    transition: background-color var(--duration-fast) ease,
+                color var(--duration-fast) ease,
+                border-color var(--duration-fast) ease !important;
+  }
+}
+
+/* Color Scheme Preferences */
+@media (prefers-color-scheme: dark) {
+  /* This will be handled by the theme service, but we can add fallbacks */
+  :root {
+    --fallback-bg: #1a202c;
+    --fallback-text: #f7fafc;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Ensure touch targets are at least 44px */
+  .nav-tab,
+  .nav-btn,
+  .mobile-nav-item,
+  button,
+  a[role="button"] {
+    min-height: var(--touch-target);
+    min-width: var(--touch-target);
+  }
+
+  /* Remove hover effects on touch devices */
+  .nav-tab:hover,
+  .nav-btn:hover,
+  .mobile-nav-item:hover {
+    transform: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .nav-tab,
+  .nav-btn,
+  .mobile-nav-menu,
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+
+  .main-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* Screen Reader Improvements */
+.sr-announce {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Keyboard Navigation Improvements */
+.keyboard-user *:focus {
+  outline: var(--ring-width) solid var(--theme-button-primary);
+  outline-offset: var(--ring-offset);
+}
+
+/* Better Focus for Dark Backgrounds */
+.dark-bg *:focus-visible {
+  outline-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+}

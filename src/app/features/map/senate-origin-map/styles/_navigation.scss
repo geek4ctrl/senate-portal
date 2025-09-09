@@ -1,0 +1,269 @@
+/* ===== NAVIGATION COMPONENTS ===== */
+/* Modern, Accessible Navigation System */
+
+/* Top Navigation Bar */
+.top-nav {
+  background: var(--theme-nav-bg);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--theme-separator-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  animation: slide-in-up var(--duration-slow) var(--ease-out);
+  min-height: 64px;
+  flex-wrap: nowrap;
+  gap: var(--space-3);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Navigation Left Section */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1 1 auto;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+/* App Title */
+.app-title {
+  margin: 0;
+  font-size: var(--text-lg);
+  font-weight: var(--font-extrabold);
+  color: var(--theme-primary-text);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-2);
+  letter-spacing: -0.5px;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.app-title:hover {
+  transform: translateY(-1px);
+  text-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+}
+
+.app-title i {
+  color: var(--theme-button-primary);
+  font-size: var(--text-lg);
+}
+
+/* Navigation Tabs Container */
+.nav-tabs {
+  display: none; /* Hidden on mobile by default */
+  gap: var(--space-1);
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  flex-shrink: 1;
+  min-width: 0;
+}
+
+/* Navigation Tab */
+.nav-tab {
+  background: none;
+  border: none;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  color: var(--theme-muted-text);
+  transition: all var(--duration-normal) var(--ease-out);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-3);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  text-align: left;
+  letter-spacing: -0.3px;
+  box-shadow: var(--shadow-xs);
+  margin-right: var(--space-2);
+  min-height: var(--touch-target);
+}
+
+.nav-tab::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--theme-button-primary), var(--theme-button-hover));
+  transform: scaleX(0);
+  transition: transform var(--duration-normal) var(--ease-out);
+  z-index: 1;
+}
+
+.nav-tab:hover::before {
+  transform: scaleX(1);
+}
+
+.nav-tab:hover {
+  background: linear-gradient(135deg,
+    rgba(102, 126, 234, 0.15) 0%,
+    rgba(118, 75, 162, 0.15) 100%);
+  color: var(--theme-primary-text);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-tab.active {
+  background: linear-gradient(135deg,
+    var(--theme-button-primary) 0%,
+    var(--theme-button-hover) 100%);
+  color: #ffffff;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+.nav-tab.active::before {
+  transform: scaleX(1);
+  background: #ffffff;
+  height: 3px;
+}
+
+.nav-tab.active:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-xl);
+}
+
+/* Tab Icon */
+.tab-icon {
+  font-size: var(--text-base);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.nav-tab:hover .tab-icon {
+  transform: scale(1.1);
+}
+
+/* Navigation Right Section */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+/* Navigation Controls */
+.nav-controls {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* Navigation Button */
+.nav-btn {
+  background: var(--theme-button-secondary);
+  border: 1px solid var(--theme-border-color);
+  width: var(--touch-target);
+  height: var(--touch-target);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--duration-normal) var(--ease-out);
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 50%;
+  transition: all var(--duration-normal) var(--ease-out);
+  transform: translate(-50%, -50%);
+}
+
+.nav-btn:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.nav-btn:hover {
+  background: var(--theme-button-primary);
+  border-color: var(--theme-button-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-btn i {
+  font-size: var(--text-base);
+  transition: all var(--duration-normal) var(--ease-out);
+  z-index: 1;
+  position: relative;
+}
+
+.nav-btn:hover i {
+  transform: scale(1.1);
+}
+
+/* Language Switcher */
+.nav-language-switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: var(--radius-md);
+  transition: all var(--duration-normal) var(--ease-out);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.nav-language-switcher:hover {
+  background: rgba(102, 126, 234, 0.15);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-language-switcher i {
+  color: var(--theme-button-primary);
+  font-size: var(--text-sm);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.nav-language-switcher:hover i {
+  transform: scale(1.1);
+}
+
+.nav-language-select {
+  background: transparent;
+  border: none;
+  color: var(--theme-nav-text);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  cursor: pointer;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.nav-language-select:hover {
+  color: var(--theme-nav-hover);
+}
+
+.nav-language-select option {
+  background: var(--theme-nav-bg);
+  color: var(--theme-nav-text);
+  padding: var(--space-2);
+}
