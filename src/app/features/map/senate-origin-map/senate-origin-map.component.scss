@@ -57,21 +57,23 @@
   animation:slide-in-up 0.8s ease-out;
   min-height:56px;
   flex-wrap:nowrap;
-  gap:4px;
-  overflow-x:visible;
+  gap:8px;
+  overflow:hidden;
+  position:relative;
 }
 
 .nav-left{
   display:flex;
   align-items:center;
   gap:8px;
-  flex:1 1 0;
+  flex:1 1 auto;
   min-width:120px;
+  overflow:hidden;
 }
 
 .app-title{
   margin:0;
-  font-size:18px;
+  font-size:10px;
   font-weight:800;
   color:var(--theme-primary-text);
   font-family:'Poppins',sans-serif;
@@ -83,6 +85,8 @@
   text-align:left;
   cursor:pointer;
   transition:all 0.3s ease;
+  white-space:nowrap;
+  flex-shrink:0;
 }
 
 .app-title:hover {
@@ -92,22 +96,25 @@
 
 .app-title i{
   color:#667eea;
-  font-size:20px;
+  font-size:10px;
 }
 
 .nav-tabs{
   display:none; /* Hidden on mobile by default */
   gap:4px;
   align-items:center;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
+  overflow:hidden;
+  flex-shrink:1;
+  min-width:0;
 }
 .nav-tab {
   background: none;
   border: none;
-  padding: 16px 28px;
+  padding: 10px 16px;
   border-radius: 16px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 8px;
   font-weight: 700;
   color: var(--theme-muted-text);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -167,7 +174,7 @@
 }
 
 .tab-icon {
-  font-size: 20px;
+  font-size: 10px;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -219,19 +226,20 @@
   transform: translateY(-2px);
 }
 
-.nav-right{display:flex;align-items:center;gap:18px}
-.nav-controls{display:flex;gap:8px}
+.nav-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-controls{display:flex;gap:8px;flex-shrink:0}
 .nav-btn{background:var(--theme-button-secondary);border:1px solid var(--theme-border-color);width:40px;height:40px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}
 .nav-btn::before{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(102,126,234,0.1);border-radius:50%;transition:all 0.3s ease;transform:translate(-50%,-50%)}
 .nav-btn:hover::before{width:100%;height:100%}
 .nav-btn:hover{background:#667eea;border-color:#667eea;color:#fff;transform:translateY(-2px);box-shadow:0 8px 20px rgba(102,126,234,0.3)}
-.nav-btn i{font-size:16px;transition:all 0.3s ease;z-index:1;position:relative}
+.nav-btn i{font-size:8px;transition:all 0.3s ease;z-index:1;position:relative}
 .nav-btn:hover i{transform:scale(1.1)}
 
 /* Navigation Random Senators */
 .nav-senators{
-  display:flex;align-items:center;padding:0 16px;
+  display:flex;align-items:center;padding:0 12px;
   border-left:1px solid #e9ecef;border-right:1px solid #e9ecef;
+  flex-shrink:0;
 }
 
 .nav-senators-container{
@@ -294,7 +302,7 @@
 }
 
 .nav-language-switcher i{
-  color:#667eea;font-size:16px;transition:all 0.3s ease;
+  color:#667eea;font-size:8px;transition:all 0.3s ease;
 }
 
 .nav-language-switcher:hover i{
@@ -302,7 +310,7 @@
 }
 
 .nav-language-select{
-  background:transparent;border:none;color:var(--theme-nav-text);font-size:13px;
+  background:transparent;border:none;color:var(--theme-nav-text);font-size:10px;
   font-weight:600;cursor:pointer;outline:none;font-family:'Inter',sans-serif;
   transition:all 0.3s ease;
 }
@@ -329,11 +337,11 @@
 }
 
 .mobile-language-switcher-nav i{
-  color:#667eea;font-size:14px;transition:all 0.3s ease;
+  color:#667eea;font-size:10px;transition:all 0.3s ease;
 }
 
 .mobile-nav-language-select{
-  background:transparent;border:none;color:var(--theme-nav-text);font-size:12px;
+  background:transparent;border:none;color:var(--theme-nav-text);font-size:10px;
   font-weight:600;cursor:pointer;outline:none;font-family:'Inter',sans-serif;
   transition:all 0.3s ease;min-width:40px;
 }
@@ -343,7 +351,7 @@
 }
 
 .mobile-nav-language-select option{
-  background:var(--theme-nav-bg);color:var(--theme-nav-text);padding:6px;font-size:12px;
+  background:var(--theme-nav-bg);color:var(--theme-nav-text);padding:6px;font-size:10px;
 }
 
 /* ===== MOBILE NAVIGATION RESPONSIVE ENHANCEMENTS ===== */
@@ -353,7 +361,7 @@
   display:flex;background:var(--theme-button-secondary);border:1px solid var(--theme-border-color);
   width:40px;height:40px;border-radius:10px;cursor:pointer;align-items:center;justify-content:center;
   transition:all 0.3s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden;
-  font-size:16px;color:var(--theme-secondary-text);
+  font-size:8px;color:var(--theme-secondary-text);
 }
 
 .mobile-menu-toggle:hover{
@@ -399,13 +407,13 @@
 }
 
 .mobile-nav-header h3{
-  margin:0;font-size:18px;font-weight:700;font-family:'Poppins',sans-serif;text-align:left;
+  margin:0;font-size:10px;font-weight:700;font-family:'Poppins',sans-serif;text-align:left;
 }
 
 .mobile-nav-close{
   background:rgba(255,255,255,0.2);border:none;border-radius:50%;
   width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all 0.2s ease;color:#fff;font-size:16px;
+  cursor:pointer;transition:all 0.2s ease;color:#fff;font-size:8px;
 }
 
 .mobile-nav-close:hover{
@@ -427,7 +435,7 @@
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: 'Poppins', sans-serif;
-  font-size: 17px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--theme-sidebar-text);
   position: relative;
@@ -470,7 +478,7 @@
 }
 
 .mobile-nav-item i:first-child {
-  font-size: 20px;
+  font-size: 10px;
   margin-right: 18px;
   width: 24px;
   text-align: center;
@@ -479,7 +487,7 @@
 
 .mobile-nav-item i:last-child {
   margin-left: auto;
-  font-size: 16px;
+  font-size: 8px;
   color: #adb5bd;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -533,7 +541,7 @@
 }
 
 .mobile-senator-name{
-  font-size:10px;color:var(--theme-muted-text);font-weight:500;
+  font-size:12px;color:var(--theme-muted-text);font-weight:500;
   text-align:center;max-width:50px;overflow:hidden;
   text-overflow:ellipsis;white-space:nowrap;
 }
@@ -542,7 +550,7 @@
   width:40px;height:40px;border-radius:50%;
   background:rgba(102,126,234,0.1);border:1px solid rgba(102,126,234,0.2);
   color:#667eea;display:flex;align-items:center;justify-content:center;
-  cursor:pointer;transition:all 0.3s ease;font-size:14px;
+  cursor:pointer;transition:all 0.3s ease;font-size:12px;
 }
 
 .mobile-refresh-senators-btn:hover{
@@ -555,12 +563,12 @@
 }
 
 .mobile-language-switcher i{
-  font-size:16px;color:#667eea;
+  font-size:10px;color:#667eea;
 }
 
 .mobile-language-select{
   flex:1;padding:8px 12px;border:1px solid var(--theme-border-color);border-radius:8px;
-  background:var(--theme-secondary-bg);font-size:14px;font-weight:500;color:var(--theme-secondary-text);
+  background:var(--theme-secondary-bg);font-size:10px;font-weight:500;color:var(--theme-secondary-text);
   font-family:'Inter',sans-serif;transition:all 0.3s ease;
 }
 
@@ -682,41 +690,52 @@
   }
 
   .top-nav {
-    padding: 14px 18px;
-    gap: 8px;
+    padding: 12px 16px;
+    gap: 6px;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    overflow: hidden;
   }
 
   .nav-left {
-    gap: 16px;
+    gap: 8px;
     flex-shrink: 0;
+    max-width: 40%;
   }
 
   .app-title {
-    font-size: 19px;
-    gap: 9px;
+    font-size: 10px;
+    gap: 6px;
   }
 
   .app-title i {
-    font-size: 21px;
+    font-size: 10px;
   }
 
   .nav-tabs {
-    display: flex !important; /* Show tabs on small tablets too */
+    display: flex !important;
     gap: 2px;
     flex-wrap: nowrap;
-    flex-shrink: 0;
-    overflow-x: auto;
+    flex-shrink: 1;
+    overflow: hidden;
+    max-width: 35%;
   }
 
   .nav-tab {
-    padding: 8px 10px;
+    padding: 5px 7px;
     font-size: 12px;
-    min-width: 70px;
-    margin-right: 2px;
+    min-width: 60px;
+    margin-right: 1px;
     flex-shrink: 0;
     white-space: nowrap;
+  }
+
+  .nav-right {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .nav-controls {
+    gap: 4px;
   }
 
   .nav-controls {
@@ -742,28 +761,30 @@
   }
 
   .top-nav {
-    padding: 15px 20px;
+    padding: 14px 18px;
     gap: 8px;
     flex-wrap: nowrap;
-    overflow-x: auto;
+    overflow: hidden;
   }
 
   .nav-left {
-    gap: 16px;
+    gap: 12px;
     flex-shrink: 0;
+    max-width: 45%;
   }
 
   .nav-tabs {
-    display: flex !important; /* Show tabs on large tablets */
-    gap: 2px;
+    display: flex !important;
+    gap: 3px;
     flex-wrap: nowrap;
-    flex-shrink: 0;
-    overflow-x: auto;
+    flex-shrink: 1;
+    overflow: hidden;
+    max-width: 40%;
   }
 
   .nav-tab {
-    padding: 8px 12px;
-    font-size: 13px;
+    padding: 6px 10px;
+    font-size: 10px;
     min-width: 80px;
     margin-right: 2px;
     flex-shrink: 0;
@@ -771,12 +792,17 @@
   }
 
   .app-title {
-    font-size: 20px;
-    gap: 10px;
+    font-size: 12px;
+    gap: 8px;
   }
 
   .app-title i {
-    font-size: 22px;
+    font-size: 12px;
+  }
+
+  .nav-right {
+    gap: 10px;
+    flex-shrink: 0;
   }
 
   .nav-senators {
@@ -830,22 +856,24 @@
   .nav-tabs {
     display: flex !important;
     gap: 6px;
+    flex-wrap: nowrap;
   }
 
   .nav-tab {
-    padding: 14px 24px;
-    font-size: 15px;
+    padding: 10px 18px;
+    font-size: 8px;
     min-width: 120px;
     margin-right: 6px;
+    flex-shrink: 0;
   }
 
   .app-title {
-    font-size: 21px;
+    font-size: 16px;
     gap: 11px;
   }
 
   .app-title i {
-    font-size: 23px;
+    font-size: 16px;
   }
 
   .nav-senators {
@@ -902,19 +930,19 @@
   }
 
   .nav-tab {
-    padding: 16px 28px;
-    font-size: 16px;
+    padding: 12px 20px;
+    font-size: 8px;
     min-width: 140px;
     margin-right: 8px;
   }
 
   .app-title {
-    font-size: 22px;
+    font-size: 18px;
     gap: 12px;
   }
 
   .app-title i {
-    font-size: 24px;
+    font-size: 18px;
   }
 
   .nav-senators {
@@ -957,35 +985,41 @@
 
   .top-nav {
     padding: 12px 20px;
-    flex-wrap: wrap;
-    gap: 12px;
+    flex-wrap: nowrap;
+    gap: 8px;
+    overflow: hidden;
   }
 
   .nav-left {
     flex: 1;
-    min-width: 200px;
+    min-width: 150px;
+    max-width: 40%;
   }
 
   .nav-tabs {
     display: flex; // Ensure tabs are visible on tablets
     gap: 4px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex-shrink: 1;
+    overflow: hidden;
+    max-width: 45%;
   }
 
   .nav-tab {
-    padding: 12px 20px;
-    font-size: 14px;
+    padding: 8px 14px;
+    font-size: 10px;
     min-width: 120px;
     margin-right: 4px;
+    flex-shrink: 0;
   }
 
   .app-title {
-    font-size: 20px;
+    font-size: 12px;
     gap: 10px;
   }
 
   .app-title i {
-    font-size: 22px;
+    font-size: 12px;
   }
 
   .nav-right {
@@ -1438,7 +1472,7 @@
   padding: 16px 28px;
   border-radius: 16px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--theme-muted-text);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1565,7 +1599,7 @@
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: 'Poppins', sans-serif;
-  font-size: 17px;
+  font-size: 12px;
   font-weight: 600;
   color: var(--theme-sidebar-text);
   position: relative;
@@ -4196,5 +4230,49 @@ body.modal-open{overflow:hidden !important}
 
   .constitution-footer {
     padding: 16px;
+  }
+}
+
+/* Fix for common problematic screen sizes (1000px - 1200px) */
+@media (min-width: 1000px) and (max-width: 1200px) {
+  .top-nav {
+    gap: 8px;
+  }
+
+  .nav-left {
+    max-width: 35%;
+  }
+
+  .nav-tabs {
+    max-width: 45%;
+    overflow: hidden;
+  }
+
+  .nav-tab {
+    padding: 8px 12px;
+    font-size: 11px;
+    min-width: 90px;
+    flex-shrink: 1;
+  }
+
+  .nav-right {
+    gap: 10px;
+  }
+
+  .nav-senators {
+    padding: 0 8px;
+  }
+}
+
+/* Additional fix for very specific overlap-prone widths */
+@media (min-width: 900px) and (max-width: 1100px) {
+  .app-title {
+    font-size: 10px !important;
+  }
+
+  .nav-tab {
+    padding: 6px 10px !important;
+    font-size: 8px !important;
+    min-width: 70px !important;
   }
 }
