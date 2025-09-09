@@ -38,7 +38,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   max-width: 400px;
   min-width: 320px;
-  z-index: 10001;
+  z-index: 0 !important;
   animation: fadeInUp 0.3s ease;
   border: 1px solid #e0e0e0;
 }
@@ -424,7 +424,7 @@
 
 :global(.onboarding-highlight) {
   position: relative !important;
-  z-index: 10001 !important;
+  z-index: 0 !important;
   border-radius: 8px !important;
   box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.6) !important;
   animation: highlightPulse 2s infinite !important;

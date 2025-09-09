@@ -163,7 +163,7 @@ export class OnboardingComponent implements OnInit, OnDestroy {
     const element = document.querySelector(selector) as HTMLElement;
     if (element) {
       element.classList.add('onboarding-highlight');
-      element.style.zIndex = '10001';
+      // element.style.zIndex = '10001';
       element.style.position = 'relative';
 
       // Scroll element into view if needed
