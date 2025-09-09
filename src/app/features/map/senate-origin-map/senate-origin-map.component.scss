@@ -97,7 +97,9 @@
   align-items:center;
   box-shadow:0 2px 10px rgba(0,0,0,0.08);
   animation:slide-in-up 0.8s ease-out;
-  min-height:56px;
+  height:64px;
+  min-height:64px;
+  max-height:64px;
   flex-wrap:nowrap;
   gap:8px;
   overflow:hidden;
@@ -685,6 +687,9 @@
   .top-nav {
     padding: 10px 12px;
     gap: 6px;
+    height: 64px;
+    min-height: 64px;
+    max-height: 64px;
   }
 
   .nav-left {
@@ -725,6 +730,9 @@
   .top-nav {
     padding: 12px 14px;
     gap: 8px;
+    height: 64px;
+    min-height: 64px;
+    max-height: 64px;
   }
 
   .nav-left {
@@ -783,10 +791,13 @@
   }
 
   .top-nav {
+    height: 64px;
     padding: 12px 16px;
     gap: 6px;
     flex-wrap: nowrap;
     overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 
   .nav-left {
@@ -854,10 +865,13 @@
   }
 
   .top-nav {
+    height: 64px;
     padding: 14px 18px;
     gap: 8px;
     flex-wrap: nowrap;
     overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 
   .nav-left {
@@ -938,8 +952,11 @@
   }
 
   .top-nav {
+    height: 64px;
     padding: 16px 24px;
     gap: 16px;
+    display: flex;
+    align-items: center;
   }
 
   .nav-left {
@@ -1009,8 +1026,11 @@
   }
 
   .top-nav {
+    height: 64px;
     padding: 18px 28px;
     gap: 20px;
+    display: flex;
+    align-items: center;
   }
 
   .nav-left {
@@ -3117,7 +3137,7 @@
 
 /* Tablet-specific styles */
 @media (min-width: 769px) and (max-width: 1024px) {
-  .top-nav{padding:14px 20px}
+  .top-nav{padding:14px 20px;height:64px;min-height:64px;max-height:64px}
   .nav-left{gap:24px}
   .app-title{font-size:20px}
   .nav-right{gap:14px}
@@ -3178,7 +3198,7 @@
 }
 
 @media(max-width:768px){
-.top-nav{padding:12px 16px}
+.top-nav{padding:12px 16px;height:64px;min-height:64px;max-height:64px}
 .nav-left{gap:16px}
 .app-title{font-size:18px}
 .nav-tabs{display:none}
