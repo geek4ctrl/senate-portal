@@ -2968,15 +2968,99 @@
 .btn-primary:hover{background:linear-gradient(135deg,#5a67d8 0%,#6b46c1 100%);transform:translateY(-1px);box-shadow:0 4px 12px rgba(102,126,234,0.4)}
 
 /* Profile Modal Styles */
-.profile-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;z-index:2000;backdrop-filter:blur(6px);animation:fadeIn 0.3s ease}
-.profile-modal-content{background:linear-gradient(145deg,#fff 0%,#f8f9fa 100%);max-width:400px;width:90%;max-height:85vh;overflow:hidden;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:slideIn 0.3s ease;border:1px solid rgba(255,255,255,0.3);position:relative}
-.profile-modal-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.1);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s ease;color:#666;font-size:16px;z-index:10}
-.profile-modal-close:hover{background:rgba(255,0,0,0.1);color:#e74c3c;transform:scale(1.1)}
-.profile-modal-body{padding:24px;text-align:center;overflow-y:auto;max-height:calc(85vh - 20px)}
-.profile-modal-body .profile-avatar{width:100px;height:100px;border-radius:50%;margin:0 auto 20px;display:block;border:4px solid #fff;box-shadow:0 10px 30px rgba(0,0,0,0.2);object-fit:cover}
-.profile-modal-body .profile-name{font-size:24px;font-weight:700;margin-bottom:8px;color:#2c3e50;font-family:'Poppins',sans-serif}
-.profile-modal-body .profile-title{color:#6c757d;margin-bottom:6px;font-size:16px;font-weight:500}
-.profile-modal-body .profile-province{color:#495057;margin-bottom:24px;font-size:14px;font-weight:600;padding:8px 16px;background:linear-gradient(135deg,#e3f2fd 0%,#bbdefb 100%);border-radius:20px;display:inline-block}
+.profile-modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;z-index:2000;backdrop-filter:blur(8px);animation:fadeIn 0.3s ease}
+
+.profile-modal-content{
+  background:linear-gradient(145deg,#fff 0%,#f8f9fa 100%);
+  max-width:450px;
+  width:90%;
+  max-height:85vh;
+  overflow:hidden;
+  border-radius:20px;
+  box-shadow:0 25px 80px rgba(0,0,0,0.25);
+  animation:slideIn 0.3s ease;
+  border:1px solid rgba(255,255,255,0.3);
+  position:relative;
+}
+
+.profile-modal-close{
+  position:absolute;
+  top:16px;
+  right:16px;
+  background:rgba(0,0,0,0.05);
+  border:none;
+  border-radius:50%;
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:all 0.2s ease;
+  color:#666;
+  font-size:18px;
+  z-index:10;
+  border:2px solid transparent;
+}
+
+.profile-modal-close:hover{
+  background:rgba(255,59,48,0.1);
+  color:#ff3b30;
+  border-color:#ff3b30;
+  transform:scale(1.1);
+}
+
+.profile-modal-body{
+  padding:32px 28px;
+  text-align:center;
+  overflow-y:auto;
+  max-height:calc(85vh - 20px);
+}
+
+.profile-modal-body .profile-avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  margin:0 auto 24px;
+  display:block;
+  border:5px solid #fff;
+  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+  object-fit:cover;
+}
+
+.profile-modal-body .profile-name{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:12px;
+  color:#2c3e50;
+  font-family:'Poppins',sans-serif;
+  line-height:1.2;
+}
+
+.profile-modal-body .profile-title{
+  color:#667eea;
+  margin-bottom:16px;
+  font-size:18px;
+  font-weight:600;
+  padding:10px 24px;
+  background:linear-gradient(135deg,#667eea15 0%,#764ba215 100%);
+  border-radius:25px;
+  display:inline-block;
+  border:1px solid #667eea30;
+}
+
+.profile-modal-body .profile-province{
+  color:#495057;
+  margin-bottom:24px;
+  font-size:16px;
+  font-weight:500;
+  padding:12px 24px;
+  background:linear-gradient(135deg,#e8f4fd 0%,#d4edda 100%);
+  border-radius:25px;
+  display:inline-block;
+  border:1px solid #198754;
+}
+
 .profile-modal-body .profile-stats{display:flex;justify-content:space-between;margin-bottom:24px;gap:16px}
 .profile-modal-body .stat{text-align:center;background:linear-gradient(135deg,#f8f9fa 0%,#e9ecef 100%);padding:16px 12px;border-radius:12px;flex:1;position:relative}
 .profile-modal-body .stat-value{font-size:20px;font-weight:700;display:block;color:#2c3e50;margin-bottom:6px}
@@ -3381,7 +3465,45 @@
 .sort-select{padding:5px 8px;font-size:11px;height:28px;border-radius:4px}
 .sort-direction-btn{width:28px;height:28px;font-size:10px;border-radius:4px}
 
-/* Mobile Profile Card Optimization */
+/* Mobile Profile Card Optimization - Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+  .profile-modal-content{
+    width:85%;
+    max-width:500px;
+    max-height:85vh;
+    border-radius:16px;
+    margin:auto;
+  }
+
+  .profile-modal-body{
+    padding:28px 24px;
+  }
+
+  .profile-modal-body .profile-avatar{
+    width:100px;
+    height:100px;
+  }
+
+  .profile-modal-body .profile-name{
+    font-size:24px;
+  }
+
+  .profile-modal-body .profile-title{
+    font-size:17px;
+  }
+
+  .profile-modal-body .profile-province{
+    font-size:15px;
+  }
+
+  .profile-modal-close{
+    width:40px;
+    height:40px;
+    font-size:18px;
+  }
+}
+
+/* Mobile Profile Card Optimization - Small screens */
 .profile-modal-content{width:95%;max-width:95%;max-height:90vh;border-radius:12px;margin:20px}
 .profile-modal-body{padding:20px}
 .profile-modal-body .profile-avatar{width:80px;height:80px}
@@ -3404,12 +3526,87 @@ body.modal-open{overflow:hidden !important}
 @media(max-width:480px){
 .nav-right{gap:8px}
 
-.profile-modal-content{width:100%;height:100%;max-height:100%;border-radius:0;margin:0}
-.profile-modal-body{padding:16px}
+.profile-modal-content{
+  width:95%;
+  height:auto;
+  max-height:90vh;
+  border-radius:20px;
+  margin:5vh auto;
+  background:linear-gradient(145deg,#fff 0%,#f8f9fa 100%);
+  box-shadow:0 25px 50px rgba(0,0,0,0.25);
+}
+
+.profile-modal-body{
+  padding:32px 24px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+.profile-modal-body .profile-avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  margin:0 auto 24px;
+  border:5px solid #fff;
+  box-shadow:0 15px 35px rgba(0,0,0,0.15);
+  object-fit:cover;
+}
+
+.profile-modal-body .profile-name{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:12px;
+  color:#2c3e50;
+  font-family:'Poppins',sans-serif;
+  line-height:1.2;
+}
+
+.profile-modal-body .profile-title{
+  color:#667eea;
+  margin-bottom:16px;
+  font-size:18px;
+  font-weight:600;
+  padding:8px 20px;
+  background:linear-gradient(135deg,#667eea15 0%,#764ba215 100%);
+  border-radius:25px;
+  display:inline-block;
+  border:1px solid #667eea30;
+}
+
+.profile-modal-body .profile-province{
+  color:#495057;
+  margin-bottom:0;
+  font-size:16px;
+  font-weight:500;
+  padding:10px 20px;
+  background:linear-gradient(135deg,#e8f4fd 0%,#d4edda 100%);
+  border-radius:25px;
+  display:inline-block;
+  border:1px solid #198754;
+}
+
 .profile-modal-body .profile-stats{flex-direction:column;gap:12px}
 .profile-modal-body .stat{margin-bottom:0}
 
-.profile-modal-close{top:16px;right:16px;width:40px;height:40px;font-size:20px}
+.profile-modal-close{
+  top:16px;
+  right:16px;
+  width:44px;
+  height:44px;
+  font-size:20px;
+  background:rgba(0,0,0,0.05);
+  color:#666;
+  border:2px solid transparent;
+}
+
+.profile-modal-close:hover{
+  background:rgba(255,59,48,0.1);
+  color:#ff3b30;
+  border-color:#ff3b30;
+  transform:scale(1.05);
+}
 
 /* Statistics grid for very small screens */
 .statistics-grid{grid-template-columns:repeat(2,1fr);gap:12px;margin:8px 0 24px 0}

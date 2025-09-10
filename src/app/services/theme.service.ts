@@ -158,21 +158,21 @@ export class ThemeService {
   }
   
   private initializeTheme(): void {
-    // Load theme from localStorage or detect system preference
+    // Load theme from localStorage or default to light theme
     const savedTheme = localStorage.getItem(this.THEME_STORAGE_KEY) as Theme;
     
     if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
       this.setTheme(savedTheme);
     } else {
-      // Detect system preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      this.setTheme(prefersDark ? 'dark' : 'light');
+      // Always default to light theme instead of system preference
+      this.setTheme('light');
     }
     
-    // Listen for system theme changes
+    // Listen for system theme changes (but only apply if no saved preference)
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem(this.THEME_STORAGE_KEY)) {
-        this.setTheme(e.matches ? 'dark' : 'light');
+        // Still default to light even when system changes, unless user has set a preference
+        this.setTheme('light');
       }
     });
   }
